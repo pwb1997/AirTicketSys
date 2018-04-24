@@ -1,0 +1,36 @@
+<div class="home" [style.visibility]="loggedin==='false'? 'visible': 'hidden'">
+  <h1>Greetings!</h1>
+  <h1>Please log in to continue</h1>
+</div>
+
+<div class="home" [style.visibility]="loggedin==='true'? 'visible': 'hidden'" style.position="relative">
+  <h1>Hi, {{name.split(" ")[0]}}!</h1>
+  <h2>My Portfolios</h2>
+  <table id="plist" *ngIf="portfolios">
+    <tr>
+      <th>Tag</th>
+      <th>Name</th>
+      <th>Value</th>
+      <th>Day Chg</th>
+      <th>Day Chg %</th>
+      <th>Week Chg</th>
+      <th>Week Chg %</th>
+      <th>Total Chg</th>
+      <th>Total Chg %</th>
+    </tr>
+    <tr *ngFor="let portfolio of portfolios">
+      <th style.backgroundColor={{portfolio.tag}}>{{portfolio.colorTag}}</th>
+      <th>
+        <a routerLink="/{{portfolio.name}}" class="pname">{{portfolio.name}}</a>
+      </th>
+      <th>{{portfolio.value}}</th>
+      <th>{{portfolio.dchange}}</th>
+      <th>{{portfolio.dchangep}}</th>
+      <th>{{portfolio.wchange}}</th>
+      <th>{{portfolio.wchangep}}</th>
+      <th>{{portfolio.tchange}}</th>
+      <th>{{portfolio.tchangep}}</th>
+    </tr>
+  </table>
+  <a routerLink="/new-portfolio" class="button secondary small">+ Create New Portfolio</a>
+</div>

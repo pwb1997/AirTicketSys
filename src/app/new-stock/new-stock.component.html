@@ -1,0 +1,12 @@
+<div class="frame">
+  <h1>Add a Stock</h1>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    Symbol
+    <input name="symbol" [placeholder]="validation" [style.background-color]="color" ngModel required>{{exist}}
+    <br>Share
+    <input name="share" placeholder="0" ngModel>
+    <br>Cost Basis
+    <input name="cost basis" placeholder="0" ngModel>
+    <button>Submit</button>
+  </form>
+</div>

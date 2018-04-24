@@ -1,0 +1,39 @@
+.about {
+  position: absolute;
+  margin-top: 0px;
+  top: 160px;
+  left: 30px;
+  font-family: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
+}
+
+#p1 {
+  font-size: 6em;
+}
+
+#p2 {
+  font-size: 6em;
+  margin-top: 50px;
+}
+
+#p3,
+#p4,
+#p5 {
+  font-size: 1em;
+  margin-left: 10px;
+}
+
+#p3 {
+  margin-top: 60px;
+}
+
+#p4 {
+  margin-top: 120px;
+}
+
+#i6 {
+  position: fixed;
+  height: 300px;
+  width: 300px;
+  top: 200px;
+  right: 100px;
+}

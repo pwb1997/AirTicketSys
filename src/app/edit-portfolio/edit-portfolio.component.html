@@ -1,0 +1,20 @@
+<div class="frame">
+  <h1>Edit {{slugs}}</h1>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <br>Description
+    <input name="description" placeholder="optional" ngModel>
+    <br>Color Tag
+    <select name="color" ngModel>
+      <option value=''>- Please Choose -</option>
+      <option value="white">White</option>
+      <option value="black">Black</option>
+      <option value="grey">Grey</option>
+      <option value="blue">Blue</option>
+      <option value="green">Green</option>
+      <option value="orange">Orange</option>
+      <option value="red">Red</option>
+      <option value="purple">Purple</option>
+    </select>
+    <button>Submit</button>
+  </form>
+</div>

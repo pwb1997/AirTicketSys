@@ -1,0 +1,73 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8">
+  <title>Stock Tracker</title>
+  <base href="/">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta name="google-signin-client_id" content="593544571220-g6tdi03f807ajije2241ekc1a303sokl.apps.googleusercontent.com">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.4/jquery.min.js"></script>
+  <script type="text/javascript" src="https://s3.tradingview.com/tv.js"></script>
+  <script>
+    $(document).ready(function () {
+      document.getElementById('mainframe').style.visibility = 'visible';
+    });
+
+    function onSuccess(googleUser) {
+      if (document.cookie.indexOf("loggedin=true") === -1) {
+        var xhr = new XMLHttpRequest();
+        xhr.open('POST', '/signin');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+          document.cookie = "loggedin=true";
+          document.cookie = "username=" + googleUser.getBasicProfile().getName();
+          location.reload();
+        };
+        xhr.send('idtoken=' + googleUser.getAuthResponse()
+          .id_token);
+      }
+    }
+
+    function onFailure(error) {
+      console.log(error);
+    }
+
+    function renderButton() {
+      gapi.signin2.render('my-signin2', {
+        'scope': 'profile',
+        'width': 110,
+        'height': 36,
+        'longtitle': false,
+        'theme': 'dark',
+        'onsuccess': onSuccess,
+        'onfailure': onFailure
+      });
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.disconnect().then(function () {
+        document.cookie = "loggedin=false"
+        document.cookie = "username" + '=; Path=/; Expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+        var xhr = new XMLHttpRequest();
+        xhr.open('post', '/signout');
+        xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded');
+        xhr.onload = function () {
+          location.reload();
+        };
+        xhr.send('logout=true');
+        location.reload();
+      });
+    }
+
+  </script>
+  <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</head>
+
+<body id='mainframe'>
+  <app-root></app-root>
+</body>
+
+</html>

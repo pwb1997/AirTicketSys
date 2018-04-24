@@ -1,0 +1,36 @@
+<div class="frame">
+  <h2>
+    <a routerLink="/{{pslugs}}" class="pname">{{pslugs}}</a>
+    > {{stock.symbol}}
+  </h2>
+  <table>
+    <tr>
+      <th>Current Prc</th>
+      <th>Shares</th>
+      <th>Cost Basis</th>
+      <th>Value</th>
+      <th>Day Chg</th>
+      <th>Day Chg %</th>
+      <th>Week Chg</th>
+      <th>Week Chg %</th>
+      <th>Total Chg</th>
+      <th>Total Chg %</th>
+    </tr>
+    <tr>
+      <th>{{stock.current}}</th>
+      <th>{{stock.share}}</th>
+      <th>{{stock.basis}}</th>
+      <th>{{stock.value}}</th>
+      <th>{{stock.dchange}}</th>
+      <th>{{stock.dchangep}}</th>
+      <th>{{stock.wchange}}</th>
+      <th>{{stock.wchangep}}</th>
+      <th>{{stock.tchange}}</th>
+      <th>{{stock.tchangep}}</th>
+    </tr>
+  </table>
+  <div id="technical-analysis">
+  </div>
+  <a routerLink="/{{pslugs}}/s/{{sslugs}}/edit" class="button secondary small">Edit {{stock.name}}</a>
+  <a (click)="delete()" class="button secondary small">Delete {{stock.name}}</a>
+</div>

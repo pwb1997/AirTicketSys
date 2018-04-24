@@ -1,0 +1,50 @@
+<div class="frame">
+  <h2>{{slugs}}</h2>
+  <p>{{portfolio.description}}</p>
+  <table id="slist" *ngIf="stocks">
+    <tr>
+      <th>Symbol</th>
+      <th>Current Prc</th>
+      <th>Shares</th>
+      <th>Cost Basis</th>
+      <th>Value</th>
+      <th>Day Chg</th>
+      <th>Day Chg %</th>
+      <th>Week Chg</th>
+      <th>Week Chg %</th>
+      <th>Total Chg</th>
+      <th>Total Chg %</th>
+    </tr>
+    <tr>
+      <th>{{slugs}}</th>
+      <th></th>
+      <th></th>
+      <th>{{portfolio.bvalue}}</th>
+      <th>{{portfolio.value}}</th>
+      <th>{{portfolio.dchange}}</th>
+      <th>{{portfolio.dchangep}}</th>
+      <th>{{portfolio.wchange}}</th>
+      <th>{{portfolio.wchangep}}</th>
+      <th>{{portfolio.tchange}}</th>
+      <th>{{portfolio.tchangep}}</th>
+    </tr>
+    <tr *ngFor="let stock of stocks">
+      <th>
+        <a routerLink="/{{slugs}}/s/{{stock.slug}}" class="symbol">{{stock.symbol}}</a>
+      </th>
+      <th>{{stock.current}}</th>
+      <th>{{stock.share}}</th>
+      <th>{{stock.basis}}</th>
+      <th>{{stock.value}}</th>
+      <th>{{stock.dchange}}</th>
+      <th>{{stock.dchangep}}</th>
+      <th>{{stock.wchange}}</th>
+      <th>{{stock.wchangep}}</th>
+      <th>{{stock.tchange}}</th>
+      <th>{{stock.tchangep}}</th>
+    </tr>
+  </table>
+  <a routerLink="/{{slugs}}/new-stock" class="button secondary small">+ Add New Stock</a>
+  <a (click)="delete()" class="button secondary small">Delete {{slugs}}</a>
+  <a routerLink="/{{slugs}}/edit" class="button secondary small">Edit {{slugs}}</a>
+</div>

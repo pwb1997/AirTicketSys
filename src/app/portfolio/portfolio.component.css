@@ -1,0 +1,14 @@
+.frame {
+  margin-top: 70px;
+  position: absolute;
+}
+
+.symbol:visited {
+  color: rgb(68, 68, 199);
+}
+
+.symbol,
+.symbol:hover {
+  color: rgb(68, 68, 199);
+  text-decoration: underline;
+}

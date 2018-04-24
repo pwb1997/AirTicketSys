@@ -1,0 +1,84 @@
+nav {
+  overflow: hidden;
+  background-color: #333;
+  position: fixed;
+  top: 0px;
+  width: 100%;
+  height: 60px;
+  user-select: none;
+  z-index: 999;
+}
+
+li {
+  float: left;
+  display: block;
+  color: #f2f2f2;
+  text-align: center;
+  line-height: 60px;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: Palatino, Palatino Linotype, Palatino LT STD, Book Antiqua, Georgia, serif;
+}
+
+#l1 {
+  top: 16px;
+}
+
+#l2 {
+  top: 36px;
+}
+
+li p {
+  position: fixed;
+  display: block;
+  line-height: 8px;
+  font-size: 20px;
+  left: 65px;
+}
+
+img {
+  height: 49px;
+  width: 50px;
+}
+
+.image {
+  height: 60px;
+  width: 150px;
+  padding-top: 5px;
+  padding-right: 80px;
+}
+
+.menu {
+  padding: 0px 20px;
+  font-variant: small-caps;
+}
+
+a,
+a:hover,
+a:visited {
+  color: #f2f2f2;
+  text-decoration: none;
+}
+
+#my-signin2 {
+  position: fixed;
+  right: 12px;
+  margin-top: 12px;
+}
+
+#signout {
+  position: fixed;
+  right: 12px;
+  margin-top: 12px;
+  height: 36px;
+  width: 110px;
+  display: block;
+  text-align: center;
+  line-height: 36px;
+  font-family: Roboto, arial, sans-serif;
+  font-size: 13px;
+  font-weight: 500px;
+  letter-spacing: 0.21px;
+  color: rgb(255, 255, 255);
+  padding-left: 43px;
+}
