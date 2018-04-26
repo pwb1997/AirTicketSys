@@ -1,0 +1,136 @@
+@font-face {
+  font-family: 'Gugi';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Gugi-Regular.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PoiretOne';
+  font-style: normal;
+  font-weight: 400;
+  src: url('PoiretOne-Regular.ttf') format('truetype')
+}
+
+nav {
+  overflow: hidden;
+  background-color: #0F1108;
+  margin: 0px;
+  padding: 0px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 999;
+  width: 100%;
+  height: 70px;
+  user-select: none;
+  color: #333;
+  font-family: 'Gugi';
+  text-decoration: none;
+  text-shadow: none;
+}
+
+#title {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 150px;
+  height: 70px;
+}
+
+#title div {
+  color: #CAD8DE;
+  position: absolute;
+  font-size: 16px;
+}
+
+#title div:nth-child(1) {
+  font-size: 60px;
+  left: 12px;
+}
+
+#title div:nth-child(2) {
+  top: 10px;
+  left: 65px;
+}
+
+#title div:nth-child(3) {
+  top: 25px;
+  left: 65px;
+}
+
+#title div:nth-child(4) {
+  top: 40px;
+  left: 65px;
+}
+
+nav div {
+  position: absolute;
+  text-align: center;
+}
+
+#home {
+  height: 70px;
+  width: 150px;
+  left: 150px;
+}
+
+#about {
+  height: 70px;
+  width: 150px;
+  left: 300px;
+}
+
+#github {
+  height: 70px;
+  width: 150px;
+  left: 450px;
+}
+
+#login {
+  text-align: center;
+  line-height: 90%;
+  height: 70px;
+  width: 70px;
+	right: 0px;
+}
+
+#login #circle-in {
+	position: absolute;
+	left:0; right:0;
+	top:0; bottom:0;
+	margin: auto;
+  width: 46px;
+  height: 46px;
+  border-radius: 23px;
+  background: #0F1108;
+}
+
+#login #circle-out {
+	position: absolute;
+	left:0; right:0;
+	top:0; bottom:0;
+	margin: auto;
+  width: 50px;
+  height: 50px;
+  border-radius: 25px;
+  background: #CAD8DE;
+}
+
+a,
+a:hover,
+a:visited {
+  position: relative;
+  top: 15px;
+  color: #CAD8DE;
+  text-decoration: none;
+  font-size: 40px;
+  font-family: 'PoiretOne', cursive;
+}
+
+#login a,
+#login a:hover,
+#login a:visited {
+	top:28px;
+	font-size: 18px;
+}

@@ -1,0 +1,22 @@
+<nav>
+  <div id='title'>
+    <div>A</div>
+    <div>iR-T:CKET</div>
+    <div>RESERV</div>
+    <div>SYS\></div>
+  </div>
+  <div id='home' [@hover]='hoverState1' (mouseenter)='mouseEnter1()' (mouseleave)='mouseLeave1()'>
+    <a routerLink='/home' [@hover]='hoverState1'>.Home</a>
+  </div>
+  <div id='about' [@hover]='hoverState2' (mouseenter)='mouseEnter2()' (mouseleave)='mouseLeave2()'>
+    <a routerLink='/about' [@hover]='hoverState2'>.About</a>
+  </div>
+  <div id='github' [@hover]='hoverState3' (mouseenter)='mouseEnter3()' (mouseleave)='mouseLeave3()'>
+    <a href='https://github.com/pwb1997/databases-final' target='_blank' [@hover]='hoverState3'>.GitHub</a>
+  </div>
+  <div id='login'>
+    <div id='circle-out'></div>
+    <div id='circle-in'></div>
+    <a routerLink='/login'>login</a>
+  </div>
+</nav>
