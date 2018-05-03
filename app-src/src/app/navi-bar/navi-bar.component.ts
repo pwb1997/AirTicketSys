@@ -12,6 +12,9 @@ import {
   query,
   stagger
 } from '@angular/animations';
+import {
+  Router
+} from '@angular/router';
 
 @Component({
   selector: 'app-navi-bar',
@@ -61,6 +64,11 @@ export class NaviBarComponent implements OnInit {
   mouseLeave4() {
     this.hoverState4 = 'inactive';
   }
-  constructor() {}
+  // redirect
+  redirectLogin() {
+    this.router.navigate(['/login']);
+  }
+  constructor(private router: Router) {
+  }
   ngOnInit() {}
 }

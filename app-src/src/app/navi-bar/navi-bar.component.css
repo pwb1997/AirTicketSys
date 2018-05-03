@@ -88,33 +88,24 @@ nav div {
 }
 
 #login {
-  text-align: center;
-  line-height: 90%;
   height: 70px;
   width: 70px;
 	right: 0px;
 }
 
-#login #circle-in {
-	position: absolute;
-	left:0; right:0;
-	top:0; bottom:0;
-	margin: auto;
-  width: 46px;
-  height: 46px;
-  border-radius: 23px;
-  background: #0F1108;
-}
-
-#login #circle-out {
+#login div{
+  cursor:pointer;
 	position: absolute;
 	left:0; right:0;
 	top:0; bottom:0;
 	margin: auto;
   width: 50px;
   height: 50px;
-  border-radius: 25px;
-  background: #CAD8DE;
+  border-radius: 30px;
+  border: solid 2px #CAD8DE;
+  background: #0F1108;
+  text-align: center;
+  line-height: 90%;
 }
 
 a,
@@ -128,9 +119,9 @@ a:visited {
   font-family: 'PoiretOne', cursive;
 }
 
-#login a,
-#login a:hover,
-#login a:visited {
+#login div p {
 	top:28px;
-	font-size: 18px;
+  font-size: 18px;
+  font-family: 'PoiretOne', cursive;
+  color: #CAD8DE;
 }
