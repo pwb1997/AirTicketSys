@@ -65,7 +65,7 @@ app.post('/logout', (req, res) => {
     res.sendStatus(200);
 })
 
-app.post('/register/customer', (req, res) => {
+app.post('/registeration/customer', (req, res) => {
     con.query("select * from customer where email = '" + req.body.email + "'", (err, result) => {
         if (err) {
             res.sendStatus(500);
@@ -91,7 +91,7 @@ app.post('/register/customer', (req, res) => {
     })
 })
 
-app.post('/register/staff', (req, res) => {
+app.post('/registeration/staff', (req, res) => {
     con.query("select * from airline_staff where username = '" + req.body.username + "'", (err, result) => {
         if (err) {
             res.sendStatus(500);
@@ -117,7 +117,7 @@ app.post('/register/staff', (req, res) => {
     })
 })
 
-app.post('/register/agent', (req, res) => {
+app.post('/registeration/agent', (req, res) => {
     con.query("select * from booking_agent", (err, result) => {
         if (err) {
             res.sendStatus(500);

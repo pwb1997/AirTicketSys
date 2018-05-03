@@ -5,20 +5,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as md5 from 'md5';
 
 @Component({
-  selector: 'app-register-staff',
-  templateUrl: './register-staff.component.html',
-  styleUrls: ['./register-staff.component.css']
+  selector: 'app-register-agent',
+  templateUrl: './register-agent.component.html',
+  styleUrls: ['./register-agent.component.css']
 })
-export class RegisterStaffComponent implements OnInit {
+export class RegisterAgentComponent implements OnInit {
   validation = '';
   onSubmit(f: NgForm) {
     if (!f.valid) {
       this.validation = 'Please Fill in All the Blanks!';
       return;
     }
-    f.value.password = md5(f.value.password);
     this.validation = '';
-    this.http.post('/register/staff', f.value, { responseType: 'text' }).subscribe(
+    f.value.password = md5(f.value.password);
+    this.http.post('/registeration/agent', f.value, { responseType: 'text' }).subscribe(
       res => {
         this.validation = 'Account Created, Please Login!';
         window.setTimeout(() => {
@@ -36,7 +36,6 @@ export class RegisterStaffComponent implements OnInit {
   }
   constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit() {
-  }
+  ngOnInit() { }
 
 }

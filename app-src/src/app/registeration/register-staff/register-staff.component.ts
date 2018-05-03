@@ -1,24 +1,24 @@
-import { Component, OnInit, NgModule } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as md5 from 'md5';
 
 @Component({
-  selector: 'app-register-customer',
-  templateUrl: './register-customer.component.html',
-  styleUrls: ['./register-customer.component.css']
+  selector: 'app-register-staff',
+  templateUrl: './register-staff.component.html',
+  styleUrls: ['./register-staff.component.css']
 })
-export class RegisterCustomerComponent implements OnInit {
+export class RegisterStaffComponent implements OnInit {
   validation = '';
   onSubmit(f: NgForm) {
     if (!f.valid) {
       this.validation = 'Please Fill in All the Blanks!';
       return;
     }
-    this.validation = '';
     f.value.password = md5(f.value.password);
-    this.http.post('/register/customer', f.value, { responseType: 'text' }).subscribe(
+    this.validation = '';
+    this.http.post('/registeration/staff', f.value, { responseType: 'text' }).subscribe(
       res => {
         this.validation = 'Account Created, Please Login!';
         window.setTimeout(() => {

@@ -1,15 +1,15 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, NgModule } from '@angular/core';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import * as md5 from 'md5';
 
 @Component({
-  selector: 'app-register-agent',
-  templateUrl: './register-agent.component.html',
-  styleUrls: ['./register-agent.component.css']
+  selector: 'app-register-customer',
+  templateUrl: './register-customer.component.html',
+  styleUrls: ['./register-customer.component.css']
 })
-export class RegisterAgentComponent implements OnInit {
+export class RegisterCustomerComponent implements OnInit {
   validation = '';
   onSubmit(f: NgForm) {
     if (!f.valid) {
@@ -18,7 +18,7 @@ export class RegisterAgentComponent implements OnInit {
     }
     this.validation = '';
     f.value.password = md5(f.value.password);
-    this.http.post('/register/agent', f.value, { responseType: 'text' }).subscribe(
+    this.http.post('/registeration/customer', f.value, { responseType: 'text' }).subscribe(
       res => {
         this.validation = 'Account Created, Please Login!';
         window.setTimeout(() => {
@@ -36,6 +36,7 @@ export class RegisterAgentComponent implements OnInit {
   }
   constructor(private http: HttpClient, private router: Router) { }
 
-  ngOnInit() { }
+  ngOnInit() {
+  }
 
 }
