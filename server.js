@@ -33,41 +33,116 @@ app.get('*', (req, res) => {
 
 app.post('/login', (req, res) => {
     console.log(date(), 'new login request received');
-    con.query("select * from " + req.body.type, (err, result) => {
-        if (err) throw err;
-        for (each of result) {
-            if (each.username === req.body.username && each.password === req.body.password) {
-                req.session.username = req.body.username;
-                req.session.type = req.body.type;
-                res.cookie('username', req.body.username);
-                res.cookie('type', req.body.type);
-                res.sendStatus(200);
-                console.log(date(), "'" + req.body.username + "'", 'login success');
-                return;
-            }
+    let pk = '';
+    if (req.body.type === 'airline_staff') {
+        pk = 'username'
+    } else {
+        pk = 'email'
+    }
+    con.query("select * from " + req.body.type + " where " + pk + " = '" + req.body.username + "' and password = '" + req.body.password + "'", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        };
+        if (result.length !== 0) {
+            req.session.pk = req.body.username;
+            req.session.type = req.body.type;
+            res.cookie('pk', req.body.username);
+            res.cookie('type', req.body.type);
+            res.sendStatus(200);
+            console.log(date(), "'" + req.body.username + "'", 'login success');
+            return;
         }
-        console.log(date(), req.body.username, 'login refused');
+        console.log(date(), 'authentication failed');
         res.sendStatus(401);
     })
 })
 
-app.post('/logout', (req, res)=>{
-    res.clearCookie('username');
+app.post('/logout', (req, res) => {
+    res.clearCookie('pk');
     res.clearCookie('type');
     res.clearCookie('connect.sid');
     res.sendStatus(200);
 })
 
-app.post('register/customer', (req, res) => {
-    console.log(req.body)
+app.post('/register/customer', (req, res) => {
+    con.query("select * from customer where email = '" + req.body.email + "'", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        };
+        if (result.length !== 0) {
+            res.sendStatus(409);
+            return;
+        }
+        insertValues = "";
+        for (k in req.body) {
+            insertValues += "'" + req.body[k] + "'" + ",";
+        }
+        insertValues = insertValues.slice(0, insertValues.length - 1);
+        con.query('insert into customer values (' + insertValues + ')', (err, result) => {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            };
+            console.log(date(), 'new profile created for', req.body.email);
+            res.sendStatus(200);
+        })
+    })
 })
 
-app.post('register/customer', (req, res) => {
-
+app.post('/register/staff', (req, res) => {
+    con.query("select * from airline_staff where username = '" + req.body.username + "'", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        };
+        if (result.length !== 0) {
+            res.sendStatus(409);
+            return;
+        }
+        insertValues = "";
+        for (k in req.body) {
+            insertValues += "'" + req.body[k] + "'" + ",";
+        }
+        insertValues = insertValues.slice(0, insertValues.length - 1);
+        con.query('insert into airline_staff values (' + insertValues + ')', (err, result) => {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            };
+            console.log(date(), 'new profile created for', req.body.username);
+            res.sendStatus(200);
+        })
+    })
 })
 
-app.post('register/customer', (req, res) => {
-
+app.post('/register/agent', (req, res) => {
+    con.query("select * from booking_agent", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        };
+        for (each of result) {
+            if (each.email === req.body.email) {
+                res.sendStatus(409);
+                return;
+            }
+        }
+        insertValues = "";
+        for (k in req.body) {
+            insertValues += "'" + req.body[k] + "'" + ",";
+        }
+        insertValues += parseInt(result.length);
+        con.query('insert into booking_agent values (' + insertValues + ')', (err, result) => {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            };
+            console.log(date(), 'new profile created for', req.body.username);
+            res.sendStatus(200);
+        })
+    })
 })
 
 console.log(date(), 'server started at port', PORT);

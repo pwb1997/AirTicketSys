@@ -270,7 +270,7 @@ module.exports = ".main {\n    position: absolute;\n    top: 80px;\n}"
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n    username:\n    <input type='text' name='username' ngModel required>\n    <br> password:\n    <input type='text' name='password' ngModel required>\n    <br>\n    <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer<br>\n    <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff<br>\n    <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent<br>\n    <p>{{validation}}</p>\n    <button>Submit</button>\n    <a routerLink='/register'>Register</a>\n  </form>\n</div>"
+module.exports = "<div class='main'>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n    username or email:\n    <input type='text' name='username' ngModel required>\n    <br> password:\n    <input type='text' name='password' ngModel required>\n    <br>\n    <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer<br>\n    <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff<br>\n    <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent<br>\n    <p>{{validation}}</p>\n    <button>Submit</button>\n    <a routerLink='/register'>Register</a>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -292,6 +292,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var md5 = __webpack_require__("./node_modules/md5/md5.js");
 var LoginComponent = /** @class */ (function () {
     function LoginComponent(http, router) {
         this.http = http;
@@ -302,20 +303,21 @@ var LoginComponent = /** @class */ (function () {
     LoginComponent.prototype.onSubmit = function (f) {
         var _this = this;
         if (!f.valid) {
-            if (f.value.uname === '' && f.value.passwd === '') {
+            if (f.value.username === '' && f.value.password === '') {
                 this.validation = 'Please Input Username and Password!';
                 return;
             }
-            if (f.value.uname === '') {
+            if (f.value.username === '') {
                 this.validation = 'Please Input Username!';
                 return;
             }
-            if (f.value.passwd === '') {
+            if (f.value.password === '') {
                 this.validation = 'Please Input Password!';
                 return;
             }
         }
         this.validation = '';
+        f.value.password = md5(f.value.password);
         this.http.post('/login', f.value, { responseType: 'text' }).subscribe(function (res) {
             window.location.href = '/home';
         }, function (err) {
@@ -423,7 +425,7 @@ var NaviBarComponent = /** @class */ (function () {
         });
     };
     NaviBarComponent.prototype.ngOnInit = function () {
-        if (this.cookieService.get('username') !== '') {
+        if (this.cookieService.get('pk') !== '') {
             this.logoutStatus = 'show';
         }
     };
@@ -457,14 +459,14 @@ exports.NaviBarComponent = NaviBarComponent;
 /***/ "./src/app/register-agent/register-agent.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".main {\n    position: absolute;\n    top: 80px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/register-agent/register-agent.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  register-agent works!\n</p>\n"
+module.exports = "<div class='main'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      email:\n      <input type='text' name='email' ngModel required>\n      <br> password:\n      <input type='text' name='password' ngModel required>\n      <br>\n      <p>{{validation}}</p>\n      <button>Register</button>\n      <a routerLink='/register'>Back</a>\n    </form>\n  </div>"
 
 /***/ }),
 
@@ -484,18 +486,45 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var md5 = __webpack_require__("./node_modules/md5/md5.js");
 var RegisterAgentComponent = /** @class */ (function () {
-    function RegisterAgentComponent() {
+    function RegisterAgentComponent(http, router) {
+        this.http = http;
+        this.router = router;
+        this.validation = '';
     }
-    RegisterAgentComponent.prototype.ngOnInit = function () {
+    RegisterAgentComponent.prototype.onSubmit = function (f) {
+        var _this = this;
+        if (!f.valid) {
+            this.validation = 'Please Fill in All the Blanks!';
+            return;
+        }
+        this.validation = '';
+        f.value.password = md5(f.value.password);
+        this.http.post('/register/agent', f.value, { responseType: 'text' }).subscribe(function (res) {
+            _this.validation = 'Account Created, Please Login!';
+            window.setTimeout(function () {
+                _this.router.navigate(['login']);
+            }, 4000);
+        }, function (err) {
+            if (err.status === 409) {
+                _this.validation = 'Email Exists, Try Another One or Login!';
+            }
+            if (err.status === 500) {
+                _this.validation = 'Registeration Failed, Please Check Your Information and Try Again!';
+            }
+        });
     };
+    RegisterAgentComponent.prototype.ngOnInit = function () { };
     RegisterAgentComponent = __decorate([
         core_1.Component({
             selector: 'app-register-agent',
             template: __webpack_require__("./src/app/register-agent/register-agent.component.html"),
             styles: [__webpack_require__("./src/app/register-agent/register-agent.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.HttpClient, router_1.Router])
     ], RegisterAgentComponent);
     return RegisterAgentComponent;
 }());
@@ -507,14 +536,14 @@ exports.RegisterAgentComponent = RegisterAgentComponent;
 /***/ "./src/app/register-customer/register-customer.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".main {\n    position: absolute;\n    top: 80px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/register-customer/register-customer.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  register-customer works!\n</p>\n"
+module.exports = "<div class='main'>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n    email:\n    <input type='text' name='email' ngModel required>\n    <br> name:\n    <input type='text' name='name' ngModel required>\n    <br> password:\n    <input type='text' name='password' ngModel required>\n    <br> building number:\n    <input type='text' name='building_number' ngModel required>\n    <br> street:\n    <input type='text' name='street' ngModel required>\n    <br> city:\n    <input type='text' name='city' ngModel required>\n    <br> state:\n    <input type='text' name='state' ngModel required>\n    <br> phone number:\n    <input type='text' name='phone_number' ngModel required>\n    <br> passport number:\n    <input type='text' name='passport_number' ngModel required>\n    <br> passport expiration:\n    <input type='date' name='passport_expiration' ngModel required>\n    <br> passport country:\n    <input type='text' name='passport_country' ngModel required>\n    <br> date of birth:\n    <input type='date' name='date_of_birth' ngModel required>\n    <br>\n    <p>{{validation}}</p>\n    <button>Register</button>\n    <a routerLink='/register'>Back</a>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -534,9 +563,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var md5 = __webpack_require__("./node_modules/md5/md5.js");
 var RegisterCustomerComponent = /** @class */ (function () {
-    function RegisterCustomerComponent() {
+    function RegisterCustomerComponent(http, router) {
+        this.http = http;
+        this.router = router;
+        this.validation = '';
     }
+    RegisterCustomerComponent.prototype.onSubmit = function (f) {
+        var _this = this;
+        if (!f.valid) {
+            this.validation = 'Please Fill in All the Blanks!';
+            return;
+        }
+        this.validation = '';
+        f.value.password = md5(f.value.password);
+        this.http.post('/register/customer', f.value, { responseType: 'text' }).subscribe(function (res) {
+            _this.validation = 'Account Created, Please Login!';
+            window.setTimeout(function () {
+                _this.router.navigate(['login']);
+            }, 4000);
+        }, function (err) {
+            if (err.status === 409) {
+                _this.validation = 'Email Exists, Try Another One or Login!';
+            }
+            if (err.status === 500) {
+                _this.validation = 'Registeration Failed, Please Check Your Information and Try Again!';
+            }
+        });
+    };
     RegisterCustomerComponent.prototype.ngOnInit = function () {
     };
     RegisterCustomerComponent = __decorate([
@@ -545,7 +602,7 @@ var RegisterCustomerComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/register-customer/register-customer.component.html"),
             styles: [__webpack_require__("./src/app/register-customer/register-customer.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.HttpClient, router_1.Router])
     ], RegisterCustomerComponent);
     return RegisterCustomerComponent;
 }());
@@ -557,14 +614,14 @@ exports.RegisterCustomerComponent = RegisterCustomerComponent;
 /***/ "./src/app/register-staff/register-staff.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".main {\n    position: absolute;\n    top: 80px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/register-staff/register-staff.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  register-staff works!\n</p>\n"
+module.exports = "<div class='main'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      username:\n      <input type='text' name='username' ngModel required>\n      <br> password:\n      <input type='text' name='password' ngModel required>\n      <br> first name:\n      <input type='text' name='first_name' ngModel required>\n      <br> last name:\n      <input type='text' name='last_name' ngModel required>\n      <br> date of birth:\n      <input type='date' name='date_of_birth' ngModel required>\n      <br> airline name:\n      <input type='text' name='airline_name' ngModel required>\n      <br>\n      <p>{{validation}}</p>\n      <button>Register</button>\n      <a routerLink='/register'>Back</a>\n    </form>\n  </div>"
 
 /***/ }),
 
@@ -584,9 +641,37 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var md5 = __webpack_require__("./node_modules/md5/md5.js");
 var RegisterStaffComponent = /** @class */ (function () {
-    function RegisterStaffComponent() {
+    function RegisterStaffComponent(http, router) {
+        this.http = http;
+        this.router = router;
+        this.validation = '';
     }
+    RegisterStaffComponent.prototype.onSubmit = function (f) {
+        var _this = this;
+        if (!f.valid) {
+            this.validation = 'Please Fill in All the Blanks!';
+            return;
+        }
+        f.value.password = md5(f.value.password);
+        this.validation = '';
+        this.http.post('/register/staff', f.value, { responseType: 'text' }).subscribe(function (res) {
+            _this.validation = 'Account Created, Please Login!';
+            window.setTimeout(function () {
+                _this.router.navigate(['login']);
+            }, 4000);
+        }, function (err) {
+            if (err.status === 409) {
+                _this.validation = 'Email Exists, Try Another One or Login!';
+            }
+            if (err.status === 500) {
+                _this.validation = 'Registeration Failed, Please Check Your Information and Try Again!';
+            }
+        });
+    };
     RegisterStaffComponent.prototype.ngOnInit = function () {
     };
     RegisterStaffComponent = __decorate([
@@ -595,7 +680,7 @@ var RegisterStaffComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/register-staff/register-staff.component.html"),
             styles: [__webpack_require__("./src/app/register-staff/register-staff.component.css")]
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.HttpClient, router_1.Router])
     ], RegisterStaffComponent);
     return RegisterStaffComponent;
 }());

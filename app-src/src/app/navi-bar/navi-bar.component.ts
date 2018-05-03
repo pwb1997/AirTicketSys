@@ -73,7 +73,7 @@ export class NaviBarComponent implements OnInit {
   constructor(private router: Router, private cookieService: CookieService, private http: HttpClient) {
   }
   ngOnInit() {
-    if (this.cookieService.get('username') !== '') {
+    if (this.cookieService.get('pk') !== '') {
       this.logoutStatus = 'show';
     }
   }

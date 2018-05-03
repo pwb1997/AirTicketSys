@@ -1,3 +1,20 @@
-<p>
-  register-staff works!
-</p>
+<div class='main'>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      username:
+      <input type='text' name='username' ngModel required>
+      <br> password:
+      <input type='text' name='password' ngModel required>
+      <br> first name:
+      <input type='text' name='first_name' ngModel required>
+      <br> last name:
+      <input type='text' name='last_name' ngModel required>
+      <br> date of birth:
+      <input type='date' name='date_of_birth' ngModel required>
+      <br> airline name:
+      <input type='text' name='airline_name' ngModel required>
+      <br>
+      <p>{{validation}}</p>
+      <button>Register</button>
+      <a routerLink='/register'>Back</a>
+    </form>
+  </div>
