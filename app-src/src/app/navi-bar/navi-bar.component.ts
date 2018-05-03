@@ -74,7 +74,7 @@ export class NaviBarComponent implements OnInit {
   }
   ngOnInit() {
     if (this.cookieService.get('pk') !== '') {
-      this.logoutStatus = 'show';
+      this.logoutStatus = 'visible';
     }
   }
 }

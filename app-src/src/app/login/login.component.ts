@@ -13,6 +13,8 @@ import * as md5 from 'md5';
 export class LoginComponent implements OnInit {
   validation = '';
   type = 'customer';
+  redirectionVisibility = 'hidden';
+  formVisibility = 'visible';
   onSubmit(f: NgForm) {
     if (!f.valid) {
       if (f.value.username === '' && f.value.password === '') {
@@ -32,7 +34,11 @@ export class LoginComponent implements OnInit {
     f.value.password = md5(f.value.password);
     this.http.post('/login', f.value, { responseType: 'text' }).subscribe(
       res => {
-        window.location.href = '/home';
+        this.formVisibility = 'hidden';
+        this.redirectionVisibility = 'visible';
+        window.setTimeout(() => {
+          window.location.href = '/home';
+        }, 3000);
       },
       err => {
         if (err.status === 401) {

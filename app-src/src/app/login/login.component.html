@@ -1,4 +1,4 @@
-<div class='main'>
+<div class='main' [style.visibility]='formVisibility'>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)">
     username or email:
     <input type='text' name='username' ngModel required>
@@ -12,4 +12,7 @@
     <button>Submit</button>
     <a routerLink='/register'>Register</a>
   </form>
+</div>
+<div class='main' [style.visibility]='redirectionVisibility'>
+  <p>Login Successfully! Redirecting You to Homepage ...</p>
 </div>

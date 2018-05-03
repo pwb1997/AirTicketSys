@@ -6,7 +6,6 @@ import { trigger, state, style, transition, animate, keyframes } from '@angular/
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
 import { CookieService } from 'ngx-cookie-service';
-import { Md5 } from 'md5';
 import { HttpClientModule } from '@angular/common/http';
 import { AppComponent } from './app.component';
 import { NaviBarComponent } from './navi-bar/navi-bar.component';
