@@ -18,5 +18,8 @@
     <div (click)='redirectLogin()'>
       <p>login</p>
     </div>
+    <div [style.visibility]='logoutStatus' (click)='logout()'>
+      <p>logout</p>
+    </div>
   </div>
 </nav>

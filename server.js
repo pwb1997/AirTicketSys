@@ -39,6 +39,8 @@ app.post('/login', (req, res) => {
             if (each.username === req.body.username && each.password === req.body.password) {
                 req.session.username = req.body.username;
                 req.session.type = req.body.type;
+                res.cookie('username', req.body.username);
+                res.cookie('type', req.body.type);
                 res.sendStatus(200);
                 console.log(date(), "'" + req.body.username + "'", 'login success');
                 return;
@@ -47,6 +49,13 @@ app.post('/login', (req, res) => {
         console.log(date(), req.body.username, 'login refused');
         res.sendStatus(401);
     })
+})
+
+app.post('/logout', (req, res)=>{
+    res.clearCookie('username');
+    res.clearCookie('type');
+    res.clearCookie('connect.sid');
+    res.sendStatus(200);
 })
 
 app.post('register/customer', (req, res) => {

@@ -130,6 +130,7 @@ var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.j
 var animations_1 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
 var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var http_1 = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var ngx_cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
 var http_2 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var app_component_1 = __webpack_require__("./src/app/app.component.ts");
 var navi_bar_component_1 = __webpack_require__("./src/app/navi-bar/navi-bar.component.ts");
@@ -198,7 +199,7 @@ var AppModule = /** @class */ (function () {
                 forms_1.FormsModule,
                 http_2.HttpClientModule,
             ],
-            providers: [],
+            providers: [ngx_cookie_service_1.CookieService],
             bootstrap: [app_component_1.AppComponent]
         })
     ], AppModule);
@@ -316,7 +317,7 @@ var LoginComponent = /** @class */ (function () {
         }
         this.validation = '';
         this.http.post('/login', f.value, { responseType: 'text' }).subscribe(function (res) {
-            _this.router.navigateByUrl('/home');
+            window.location.href = '/home';
         }, function (err) {
             if (err.status === 401) {
                 _this.validation = 'Username or Password Not Correct!';
@@ -349,7 +350,7 @@ module.exports = "@font-face {\r\n  font-family: 'Gugi';\r\n  font-style: normal
 /***/ "./src/app/navi-bar/navi-bar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n  <div id='title'>\n    <div>A</div>\n    <div>iR-T:CKET</div>\n    <div>RESERV</div>\n    <div>SYS\\></div>\n  </div>\n  <div id='home' [@hover]='hoverState1' (mouseenter)='mouseEnter1()' (mouseleave)='mouseLeave1()'>\n    <a routerLink='/home' [@hover]='hoverState1'>.Home</a>\n  </div>\n  <div id='about' [@hover]='hoverState2' (mouseenter)='mouseEnter2()' (mouseleave)='mouseLeave2()'>\n    <a routerLink='/about' [@hover]='hoverState2'>.About</a>\n  </div>\n  <div id='github' [@hover]='hoverState3' (mouseenter)='mouseEnter3()' (mouseleave)='mouseLeave3()'>\n    <a href='https://github.com/pwb1997/databases-final' target='_blank' [@hover]='hoverState3'>.GitHub</a>\n  </div>\n  <div id='login' [@hover]='hoverState4'>\n    <div (click)='redirectLogin()'>\n      <p>login</p>\n    </div>\n  </div>\n</nav>\n"
+module.exports = "<nav>\n  <div id='title'>\n    <div>A</div>\n    <div>iR-T:CKET</div>\n    <div>RESERV</div>\n    <div>SYS\\></div>\n  </div>\n  <div id='home' [@hover]='hoverState1' (mouseenter)='mouseEnter1()' (mouseleave)='mouseLeave1()'>\n    <a routerLink='/home' [@hover]='hoverState1'>.Home</a>\n  </div>\n  <div id='about' [@hover]='hoverState2' (mouseenter)='mouseEnter2()' (mouseleave)='mouseLeave2()'>\n    <a routerLink='/about' [@hover]='hoverState2'>.About</a>\n  </div>\n  <div id='github' [@hover]='hoverState3' (mouseenter)='mouseEnter3()' (mouseleave)='mouseLeave3()'>\n    <a href='https://github.com/pwb1997/databases-final' target='_blank' [@hover]='hoverState3'>.GitHub</a>\n  </div>\n  <div id='login' [@hover]='hoverState4'>\n    <div (click)='redirectLogin()'>\n      <p>login</p>\n    </div>\n    <div [style.visibility]='logoutStatus' (click)='logout()'>\n      <p>logout</p>\n    </div>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -371,14 +372,19 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var animations_1 = __webpack_require__("./node_modules/@angular/animations/esm5/animations.js");
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var ngx_cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
 var NaviBarComponent = /** @class */ (function () {
-    function NaviBarComponent(router) {
+    function NaviBarComponent(router, cookieService, http) {
         this.router = router;
+        this.cookieService = cookieService;
+        this.http = http;
         // hover
         this.hoverState1 = 'inactive';
         this.hoverState2 = 'inactive';
         this.hoverState3 = 'inactive';
         this.hoverState4 = 'inactive';
+        this.logoutStatus = 'hidden';
     }
     // hover functions
     NaviBarComponent.prototype.mouseEnter1 = function () {
@@ -409,7 +415,18 @@ var NaviBarComponent = /** @class */ (function () {
     NaviBarComponent.prototype.redirectLogin = function () {
         this.router.navigate(['/login']);
     };
-    NaviBarComponent.prototype.ngOnInit = function () { };
+    NaviBarComponent.prototype.logout = function () {
+        this.http.post('/logout', null, { responseType: 'text' }).subscribe(function (res) {
+            window.location.href = '/home';
+        }, function (err) {
+            console.log('logout failed');
+        });
+    };
+    NaviBarComponent.prototype.ngOnInit = function () {
+        if (this.cookieService.get('username') !== '') {
+            this.logoutStatus = 'show';
+        }
+    };
     NaviBarComponent = __decorate([
         core_1.Component({
             selector: 'app-navi-bar',
@@ -428,7 +445,7 @@ var NaviBarComponent = /** @class */ (function () {
                 ])
             ],
         }),
-        __metadata("design:paramtypes", [router_1.Router])
+        __metadata("design:paramtypes", [router_1.Router, ngx_cookie_service_1.CookieService, http_1.HttpClient])
     ], NaviBarComponent);
     return NaviBarComponent;
 }());

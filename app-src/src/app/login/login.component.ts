@@ -30,7 +30,7 @@ export class LoginComponent implements OnInit {
     this.validation = '';
     this.http.post('/login', f.value, { responseType: 'text' }).subscribe(
       res => {
-        this.router.navigateByUrl('/home');
+        window.location.href = '/home';
       },
       err => {
         if (err.status === 401) {
