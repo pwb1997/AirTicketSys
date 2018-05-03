@@ -1,8 +1,15 @@
 <div class='main'>
-  <form action='login' method='POST'>
-    username: <input type='text' name='uname'><br>
-    password: <input type='text' name='passwd'><br>
-    <input type="submit" value="Submit">
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    username:
+    <input type='text' name='username' ngModel required>
+    <br> password:
+    <input type='text' name='password' ngModel required>
+    <br>
+    <input type="radio" name='type' value='customer' [ngModel]='type'>Customer<br>
+    <input type="radio" name='type' value='airline_staff' [ngModel]='type'>Airline Staff<br>
+    <input type="radio" name='type' value='booking_agent' [ngModel]='type'>Booking Agent<br>
+    <p>{{validation}}</p>
+    <button>Submit</button>
     <a routerLink='/register'>Register</a>
   </form>
 </div>

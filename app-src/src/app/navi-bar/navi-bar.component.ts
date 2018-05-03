@@ -1,20 +1,6 @@
-import {
-  Component,
-  OnInit
-} from '@angular/core';
-import {
-  trigger,
-  state,
-  style,
-  transition,
-  animate,
-  keyframes,
-  query,
-  stagger
-} from '@angular/animations';
-import {
-  Router
-} from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { trigger, state, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-navi-bar',
@@ -33,6 +19,7 @@ import {
     ])
   ],
 })
+
 export class NaviBarComponent implements OnInit {
   // hover
   hoverState1 = 'inactive';
@@ -70,5 +57,5 @@ export class NaviBarComponent implements OnInit {
   }
   constructor(private router: Router) {
   }
-  ngOnInit() {}
+  ngOnInit() { }
 }

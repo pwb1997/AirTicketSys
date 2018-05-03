@@ -130,6 +130,7 @@ var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.j
 var animations_1 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/animations.js");
 var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var http_1 = __webpack_require__("./node_modules/@angular/http/esm5/http.js");
+var http_2 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var app_component_1 = __webpack_require__("./src/app/app.component.ts");
 var navi_bar_component_1 = __webpack_require__("./src/app/navi-bar/navi-bar.component.ts");
 var home_component_1 = __webpack_require__("./src/app/home/home.component.ts");
@@ -158,6 +159,18 @@ var appRoutes = [{
     {
         path: 'register',
         component: register_component_1.RegisterComponent,
+    },
+    {
+        path: 'register/agent',
+        component: register_agent_component_1.RegisterAgentComponent,
+    },
+    {
+        path: 'register/staff',
+        component: register_staff_component_1.RegisterStaffComponent,
+    },
+    {
+        path: 'register/customer',
+        component: register_customer_component_1.RegisterCustomerComponent,
     }
 ];
 var AppModule = /** @class */ (function () {
@@ -182,6 +195,8 @@ var AppModule = /** @class */ (function () {
                 animations_1.BrowserAnimationsModule,
                 forms_1.FormsModule,
                 http_1.HttpModule,
+                forms_1.FormsModule,
+                http_2.HttpClientModule,
             ],
             providers: [],
             bootstrap: [app_component_1.AppComponent]
@@ -254,7 +269,7 @@ module.exports = ".main {\n    position: absolute;\n    top: 80px;\n}"
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  <form action='login' method='POST'>\n    username: <input type='text' name='uname'><br>\n    password: <input type='text' name='passwd'><br>\n    <input type=\"submit\" value=\"Submit\">\n    <a routerLink='/register'>Register</a>\n  </form>\n</div>"
+module.exports = "<div class='main'>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n    username:\n    <input type='text' name='username' ngModel required>\n    <br> password:\n    <input type='text' name='password' ngModel required>\n    <br>\n    <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer<br>\n    <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff<br>\n    <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent<br>\n    <p>{{validation}}</p>\n    <button>Submit</button>\n    <a routerLink='/register'>Register</a>\n  </form>\n</div>"
 
 /***/ }),
 
@@ -274,17 +289,48 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 };
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var LoginComponent = /** @class */ (function () {
-    function LoginComponent() {
+    function LoginComponent(http, router) {
+        this.http = http;
+        this.router = router;
+        this.validation = '';
+        this.type = 'customer';
     }
+    LoginComponent.prototype.onSubmit = function (f) {
+        var _this = this;
+        if (!f.valid) {
+            if (f.value.uname === '' && f.value.passwd === '') {
+                this.validation = 'Please Input Username and Password!';
+                return;
+            }
+            if (f.value.uname === '') {
+                this.validation = 'Please Input Username!';
+                return;
+            }
+            if (f.value.passwd === '') {
+                this.validation = 'Please Input Password!';
+                return;
+            }
+        }
+        this.validation = '';
+        this.http.post('/login', f.value, { responseType: 'text' }).subscribe(function (res) {
+            _this.router.navigateByUrl('/home');
+        }, function (err) {
+            if (err.status === 401) {
+                _this.validation = 'Username or Password Not Correct!';
+            }
+        });
+    };
     LoginComponent.prototype.ngOnInit = function () { };
     LoginComponent = __decorate([
         core_1.Component({
             selector: 'app-login',
             template: __webpack_require__("./src/app/login/login.component.html"),
-            styles: [__webpack_require__("./src/app/login/login.component.css")]
+            styles: [__webpack_require__("./src/app/login/login.component.css")],
         }),
-        __metadata("design:paramtypes", [])
+        __metadata("design:paramtypes", [http_1.HttpClient, router_1.Router])
     ], LoginComponent);
     return LoginComponent;
 }());
@@ -544,14 +590,14 @@ exports.RegisterStaffComponent = RegisterStaffComponent;
 /***/ "./src/app/register/register.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".main {\n    position: absolute;\n    top:80px; \n}"
 
 /***/ }),
 
 /***/ "./src/app/register/register.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  register works!\n</p>\n"
+module.exports = "<div class='main'>\n  <a routerLink='/register/customer'>Customer</a>\n  <a routerLink='/register/staff'>Airline Staff</a>\n  <a routerLink='/register/agent'>Booking Agent</a>\n</div>"
 
 /***/ }),
 
