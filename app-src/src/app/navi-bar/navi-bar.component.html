@@ -5,11 +5,14 @@
     <div>RESERV</div>
     <div>SYS\></div>
   </div>
-  <div id='home' class='underline-reveal button' (click)="this.router.navigate(['/home'])">
+  <div id='home' class='underline-reveal button {{homeActive}}' (click)="this.router.navigate(['/home'])">
     <p>Home</p>
   </div>
-  <div id='about' class='underline-reveal button' (click)="this.router.navigate(['/about'])">
+  <div id='about' class='underline-reveal button {{aboutActive}}' (click)="this.router.navigate(['/about'])">
     <p>About</p>
+  </div>
+  <div id='search' class='underline-reveal button {{searchActive}}' (click)="this.router.navigate(['/search'])">
+    <p>Search</p>
   </div>
   <div id='github' class='underline-reveal button' (click)="redirectGithub()">
     <p>GitHub</p>

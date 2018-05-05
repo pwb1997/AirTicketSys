@@ -24,8 +24,24 @@ app.use(bodyParser.urlencoded({
 }));
 
 function date() {
-    return '[' + new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '') + ']';
+    cur = new Date();
+    cur.setHours(cur.getHours() - (cur.getTimezoneOffset() / 60));
+    return '[' + cur.toISOString().replace(/T/, ' ').replace(/\..+/, '') + ']';
 }
+
+app.get('/airport', (req, res) => {
+    con.query("select * from airport", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        airport = []
+        for (each of result) {
+            airport.push({ 'airport': each.airport_name, 'city': each.airport_city });
+        }
+        res.json(airport);
+    })
+})
 
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/app/index.html');
@@ -143,6 +159,33 @@ app.post('/registeration/agent', (req, res) => {
             res.sendStatus(200);
         })
     })
+})
+
+app.post('/search', (req, res) => {
+    cur = new Date();
+    date = new Date(req.body.date);
+    if (date.getTime() < cur.getTime()) {
+        date = cur;
+    }
+    date = date.getUTCFullYear() + '-' +
+        ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+        ('00' + date.getUTCDate()).slice(-2) + ' ' +
+        ('00' + date.getUTCHours()).slice(-2) + ':' +
+        ('00' + date.getUTCMinutes()).slice(-2) + ':' +
+        ('00' + date.getUTCSeconds()).slice(-2);
+    con.query("select * from flight where "
+        + "departure_airport='" + req.body.source
+        + "' and arrival_airport='" + req.body.destination
+        + "' and departure_time>='" + date + "'", (err, result) => {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            if (result.length === 0) {
+                res.sendStatus(404);
+                return;
+            }
+        })
 })
 
 console.log(date(), 'server started at port', PORT);

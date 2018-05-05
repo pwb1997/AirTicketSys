@@ -11,6 +11,9 @@ import { CookieService } from 'ngx-cookie-service';
 export class NaviBarComponent implements OnInit {
   loginState = 'visible';
   logoutState = 'hidden';
+  homeActive = '';
+  aboutActive = '';
+  searchActive = '';
   constructor(public router: Router, private cookieService: CookieService) {
   }
   redirectGithub() { window.open('https://github.com/pwb1997/databases-final', '_blank'); }
@@ -19,5 +22,26 @@ export class NaviBarComponent implements OnInit {
       this.loginState = 'hidden';
       this.logoutState = 'visible';
     }
+    this.router.events.subscribe(path => {
+      if (path['url']) {
+        if (path['url'].slice(1, 6) === 'home' || path['url'] === '/') {
+          this.homeActive = 'underline-reveal-active';
+          this.aboutActive = '';
+          this.searchActive = '';
+        } else if (path['url'].slice(1, 7) === 'about') {
+          this.aboutActive = 'underline-reveal-active';
+          this.homeActive = '';
+          this.searchActive = '';
+        } else if (path['url'].slice(1, 8) === 'search') {
+          this.searchActive = 'underline-reveal-active';
+          this.aboutActive = '';
+          this.homeActive = '';
+        } else {
+          this.homeActive = '';
+          this.aboutActive = '';
+          this.searchActive = '';
+        }
+      }
+    });
   }
 }

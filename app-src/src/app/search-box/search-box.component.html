@@ -1,0 +1,31 @@
+<div id='search-box'>
+    <p> Search for upcoming flights based on source city/airport name, destination city/airport name, date.</p>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+        Source:
+        <input type='text' (ngModelChange)="this.sourceDisplay=''" name='source' placeholder='airport, city' autocomplete="off" [(ngModel)]='source'
+            required>
+        <div id='source-search' class='filter-airport' [style.display]='sourceDisplay'>
+            <ul>
+                <li *ngFor="let each of airport|filter:source">
+                    <div (click)="this.source=each.airport;this.sourceDisplay='none'">{{each.airport}}, {{each.city}}</div>
+                </li>
+            </ul>
+        </div>
+        Destination:
+        <input type='text' (ngModelChange)="this.destinationDisplay=''" name='destination' placeholder='airport, city' autocomplete="off"
+            [(ngModel)]='destination' required>
+        <div id='destination-search' class='filter-airport' [style.display]='destinationDisplay'>
+            <ul>
+                <li *ngFor="let each of airport|filter:destination">
+                    <div (click)="this.destination=each.airport;this.destinationDisplay='none'">{{each.airport}}, {{each.city}}</div>
+                </li>
+            </ul>
+        </div>
+        Date:
+        <input type='date' name='date' [(ngModel)]='date' useValueAsDate required>
+        <button>
+            <i class='material-icons'>search</i>
+        </button>
+    </form>
+    <p>{{validation}}</p>
+</div>

@@ -78,10 +78,16 @@ nav div {
   left: 300px;
 }
 
-#github {
+#search {
   height: 70px;
   width: 150px;
   left: 450px;
+}
+
+#github {
+  height: 70px;
+  width: 150px;
+  left: 600px;
 }
 
 .account {

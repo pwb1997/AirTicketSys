@@ -11,14 +11,16 @@ const con = mysql.createConnection({
 })
 
 function date() {
-    return '[' + new Date().toISOString().replace(/T/, ' ').replace(/\..+/, '') + ']';
+    cur = new Date();
+    cur.setHours(cur.getHours() - (cur.getTimezoneOffset() / 60));
+    return '[' + cur.toISOString().replace(/T/, ' ').replace(/\..+/, '') + ']';
 }
 
 console.log(date(), 'connecting to database');
 
 con.connect((err) => {
     if (err) throw err;
-    console.log(date(), 'databased connected at root@'+host+':'+PORT);
+    console.log(date(), 'databased connected at root@' + host + ':' + PORT);
 })
 
 module.exports = con;

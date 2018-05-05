@@ -324,6 +324,8 @@ var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js")
 exports.ɵi_16 = forms_1.ɵi;
 exports.FormsModule_17 = forms_1.FormsModule;
 exports.ɵba_21 = forms_1.ɵba;
+var module_1 = __webpack_require__("./node_modules/angular-date-value-accessor/module.js");
+exports.DateValueAccessorModule_22 = module_1.DateValueAccessorModule;
 var i0 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i1 = __webpack_require__("./src/app/home/home.module.ts");
 var i2 = __webpack_require__("./src/app/home/home/home.component.ngfactory.js");
@@ -334,11 +336,13 @@ var i6 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 var i7 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
 var i8 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i9 = __webpack_require__("./src/app/home/home-routing.module.ts");
-var i10 = __webpack_require__("./src/app/home/home/home.component.ts");
-var i11 = __webpack_require__("./src/app/home/home-agent/home-agent.component.ts");
-var i12 = __webpack_require__("./src/app/home/home-customer/home-customer.component.ts");
-var i13 = __webpack_require__("./src/app/home/home-staff/home-staff.component.ts");
-var HomeModuleNgFactory = i0.ɵcmf(i1.HomeModule, [], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i2.HomeComponentNgFactory, i3.HomeAgentComponentNgFactory, i4.HomeCustomerComponentNgFactory, i5.HomeStaffComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(4608, i6.NgLocalization, i6.NgLocaleLocalization, [i0.LOCALE_ID, [2, i6.ɵa]]), i0.ɵmpd(4608, i7.ɵi, i7.ɵi, []), i0.ɵmpd(512, i6.CommonModule, i6.CommonModule, []), i0.ɵmpd(512, i8.RouterModule, i8.RouterModule, [[2, i8.ɵa], [2, i8.Router]]), i0.ɵmpd(512, i9.HomeRoutingModule, i9.HomeRoutingModule, []), i0.ɵmpd(512, i7.ɵba, i7.ɵba, []), i0.ɵmpd(512, i7.FormsModule, i7.FormsModule, []), i0.ɵmpd(512, i1.HomeModule, i1.HomeModule, []), i0.ɵmpd(1024, i8.ROUTES, function () { return [[{ path: "", component: i10.HomeComponent }, { path: "agent", component: i11.HomeAgentComponent }, { path: "customer", component: i12.HomeCustomerComponent }, { path: "staff", component: i13.HomeStaffComponent }]]; }, [])]); });
+var i10 = __webpack_require__("./node_modules/angular-date-value-accessor/module.js");
+var i11 = __webpack_require__("./src/app/search-box/search-box.module.ts");
+var i12 = __webpack_require__("./src/app/home/home/home.component.ts");
+var i13 = __webpack_require__("./src/app/home/home-agent/home-agent.component.ts");
+var i14 = __webpack_require__("./src/app/home/home-customer/home-customer.component.ts");
+var i15 = __webpack_require__("./src/app/home/home-staff/home-staff.component.ts");
+var HomeModuleNgFactory = i0.ɵcmf(i1.HomeModule, [], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i2.HomeComponentNgFactory, i3.HomeAgentComponentNgFactory, i4.HomeCustomerComponentNgFactory, i5.HomeStaffComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(4608, i6.NgLocalization, i6.NgLocaleLocalization, [i0.LOCALE_ID, [2, i6.ɵa]]), i0.ɵmpd(4608, i7.ɵi, i7.ɵi, []), i0.ɵmpd(512, i6.CommonModule, i6.CommonModule, []), i0.ɵmpd(512, i8.RouterModule, i8.RouterModule, [[2, i8.ɵa], [2, i8.Router]]), i0.ɵmpd(512, i9.HomeRoutingModule, i9.HomeRoutingModule, []), i0.ɵmpd(512, i7.ɵba, i7.ɵba, []), i0.ɵmpd(512, i7.FormsModule, i7.FormsModule, []), i0.ɵmpd(512, i10.DateValueAccessorModule, i10.DateValueAccessorModule, []), i0.ɵmpd(512, i11.SearchBoxModule, i11.SearchBoxModule, []), i0.ɵmpd(512, i1.HomeModule, i1.HomeModule, []), i0.ɵmpd(1024, i8.ROUTES, function () { return [[{ path: "", component: i12.HomeComponent }, { path: "agent", component: i13.HomeAgentComponent }, { path: "customer", component: i14.HomeCustomerComponent }, { path: "staff", component: i15.HomeStaffComponent }]]; }, [])]); });
 exports.HomeModuleNgFactory = HomeModuleNgFactory;
 
 
@@ -409,17 +413,20 @@ var cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/co
 exports.CookieService_11 = cookie_service_1.CookieService;
 var i0 = __webpack_require__("./src/app/home/home/home.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var i2 = __webpack_require__("./src/app/home/home/home.component.ts");
-var i3 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i4 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i2 = __webpack_require__("./src/app/search-box/search-box.component.ngfactory.js");
+var i3 = __webpack_require__("./src/app/search-box/search-box.component.ts");
+var i4 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var i5 = __webpack_require__("./src/app/home/home/home.component.ts");
+var i6 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i7 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
 var styles_HomeComponent = [i0.styles];
 var RenderType_HomeComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HomeComponent, data: {} });
 exports.RenderType_HomeComponent = RenderType_HomeComponent;
-function View_HomeComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 2, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+function View_HomeComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], null, null, null, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient], null, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); }, null); }
 exports.View_HomeComponent_0 = View_HomeComponent_0;
-function View_HomeComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-home", [], null, null, null, View_HomeComponent_0, RenderType_HomeComponent)), i1.ɵdid(1, 114688, null, 0, i2.HomeComponent, [i3.Router, i4.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HomeComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-home", [], null, null, null, View_HomeComponent_0, RenderType_HomeComponent)), i1.ɵdid(1, 114688, null, 0, i5.HomeComponent, [i6.Router, i7.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HomeComponent_Host_0 = View_HomeComponent_Host_0;
-var HomeComponentNgFactory = i1.ɵccf("app-home", i2.HomeComponent, View_HomeComponent_Host_0, {}, {}, []);
+var HomeComponentNgFactory = i1.ɵccf("app-home", i5.HomeComponent, View_HomeComponent_Host_0, {}, {}, []);
 exports.HomeComponentNgFactory = HomeComponentNgFactory;
 
 
