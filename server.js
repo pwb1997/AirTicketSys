@@ -50,7 +50,7 @@ app.post('/login', (req, res) => {
             res.cookie('pk', req.body.username);
             res.cookie('type', req.body.type);
             res.sendStatus(200);
-            console.log(date(), "'" + req.body.username + "'", 'login success');
+            console.log(date(), "'" + req.body.username + "'", 'login successfully');
             return;
         }
         console.log(date(), 'authentication failed');

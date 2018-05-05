@@ -1,17 +1,3 @@
-@font-face {
-  font-family: 'Gugi';
-  font-style: normal;
-  font-weight: 400;
-  src: url('Gugi-Regular.ttf') format('truetype')
-}
-
-@font-face {
-  font-family: 'PoiretOne';
-  font-style: normal;
-  font-weight: 400;
-  src: url('PoiretOne-Regular.ttf') format('truetype')
-}
-
 nav {
   overflow: hidden;
   background-color: #0F1108;
@@ -69,6 +55,17 @@ nav div {
   text-align: center;
 }
 
+.button {
+  text-align: center;
+  line-height: 70px;
+  font-size: 40px;
+  font-family: 'PoiretOne', cursive;
+}
+
+.button p {
+  margin: 0px;
+}
+
 #home {
   height: 70px;
   width: 150px;
@@ -87,41 +84,10 @@ nav div {
   left: 450px;
 }
 
-#login {
-  height: 70px;
-  width: 70px;
-	right: 0px;
-}
-
-#login div{
-  cursor:pointer;
-	position: absolute;
-	left:0; right:0;
-	top:0; bottom:0;
-	margin: auto;
-  width: 50px;
-  height: 50px;
-  border-radius: 30px;
-  border: solid 2px #CAD8DE;
-  background: #0F1108;
-  text-align: center;
-  line-height: 90%;
-}
-
-a,
-a:hover,
-a:visited {
-  position: relative;
-  top: 15px;
-  color: #CAD8DE;
-  text-decoration: none;
-  font-size: 40px;
-  font-family: 'PoiretOne', cursive;
-}
-
-#login div p {
-	top:28px;
-  font-size: 18px;
-  font-family: 'PoiretOne', cursive;
-  color: #CAD8DE;
+.account {
+  position: absolute;
+  right: 10px;
+  top: 0px;
+  bottom: 0px;
+  margin: auto;
 }

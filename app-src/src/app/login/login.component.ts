@@ -36,9 +36,7 @@ export class LoginComponent implements OnInit {
       res => {
         this.formVisibility = 'hidden';
         this.redirectionVisibility = 'visible';
-        window.setTimeout(() => {
-          window.location.href = '/home';
-        }, 3000);
+        window.location.href = '/home';
       },
       err => {
         if (err.status === 401) {

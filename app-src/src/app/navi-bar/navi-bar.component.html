@@ -5,21 +5,19 @@
     <div>RESERV</div>
     <div>SYS\></div>
   </div>
-  <div id='home' [@hover]='hoverState1' (mouseenter)='mouseEnter1()' (mouseleave)='mouseLeave1()'>
-    <a routerLink='/home' [@hover]='hoverState1'>.Home</a>
+  <div id='home' class='underline-reveal button' (click)="this.router.navigate(['/home'])">
+    <p>Home</p>
   </div>
-  <div id='about' [@hover]='hoverState2' (mouseenter)='mouseEnter2()' (mouseleave)='mouseLeave2()'>
-    <a routerLink='/about' [@hover]='hoverState2'>.About</a>
+  <div id='about' class='underline-reveal button' (click)="this.router.navigate(['/about'])">
+    <p>About</p>
   </div>
-  <div id='github' [@hover]='hoverState3' (mouseenter)='mouseEnter3()' (mouseleave)='mouseLeave3()'>
-    <a href='https://github.com/pwb1997/databases-final' target='_blank' [@hover]='hoverState3'>.GitHub</a>
+  <div id='github' class='underline-reveal button' (click)="redirectGithub()">
+    <p>GitHub</p>
   </div>
-  <div id='login' [@hover]='hoverState4'>
-    <div (click)='redirectLogin()'>
-      <p>login</p>
-    </div>
-    <div [style.visibility]='logoutStatus' (click)='logout()'>
-      <p>logout</p>
-    </div>
+  <div [style.visibility]='loginState' (click)="this.router.navigate(['/login'])" class='account circle-button' id='login'>
+    <p>login</p>
+  </div>
+  <div [style.visibility]='logoutState' (click)="this.router.navigate(['/logout'])" class='account circle-button' id='logout'>
+    <p>logout</p>
   </div>
 </nav>

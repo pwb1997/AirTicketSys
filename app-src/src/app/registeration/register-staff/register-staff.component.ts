@@ -20,10 +20,10 @@ export class RegisterStaffComponent implements OnInit {
     this.validation = '';
     this.http.post('/registeration/staff', f.value, { responseType: 'text' }).subscribe(
       res => {
-        this.validation = 'Account Created, Please Login!';
+        this.validation = 'Account Created! Redirecting You to Login ...';
         window.setTimeout(() => {
           this.router.navigate(['login']);
-        }, 4000);
+        }, 3000);
       },
       err => {
         if (err.status === 409) {

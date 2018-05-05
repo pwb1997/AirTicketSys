@@ -1,3 +1,98 @@
+@font-face {
+  font-family: 'Gugi';
+  font-style: normal;
+  font-weight: 400;
+  src: url('Gugi-Regular.ttf') format('truetype')
+}
+
+@font-face {
+  font-family: 'PoiretOne';
+  font-style: normal;
+  font-weight: 400;
+  src: url('PoiretOne-Regular.ttf') format('truetype')
+}
+
 body {
-    background-color: #CAD8DE
+  background-color: #CAD8DE
+}
+
+.main {
+  position: absolute;
+  top: 80px;
+}
+
+.circle-button {
+  cursor: pointer;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+  border: solid 2px #CAD8DE;
+  text-align: center;
+  line-height: 50px;
+  width: 50px;
+  height: 50px;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.circle-button p {
+  color: #CAD8DE;
+  margin: 0px;
+  font-size: 17px;
+  font-family: 'PoiretOne', cursive;
+  -webkit-transition: all 0.2s ease-in;
+  transition: all 0.2s ease-in;
+}
+
+.circle-button:hover, .circle-button:focus, .circle-button:active {
+  color: #00F6ED;
+  height: 50px;
+  width: 50px;
+  border: solid 2px #00F6ED;
+  box-shadow: 0 0 20px;
+}
+
+.circle-button:hover p, .circle-button:focus p, .circle-button:active p {
+  color: #00F6ED;
+  text-shadow: 0 0 15px; 
+}
+
+/*  hover effect 
+    reference: https://github.com/IanLunn/Hover/blob/master/README.md#a-copy-and-paste-an-effect */
+
+.underline-reveal {
+  cursor: pointer;
+  display: inline-block;
+  vertical-align: middle;
+  -webkit-transform: perspective(1px) translateZ(0);
+  transform: perspective(1px) translateZ(0);
+  box-shadow: 0 0 1px rgba(0, 0, 0, 0);
+  position: relative;
+  overflow: hidden;
+  color: #CAD8DE;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.underline-reveal:before {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: #00F6ED;
+  height: 10px;
+  -webkit-transform: translateY(10px);
+  transform: translateY(10px);
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
+}
+
+.underline-reveal:hover:before, .underline-reveal:focus:before, .underline-reveal:active:before {
+  -webkit-transform: translateY(0);
+  transform: translateY(0);
+}
+
+.underline-reveal:hover, .underline-reveal:focus, .underline-reveal:active {
+  color: #00F6ED
 }

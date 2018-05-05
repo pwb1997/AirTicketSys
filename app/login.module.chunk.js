@@ -12,7 +12,7 @@ webpackJsonp(["login.module"],{
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [".main[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 80px;\n}"];
+var styles = [""];
 exports.styles = styles;
 
 
@@ -30,6 +30,20 @@ exports.styles = styles;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
+var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+exports.HttpClient_1 = http_1.HttpClient;
+exports.HttpHandler_2 = http_1.HttpHandler;
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+exports.Router_3 = router_1.Router;
+exports.UrlSerializer_5 = router_1.UrlSerializer;
+exports.ChildrenOutletContexts_6 = router_1.ChildrenOutletContexts;
+var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+exports.Location_7 = common_1.Location;
+exports.LocationStrategy_8 = common_1.LocationStrategy;
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+exports.Injector_9 = core_1.Injector;
+exports.NgModuleFactoryLoader_10 = core_1.NgModuleFactoryLoader;
+exports.Compiler_11 = core_1.Compiler;
 var i0 = __webpack_require__("./src/app/login/login.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
@@ -179,9 +193,7 @@ var LoginComponent = /** @class */ (function () {
         this.http.post('/login', f.value, { responseType: 'text' }).subscribe(function (res) {
             _this.formVisibility = 'hidden';
             _this.redirectionVisibility = 'visible';
-            window.setTimeout(function () {
-                window.location.href = '/home';
-            }, 3000);
+            window.location.href = '/home';
         }, function (err) {
             if (err.status === 401) {
                 _this.validation = 'Username or Password Not Correct!';
@@ -208,6 +220,22 @@ exports.LoginComponent = LoginComponent;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
+var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+exports.NgLocalization_3 = common_1.NgLocalization;
+exports.NgLocaleLocalization_4 = common_1.NgLocaleLocalization;
+exports.ɵa_6 = common_1.ɵa;
+exports.CommonModule_7 = common_1.CommonModule;
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+exports.LOCALE_ID_5 = core_1.LOCALE_ID;
+var forms_1 = __webpack_require__("./node_modules/@angular/forms/esm5/forms.js");
+exports.ɵi_8 = forms_1.ɵi;
+exports.FormsModule_9 = forms_1.FormsModule;
+exports.ɵba_14 = forms_1.ɵba;
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+exports.ROUTES_10 = router_1.ROUTES;
+exports.RouterModule_11 = router_1.RouterModule;
+exports.ɵa_12 = router_1.ɵa;
+exports.Router_13 = router_1.Router;
 var i0 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i1 = __webpack_require__("./src/app/login/login.module.ts");
 var i2 = __webpack_require__("./src/app/login/login.component.ngfactory.js");
@@ -228,12 +256,7 @@ exports.LoginModuleNgFactory = LoginModuleNgFactory;
 
 Object.defineProperty(exports, "__esModule", { value: true });
 var login_component_1 = __webpack_require__("./src/app/login/login.component.ts");
-var routes = [
-    {
-        path: '',
-        component: login_component_1.LoginComponent
-    }
-];
+var routes = [{ path: '', component: login_component_1.LoginComponent }];
 var LoginModule = /** @class */ (function () {
     function LoginModule() {
     }
