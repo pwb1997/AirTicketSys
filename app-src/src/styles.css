@@ -23,8 +23,8 @@ body {
 
 .circle-button {
   cursor: pointer;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
   border: solid 2px #CAD8DE;
   text-align: center;
   line-height: 50px;
@@ -39,8 +39,8 @@ body {
   margin: 0px;
   font-size: 17px;
   font-family: 'PoiretOne', cursive;
-  -webkit-transition: all 0.2s ease-in;
-  transition: all 0.2s ease-in;
+  -webkit-transition: all 0.1s ease-in;
+  transition: all 0.1s ease-in;
 }
 
 .circle-button:hover, .circle-button:focus, .circle-button:active {
@@ -48,12 +48,10 @@ body {
   height: 50px;
   width: 50px;
   border: solid 2px #00F6ED;
-  box-shadow: 0 0 20px;
 }
 
 .circle-button:hover p, .circle-button:focus p, .circle-button:active p {
   color: #00F6ED;
-  text-shadow: 0 0 15px; 
 }
 
 /*  hover effect 

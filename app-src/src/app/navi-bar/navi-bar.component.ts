@@ -1,5 +1,4 @@
 import { Component, OnInit } from '@angular/core';
-import { trigger, state, style, transition, animate, keyframes, query, stagger } from '@angular/animations';
 import { Router } from '@angular/router';
 import { CookieService } from 'ngx-cookie-service';
 

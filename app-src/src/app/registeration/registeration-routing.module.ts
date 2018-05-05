@@ -6,22 +6,10 @@ import { RegisterCustomerComponent } from './register-customer/register-customer
 import { RegisterStaffComponent } from './register-staff/register-staff.component';
 
 const routes: Routes = [
-  {
-    path: '',
-    component: RegisterComponent
-  },
-  {
-    path: 'customer',
-    component: RegisterCustomerComponent
-  },
-  {
-    path: 'agent',
-    component: RegisterAgentComponent
-  },
-  {
-    path: 'staff',
-    component: RegisterStaffComponent
-  }
+  { path: '', component: RegisterComponent },
+  { path: 'customer', component: RegisterCustomerComponent },
+  { path: 'agent', component: RegisterAgentComponent },
+  { path: 'staff', component: RegisterStaffComponent }
 ];
 
 @NgModule({

@@ -691,22 +691,10 @@ var register_agent_component_1 = __webpack_require__("./src/app/registeration/re
 var register_customer_component_1 = __webpack_require__("./src/app/registeration/register-customer/register-customer.component.ts");
 var register_staff_component_1 = __webpack_require__("./src/app/registeration/register-staff/register-staff.component.ts");
 var routes = [
-    {
-        path: '',
-        component: register_component_1.RegisterComponent
-    },
-    {
-        path: 'customer',
-        component: register_customer_component_1.RegisterCustomerComponent
-    },
-    {
-        path: 'agent',
-        component: register_agent_component_1.RegisterAgentComponent
-    },
-    {
-        path: 'staff',
-        component: register_staff_component_1.RegisterStaffComponent
-    }
+    { path: '', component: register_component_1.RegisterComponent },
+    { path: 'customer', component: register_customer_component_1.RegisterCustomerComponent },
+    { path: 'agent', component: register_agent_component_1.RegisterAgentComponent },
+    { path: 'staff', component: register_staff_component_1.RegisterStaffComponent }
 ];
 var RegisterationRoutingModule = /** @class */ (function () {
     function RegisterationRoutingModule() {
