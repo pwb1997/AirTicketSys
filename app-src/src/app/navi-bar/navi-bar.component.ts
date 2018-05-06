@@ -24,15 +24,15 @@ export class NaviBarComponent implements OnInit {
     }
     this.router.events.subscribe(path => {
       if (path['url']) {
-        if (path['url'].slice(1, 6) === 'home' || path['url'] === '/') {
+        if (path['url'].includes('home') || path['url'] === '/') {
           this.homeActive = 'underline-reveal-active';
           this.aboutActive = '';
           this.searchActive = '';
-        } else if (path['url'].slice(1, 7) === 'about') {
+        } else if (path['url'].includes('about')) {
           this.aboutActive = 'underline-reveal-active';
           this.homeActive = '';
           this.searchActive = '';
-        } else if (path['url'].slice(1, 8) === 'search') {
+        } else if (path['url'].includes('search')) {
           this.searchActive = 'underline-reveal-active';
           this.aboutActive = '';
           this.homeActive = '';

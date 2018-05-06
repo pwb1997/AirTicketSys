@@ -376,7 +376,7 @@ exports.HomeModule = HomeModule;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [""];
+var styles = ["app-search-box[_ngcontent-%COMP%] {\n    top: 20px;\n}\n\n.main[_ngcontent-%COMP%] {\n    font-family: PoiretOne;\n    text-align: center;\n    font-size: 20px;\n}"];
 exports.styles = styles;
 
 
@@ -416,17 +416,24 @@ var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/app/search-box/search-box.component.ngfactory.js");
 var i3 = __webpack_require__("./src/app/search-box/search-box.component.ts");
 var i4 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-var i5 = __webpack_require__("./src/app/home/home/home.component.ts");
-var i6 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i7 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i5 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i6 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i7 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i8 = __webpack_require__("./src/app/home/home/home.component.ts");
 var styles_HomeComponent = [i0.styles];
 var RenderType_HomeComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HomeComponent, data: {} });
 exports.RenderType_HomeComponent = RenderType_HomeComponent;
-function View_HomeComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], null, null, null, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient], null, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); }, null); }
+function View_HomeComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 17, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], null, null, null, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient, i5.Router, i6.CookieService], null, null), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(5, 0, null, null, 3, "h1", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["You are not logged in yet"])), (_l()(), i1.ɵeld(7, 0, null, null, 0, "br", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" Please login or register"])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(10, 0, null, null, 2, "a", [["routerLink", "/registeration"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 11).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(11, 671744, null, 0, i5.RouterLinkWithHref, [i5.Router, i5.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["Register"])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(14, 0, null, null, 2, "a", [["routerLink", "/login"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 15).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(15, 671744, null, 0, i5.RouterLinkWithHref, [i5.Router, i5.ActivatedRoute, i7.LocationStrategy], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["login"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); var currVal_2 = "/registeration"; _ck(_v, 11, 0, currVal_2); var currVal_5 = "/login"; _ck(_v, 15, 0, currVal_5); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 11).target; var currVal_1 = i1.ɵnov(_v, 11).href; _ck(_v, 10, 0, currVal_0, currVal_1); var currVal_3 = i1.ɵnov(_v, 15).target; var currVal_4 = i1.ɵnov(_v, 15).href; _ck(_v, 14, 0, currVal_3, currVal_4); }); }
 exports.View_HomeComponent_0 = View_HomeComponent_0;
-function View_HomeComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-home", [], null, null, null, View_HomeComponent_0, RenderType_HomeComponent)), i1.ɵdid(1, 114688, null, 0, i5.HomeComponent, [i6.Router, i7.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HomeComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-home", [], null, null, null, View_HomeComponent_0, RenderType_HomeComponent)), i1.ɵdid(1, 114688, null, 0, i8.HomeComponent, [i5.Router, i6.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HomeComponent_Host_0 = View_HomeComponent_Host_0;
-var HomeComponentNgFactory = i1.ɵccf("app-home", i5.HomeComponent, View_HomeComponent_Host_0, {}, {}, []);
+var HomeComponentNgFactory = i1.ɵccf("app-home", i8.HomeComponent, View_HomeComponent_Host_0, {}, {}, []);
 exports.HomeComponentNgFactory = HomeComponentNgFactory;
 
 

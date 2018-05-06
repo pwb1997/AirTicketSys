@@ -1,3 +1,7 @@
 <div class='main'>
-  <app-search-box></app-search-box>
+  <app-search-box (ngModelChange)='ngOnInit()' [style.display]='displaySearchBox'></app-search-box>
+  <div id='result'>
+    <p>{{message}}</p>
+    <button (click)="deleteCookie()">Clear</button>
+  </div>
 </div>

@@ -23,7 +23,7 @@ app.use(bodyParser.urlencoded({
     extended: true,
 }));
 
-function date() {
+const getDate = () => {
     cur = new Date();
     cur.setHours(cur.getHours() - (cur.getTimezoneOffset() / 60));
     return '[' + cur.toISOString().replace(/T/, ' ').replace(/\..+/, '') + ']';
@@ -48,7 +48,7 @@ app.get('*', (req, res) => {
 })
 
 app.post('/login', (req, res) => {
-    console.log(date(), 'new login request received');
+    console.log(getDate(), 'new login request received');
     let pk = '';
     if (req.body.type === 'airline_staff') {
         pk = 'username'
@@ -66,10 +66,10 @@ app.post('/login', (req, res) => {
             res.cookie('pk', req.body.username);
             res.cookie('type', req.body.type);
             res.sendStatus(200);
-            console.log(date(), "'" + req.body.username + "'", 'login successfully');
+            console.log(getDate(), "'" + req.body.username + "'", 'login successfully');
             return;
         }
-        console.log(date(), 'authentication failed');
+        console.log(getDate(), 'authentication failed');
         res.sendStatus(401);
     })
 })
@@ -101,7 +101,7 @@ app.post('/registeration/customer', (req, res) => {
                 res.sendStatus(500);
                 return;
             };
-            console.log(date(), 'new profile created for', req.body.email);
+            console.log(getDate(), 'new profile created for', req.body.email);
             res.sendStatus(200);
         })
     })
@@ -127,7 +127,7 @@ app.post('/registeration/staff', (req, res) => {
                 res.sendStatus(500);
                 return;
             };
-            console.log(date(), 'new profile created for', req.body.username);
+            console.log(getDate(), 'new profile created for', req.body.username);
             res.sendStatus(200);
         })
     })
@@ -155,7 +155,7 @@ app.post('/registeration/agent', (req, res) => {
                 res.sendStatus(500);
                 return;
             };
-            console.log(date(), 'new profile created for', req.body.username);
+            console.log(getDate(), 'new profile created for', req.body.username);
             res.sendStatus(200);
         })
     })
@@ -181,12 +181,11 @@ app.post('/search', (req, res) => {
                 res.sendStatus(500);
                 return;
             }
-            if (result.length === 0) {
-                res.sendStatus(404);
-                return;
-            }
+            res.cookie('searchResult', result);
+            res.sendStatus(200);
+            console.log(getDate(), 'search request handled')
         })
 })
 
-console.log(date(), 'server started at port', PORT);
+console.log(getDate(), 'server started at port', PORT);
 app.listen(PORT);

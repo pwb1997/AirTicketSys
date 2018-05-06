@@ -1,3 +1,116 @@
 .filter-airport ul li div {
     cursor: pointer;
 }
+
+#search-box {
+    height: 240px;
+    width: 100%;
+    line-height: 50px;
+    text-align: center;
+    font-family: PoiretOne;
+}
+
+#search-box h1 {
+    font-size: 40px;
+    margin: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+#source {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25%;
+    top: 90px;
+    line-height: 50px;
+    text-align: left;
+}
+
+form p {
+    font-size: 20px;
+    margin: 0px;
+    z-index: -1;
+}
+
+input {
+    position: absolute;
+    height: 30px;
+    left: 100px;
+    width: 150px;
+    top: 5px;
+    z-index: 0;
+}
+
+.filter-airport {
+    position: absolute;
+    left: 99px;
+    width: 152px;
+    top: 36px;
+    z-index: 1;
+    background-color: #CAD8DE;
+    border: solid 2px #0F1108;
+    font-size: 16px;
+}
+
+ul {
+    padding: 10px;
+    margin: 0px;
+}
+
+li {
+    list-style-type: none;
+}
+
+#destination {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25%;
+    top: 140px;
+    line-height: 50px;
+    text-align: left;
+}
+
+#date {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25%;
+    top: 190px;
+    line-height: 50px;
+    text-align: left;
+}
+
+#search {
+    cursor: pointer;
+    position: absolute;
+    left: 560px;
+    top: 120px;
+    border: solid 3px #645853;
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+}
+
+i {
+    display: block;
+    margin-top: 15px;
+    font-size: 50px;
+    color: #645853;
+}
+
+#validation {
+    position: absolute;
+    top: 220px;
+    width: 100%;
+    text-align: center;
+    color: orangered;
+    font-family: Arial, Helvetica, sans-serif;
+}

@@ -36,12 +36,14 @@
 }
 
 body {
-  background-color: #CAD8DE
+  background-color: #CAD8DE;
+  margin: 0
 }
 
 .main {
   position: absolute;
   top: 80px;
+  width: 100%;
 }
 
 .circle-button {

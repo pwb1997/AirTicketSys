@@ -30,20 +30,45 @@ exports.styles = styles;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+exports.Router_1 = router_1.Router;
+exports.UrlSerializer_3 = router_1.UrlSerializer;
+exports.ChildrenOutletContexts_4 = router_1.ChildrenOutletContexts;
+var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+exports.Location_5 = common_1.Location;
+exports.LocationStrategy_6 = common_1.LocationStrategy;
+exports.DOCUMENT_14 = common_1.DOCUMENT;
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+exports.Injector_7 = core_1.Injector;
+exports.NgModuleFactoryLoader_8 = core_1.NgModuleFactoryLoader;
+exports.Compiler_9 = core_1.Compiler;
+exports.Inject_12 = core_1.Inject;
+exports.ɵa_13 = core_1.ɵa;
+exports.InjectionToken_15 = core_1.InjectionToken;
+var cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+exports.CookieService_11 = cookie_service_1.CookieService;
 var i0 = __webpack_require__("./src/app/search/search.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/app/search-box/search-box.component.ngfactory.js");
 var i3 = __webpack_require__("./src/app/search-box/search-box.component.ts");
 var i4 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-var i5 = __webpack_require__("./src/app/search/search.component.ts");
+var i5 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i6 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i7 = __webpack_require__("./src/app/search/search.component.ts");
 var styles_SearchComponent = [i0.styles];
 var RenderType_SearchComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_SearchComponent, data: {} });
 exports.RenderType_SearchComponent = RenderType_SearchComponent;
-function View_SearchComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], null, null, null, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient], null, null), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); }, null); }
+function View_SearchComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 13, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], [[4, "display", null]], [[null, "ngModelChange"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("ngModelChange" === en)) {
+        var pd_0 = (_co.ngOnInit() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient, i5.Router, i6.CookieService], null, null), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(5, 0, null, null, 7, "div", [["id", "result"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.deleteCookie() !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["Clear"])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.displaySearchBox; _ck(_v, 2, 0, currVal_0); var currVal_1 = _co.message; _ck(_v, 8, 0, currVal_1); }); }
 exports.View_SearchComponent_0 = View_SearchComponent_0;
-function View_SearchComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-search", [], null, null, null, View_SearchComponent_0, RenderType_SearchComponent)), i1.ɵdid(1, 114688, null, 0, i5.SearchComponent, [], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_SearchComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-search", [], null, null, null, View_SearchComponent_0, RenderType_SearchComponent)), i1.ɵdid(1, 114688, null, 0, i7.SearchComponent, [i5.Router, i6.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_SearchComponent_Host_0 = View_SearchComponent_Host_0;
-var SearchComponentNgFactory = i1.ɵccf("app-search", i5.SearchComponent, View_SearchComponent_Host_0, {}, {}, []);
+var SearchComponentNgFactory = i1.ɵccf("app-search", i7.SearchComponent, View_SearchComponent_Host_0, {}, {}, []);
 exports.SearchComponentNgFactory = SearchComponentNgFactory;
 
 
@@ -55,10 +80,26 @@ exports.SearchComponentNgFactory = SearchComponentNgFactory;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var ngx_cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var SearchComponent = /** @class */ (function () {
-    function SearchComponent() {
+    function SearchComponent(router, cookie) {
+        this.router = router;
+        this.cookie = cookie;
+        this.message = '';
+        this.displaySearchBox = '';
     }
+    SearchComponent.prototype.deleteCookie = function () {
+        this.cookie.delete('searchResult');
+        this.cookie.set('reload', 'search');
+        this.router.navigate(['reload']);
+    };
     SearchComponent.prototype.ngOnInit = function () {
+        if (this.cookie.get('searchResult')) {
+            this.result = JSON.parse(this.cookie.get('searchResult').slice(2));
+            this.message = 'Found ' + this.result.length + ' record(s)';
+            this.displaySearchBox = 'none';
+        }
     };
     return SearchComponent;
 }());

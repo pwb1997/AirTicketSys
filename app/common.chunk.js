@@ -8952,7 +8952,7 @@ exports.FilterPipe = FilterPipe;
  * tslint:disable
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
-var styles = [".filter-airport[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n    cursor: pointer;\n}"];
+var styles = [".filter-airport[_ngcontent-%COMP%]   ul[_ngcontent-%COMP%]   li[_ngcontent-%COMP%]   div[_ngcontent-%COMP%] {\n    cursor: pointer;\n}\n\n#search-box[_ngcontent-%COMP%] {\n    height: 240px;\n    width: 100%;\n    line-height: 50px;\n    text-align: center;\n    font-family: PoiretOne;\n}\n\n#search-box[_ngcontent-%COMP%]   h1[_ngcontent-%COMP%] {\n    font-size: 40px;\n    margin: auto;\n    margin-top: 20px;\n    margin-bottom: 20px;\n}\n\n#source[_ngcontent-%COMP%] {\n    position: absolute;\n    height: 50px;\n    width: 300px;\n    font-size: 20px;\n    color: #645853;\n    left: 25%;\n    top: 90px;\n    line-height: 50px;\n    text-align: left;\n}\n\nform[_ngcontent-%COMP%]   p[_ngcontent-%COMP%] {\n    font-size: 20px;\n    margin: 0px;\n    z-index: -1;\n}\n\ninput[_ngcontent-%COMP%] {\n    position: absolute;\n    height: 30px;\n    left: 100px;\n    width: 150px;\n    top: 5px;\n    z-index: 0;\n}\n\n.filter-airport[_ngcontent-%COMP%] {\n    position: absolute;\n    left: 99px;\n    width: 152px;\n    top: 36px;\n    z-index: 1;\n    background-color: #CAD8DE;\n    border: solid 2px #0F1108;\n    font-size: 16px;\n}\n\nul[_ngcontent-%COMP%] {\n    padding: 10px;\n    margin: 0px;\n}\n\nli[_ngcontent-%COMP%] {\n    list-style-type: none;\n}\n\n#destination[_ngcontent-%COMP%] {\n    position: absolute;\n    height: 50px;\n    width: 300px;\n    font-size: 20px;\n    color: #645853;\n    left: 25%;\n    top: 140px;\n    line-height: 50px;\n    text-align: left;\n}\n\n#date[_ngcontent-%COMP%] {\n    position: absolute;\n    height: 50px;\n    width: 300px;\n    font-size: 20px;\n    color: #645853;\n    left: 25%;\n    top: 190px;\n    line-height: 50px;\n    text-align: left;\n}\n\n#search[_ngcontent-%COMP%] {\n    cursor: pointer;\n    position: absolute;\n    left: 560px;\n    top: 120px;\n    border: solid 3px #645853;\n    height: 80px;\n    width: 80px;\n    border-radius: 100px;\n}\n\ni[_ngcontent-%COMP%] {\n    display: block;\n    margin-top: 15px;\n    font-size: 50px;\n    color: #645853;\n}\n\n#validation[_ngcontent-%COMP%] {\n    position: absolute;\n    top: 220px;\n    width: 100%;\n    text-align: center;\n    color: orangered;\n    font-family: Arial, Helvetica, sans-serif;\n}"];
 exports.styles = styles;
 
 
@@ -8973,6 +8973,23 @@ Object.defineProperty(exports, "__esModule", { value: true });
 var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 exports.HttpClient_1 = http_1.HttpClient;
 exports.HttpHandler_2 = http_1.HttpHandler;
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+exports.Router_3 = router_1.Router;
+exports.UrlSerializer_5 = router_1.UrlSerializer;
+exports.ChildrenOutletContexts_6 = router_1.ChildrenOutletContexts;
+var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+exports.Location_7 = common_1.Location;
+exports.LocationStrategy_8 = common_1.LocationStrategy;
+exports.DOCUMENT_16 = common_1.DOCUMENT;
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+exports.Injector_9 = core_1.Injector;
+exports.NgModuleFactoryLoader_10 = core_1.NgModuleFactoryLoader;
+exports.Compiler_11 = core_1.Compiler;
+exports.Inject_14 = core_1.Inject;
+exports.ɵa_15 = core_1.ɵa;
+exports.InjectionToken_17 = core_1.InjectionToken;
+var cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+exports.CookieService_13 = cookie_service_1.CookieService;
 var i0 = __webpack_require__("./src/app/search-box/search-box.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i2 = __webpack_require__("./src/app/search-box/filter.pipe.ts");
@@ -8981,20 +8998,22 @@ var i4 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
 var i5 = __webpack_require__("./node_modules/angular-date-value-accessor/date-value-accessor.js");
 var i6 = __webpack_require__("./src/app/search-box/search-box.component.ts");
 var i7 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var i8 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i9 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
 var styles_SearchBoxComponent = [i0.styles];
 var RenderType_SearchBoxComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_SearchBoxComponent, data: {} });
 exports.RenderType_SearchBoxComponent = RenderType_SearchBoxComponent;
-function View_SearchBoxComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+function View_SearchBoxComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                        "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         _co.source = _v.context.$implicit.airport;
         var pd_0 = ((_co.sourceDisplay = "none") !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(3, null, ["", ", ", ""])), (_l()(), i1.ɵted(-1, null, ["\n                "]))], null, function (_ck, _v) { var currVal_0 = _v.context.$implicit.airport; var currVal_1 = _v.context.$implicit.city; _ck(_v, 3, 0, currVal_0, currVal_1); }); }
-function View_SearchBoxComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵted(3, null, ["", ", ", ""])), (_l()(), i1.ɵted(-1, null, ["\n                    "]))], null, function (_ck, _v) { var currVal_0 = _v.context.$implicit.airport; var currVal_1 = _v.context.$implicit.city; _ck(_v, 3, 0, currVal_0, currVal_1); }); }
+function View_SearchBoxComponent_2(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 4, "li", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                        "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "div", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         _co.destination = _v.context.$implicit.airport;
         var pd_0 = ((_co.destinationDisplay = "none") !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(3, null, ["", ", ", ""])), (_l()(), i1.ɵted(-1, null, ["\n                "]))], null, function (_ck, _v) { var currVal_0 = _v.context.$implicit.airport; var currVal_1 = _v.context.$implicit.city; _ck(_v, 3, 0, currVal_0, currVal_1); }); }
-function View_SearchBoxComponent_0(_l) { return i1.ɵvid(0, [i1.ɵpid(0, i2.FilterPipe, []), (_l()(), i1.ɵeld(1, 0, null, null, 68, "div", [["id", "search-box"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(3, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, [" Search for upcoming flights based on source city/airport name, destination city/airport name, date."])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(6, 0, null, null, 59, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("submit" === en)) {
+    } return ad; }, null, null)), (_l()(), i1.ɵted(3, null, ["", ", ", ""])), (_l()(), i1.ɵted(-1, null, ["\n                    "]))], null, function (_ck, _v) { var currVal_0 = _v.context.$implicit.airport; var currVal_1 = _v.context.$implicit.city; _ck(_v, 3, 0, currVal_0, currVal_1); }); }
+function View_SearchBoxComponent_0(_l) { return i1.ɵvid(0, [i1.ɵpid(0, i2.FilterPipe, []), (_l()(), i1.ɵeld(1, 0, null, null, 89, "div", [["id", "search-box"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(3, 0, null, null, 1, "h1", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Search for upcoming flights"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(6, 0, null, null, 77, "form", [["novalidate", ""]], [[2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngSubmit"], [null, "submit"], [null, "reset"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("submit" === en)) {
         var pd_0 = (i1.ɵnov(_v, 8).onSubmit($event) !== false);
         ad = (pd_0 && ad);
     } if (("reset" === en)) {
@@ -9003,66 +9022,69 @@ function View_SearchBoxComponent_0(_l) { return i1.ɵvid(0, [i1.ɵpid(0, i2.Filt
     } if (("ngSubmit" === en)) {
         var pd_2 = (_co.onSubmit(i1.ɵnov(_v, 8)) !== false);
         ad = (pd_2 && ad);
-    } return ad; }, null, null)), i1.ɵdid(7, 16384, null, 0, i3.ɵbf, [], null, null), i1.ɵdid(8, 4210688, [["f", 4]], 0, i3.NgForm, [[8, null], [8, null]], null, { ngSubmit: "ngSubmit" }), i1.ɵprd(2048, null, i3.ControlContainer, null, [i3.NgForm]), i1.ɵdid(10, 16384, null, 0, i3.NgControlStatusGroup, [i3.ControlContainer], null, null), (_l()(), i1.ɵted(-1, null, ["\n        Source:\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 7, "input", [["autocomplete", "off"], ["name", "source"], ["placeholder", "airport, city"], ["required", ""], ["type", "text"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("input" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 13)._handleInput($event.target.value) !== false);
+    } return ad; }, null, null)), i1.ɵdid(7, 16384, null, 0, i3.ɵbf, [], null, null), i1.ɵdid(8, 4210688, [["f", 4]], 0, i3.NgForm, [[8, null], [8, null]], null, { ngSubmit: "ngSubmit" }), i1.ɵprd(2048, null, i3.ControlContainer, null, [i3.NgForm]), i1.ɵdid(10, 16384, null, 0, i3.NgControlStatusGroup, [i3.ControlContainer], null, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(12, 0, null, null, 23, "div", [["id", "source"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Source"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(17, 0, null, null, 7, "input", [["autocomplete", "off"], ["name", "source"], ["placeholder", "airport, city"], ["required", ""], ["type", "text"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("input" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 18)._handleInput($event.target.value) !== false);
         ad = (pd_0 && ad);
     } if (("blur" === en)) {
-        var pd_1 = (i1.ɵnov(_v, 13).onTouched() !== false);
+        var pd_1 = (i1.ɵnov(_v, 18).onTouched() !== false);
         ad = (pd_1 && ad);
     } if (("compositionstart" === en)) {
-        var pd_2 = (i1.ɵnov(_v, 13)._compositionStart() !== false);
+        var pd_2 = (i1.ɵnov(_v, 18)._compositionStart() !== false);
         ad = (pd_2 && ad);
     } if (("compositionend" === en)) {
-        var pd_3 = (i1.ɵnov(_v, 13)._compositionEnd($event.target.value) !== false);
+        var pd_3 = (i1.ɵnov(_v, 18)._compositionEnd($event.target.value) !== false);
         ad = (pd_3 && ad);
     } if (("ngModelChange" === en)) {
-        var pd_4 = ((_co.sourceDisplay = "") !== false);
+        var pd_4 = (_co.toggleSourceDisplay() !== false);
         ad = (pd_4 && ad);
     } if (("ngModelChange" === en)) {
         var pd_5 = ((_co.source = $event) !== false);
         ad = (pd_5 && ad);
-    } return ad; }, null, null)), i1.ɵdid(13, 16384, null, 0, i3.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵdid(14, 16384, null, 0, i3.RequiredValidator, [], { required: [0, "required"] }, null), i1.ɵprd(1024, null, i3.NG_VALIDATORS, function (p0_0) { return [p0_0]; }, [i3.RequiredValidator]), i1.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i3.DefaultValueAccessor]), i1.ɵdid(17, 671744, null, 0, i3.NgModel, [[2, i3.ControlContainer], [2, i3.NG_VALIDATORS], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), i1.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i1.ɵdid(19, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(21, 0, null, null, 8, "div", [["class", "filter-airport"], ["id", "source-search"]], [[4, "display", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(23, 0, null, null, 5, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵand(16777216, null, null, 2, null, View_SearchBoxComponent_1)), i1.ɵdid(26, 802816, null, 0, i4.NgForOf, [i1.ViewContainerRef, i1.TemplateRef, i1.IterableDiffers], { ngForOf: [0, "ngForOf"] }, null), i1.ɵppd(27, 2), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        Destination:\n        "])), (_l()(), i1.ɵeld(31, 0, null, null, 7, "input", [["autocomplete", "off"], ["name", "destination"], ["placeholder", "airport, city"], ["required", ""], ["type", "text"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("input" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 32)._handleInput($event.target.value) !== false);
+    } return ad; }, null, null)), i1.ɵdid(18, 16384, null, 0, i3.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵdid(19, 16384, null, 0, i3.RequiredValidator, [], { required: [0, "required"] }, null), i1.ɵprd(1024, null, i3.NG_VALIDATORS, function (p0_0) { return [p0_0]; }, [i3.RequiredValidator]), i1.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i3.DefaultValueAccessor]), i1.ɵdid(22, 671744, null, 0, i3.NgModel, [[2, i3.ControlContainer], [2, i3.NG_VALIDATORS], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), i1.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i1.ɵdid(24, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(26, 0, null, null, 8, "div", [["class", "filter-airport"], ["id", "source-search"]], [[4, "display", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(28, 0, null, null, 5, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵand(16777216, null, null, 2, null, View_SearchBoxComponent_1)), i1.ɵdid(31, 802816, null, 0, i4.NgForOf, [i1.ViewContainerRef, i1.TemplateRef, i1.IterableDiffers], { ngForOf: [0, "ngForOf"] }, null), i1.ɵppd(32, 2), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(37, 0, null, null, 23, "div", [["id", "destination"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(39, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Destination"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(42, 0, null, null, 7, "input", [["autocomplete", "off"], ["name", "destination"], ["placeholder", "airport, city"], ["required", ""], ["type", "text"]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("input" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 43)._handleInput($event.target.value) !== false);
         ad = (pd_0 && ad);
     } if (("blur" === en)) {
-        var pd_1 = (i1.ɵnov(_v, 32).onTouched() !== false);
+        var pd_1 = (i1.ɵnov(_v, 43).onTouched() !== false);
         ad = (pd_1 && ad);
     } if (("compositionstart" === en)) {
-        var pd_2 = (i1.ɵnov(_v, 32)._compositionStart() !== false);
+        var pd_2 = (i1.ɵnov(_v, 43)._compositionStart() !== false);
         ad = (pd_2 && ad);
     } if (("compositionend" === en)) {
-        var pd_3 = (i1.ɵnov(_v, 32)._compositionEnd($event.target.value) !== false);
+        var pd_3 = (i1.ɵnov(_v, 43)._compositionEnd($event.target.value) !== false);
         ad = (pd_3 && ad);
     } if (("ngModelChange" === en)) {
-        var pd_4 = ((_co.destinationDisplay = "") !== false);
+        var pd_4 = (_co.toggleDestinationDisplay() !== false);
         ad = (pd_4 && ad);
     } if (("ngModelChange" === en)) {
         var pd_5 = ((_co.destination = $event) !== false);
         ad = (pd_5 && ad);
-    } return ad; }, null, null)), i1.ɵdid(32, 16384, null, 0, i3.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵdid(33, 16384, null, 0, i3.RequiredValidator, [], { required: [0, "required"] }, null), i1.ɵprd(1024, null, i3.NG_VALIDATORS, function (p0_0) { return [p0_0]; }, [i3.RequiredValidator]), i1.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i3.DefaultValueAccessor]), i1.ɵdid(36, 671744, null, 0, i3.NgModel, [[2, i3.ControlContainer], [2, i3.NG_VALIDATORS], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), i1.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i1.ɵdid(38, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(40, 0, null, null, 8, "div", [["class", "filter-airport"], ["id", "destination-search"]], [[4, "display", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(42, 0, null, null, 5, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵand(16777216, null, null, 2, null, View_SearchBoxComponent_2)), i1.ɵdid(45, 802816, null, 0, i4.NgForOf, [i1.ViewContainerRef, i1.TemplateRef, i1.IterableDiffers], { ngForOf: [0, "ngForOf"] }, null), i1.ɵppd(46, 2), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        Date:\n        "])), (_l()(), i1.ɵeld(50, 0, null, null, 8, "input", [["name", "date"], ["required", ""], ["type", "date"], ["useValueAsDate", ""]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("input" === en)) {
-        var pd_0 = (i1.ɵnov(_v, 51)._handleInput($event.target.value) !== false);
+    } return ad; }, null, null)), i1.ɵdid(43, 16384, null, 0, i3.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵdid(44, 16384, null, 0, i3.RequiredValidator, [], { required: [0, "required"] }, null), i1.ɵprd(1024, null, i3.NG_VALIDATORS, function (p0_0) { return [p0_0]; }, [i3.RequiredValidator]), i1.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0) { return [p0_0]; }, [i3.DefaultValueAccessor]), i1.ɵdid(47, 671744, null, 0, i3.NgModel, [[2, i3.ControlContainer], [2, i3.NG_VALIDATORS], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), i1.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i1.ɵdid(49, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(51, 0, null, null, 8, "div", [["class", "filter-airport"], ["id", "destination-search"]], [[4, "display", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵeld(53, 0, null, null, 5, "ul", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n                    "])), (_l()(), i1.ɵand(16777216, null, null, 2, null, View_SearchBoxComponent_2)), i1.ɵdid(56, 802816, null, 0, i4.NgForOf, [i1.ViewContainerRef, i1.TemplateRef, i1.IterableDiffers], { ngForOf: [0, "ngForOf"] }, null), i1.ɵppd(57, 2), (_l()(), i1.ɵted(-1, null, ["\n                "])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(62, 0, null, null, 14, "div", [["id", "date"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(64, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Date"])), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(67, 0, null, null, 8, "input", [["name", "date"], ["required", ""], ["type", "date"], ["useValueAsDate", ""]], [[1, "required", 0], [2, "ng-untouched", null], [2, "ng-touched", null], [2, "ng-pristine", null], [2, "ng-dirty", null], [2, "ng-valid", null], [2, "ng-invalid", null], [2, "ng-pending", null]], [[null, "ngModelChange"], [null, "input"], [null, "blur"], [null, "compositionstart"], [null, "compositionend"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("input" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 68)._handleInput($event.target.value) !== false);
         ad = (pd_0 && ad);
     } if (("blur" === en)) {
-        var pd_1 = (i1.ɵnov(_v, 51).onTouched() !== false);
+        var pd_1 = (i1.ɵnov(_v, 68).onTouched() !== false);
         ad = (pd_1 && ad);
     } if (("compositionstart" === en)) {
-        var pd_2 = (i1.ɵnov(_v, 51)._compositionStart() !== false);
+        var pd_2 = (i1.ɵnov(_v, 68)._compositionStart() !== false);
         ad = (pd_2 && ad);
     } if (("compositionend" === en)) {
-        var pd_3 = (i1.ɵnov(_v, 51)._compositionEnd($event.target.value) !== false);
+        var pd_3 = (i1.ɵnov(_v, 68)._compositionEnd($event.target.value) !== false);
         ad = (pd_3 && ad);
     } if (("input" === en)) {
-        var pd_4 = (i1.ɵnov(_v, 54).onChange($event.target.valueAsDate) !== false);
+        var pd_4 = (i1.ɵnov(_v, 71).onChange($event.target.valueAsDate) !== false);
         ad = (pd_4 && ad);
     } if (("blur" === en)) {
-        var pd_5 = (i1.ɵnov(_v, 54).onTouched() !== false);
+        var pd_5 = (i1.ɵnov(_v, 71).onTouched() !== false);
         ad = (pd_5 && ad);
     } if (("ngModelChange" === en)) {
         var pd_6 = ((_co.date = $event) !== false);
         ad = (pd_6 && ad);
-    } return ad; }, null, null)), i1.ɵdid(51, 16384, null, 0, i3.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵdid(52, 16384, null, 0, i3.RequiredValidator, [], { required: [0, "required"] }, null), i1.ɵprd(1024, null, i3.NG_VALIDATORS, function (p0_0) { return [p0_0]; }, [i3.RequiredValidator]), i1.ɵdid(54, 16384, null, 0, i5.DateValueAccessor, [i1.Renderer, i1.ElementRef], null, null), i1.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0, p1_0) { return [p0_0, p1_0]; }, [i3.DefaultValueAccessor, i5.DateValueAccessor]), i1.ɵdid(56, 671744, null, 0, i3.NgModel, [[2, i3.ControlContainer], [2, i3.NG_VALIDATORS], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), i1.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i1.ɵdid(58, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(60, 0, null, null, 4, "button", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(62, 0, null, null, 1, "i", [["class", "material-icons"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["search"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(67, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(68, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_15 = ""; _ck(_v, 14, 0, currVal_15); var currVal_16 = "source"; var currVal_17 = _co.source; _ck(_v, 17, 0, currVal_16, currVal_17); var currVal_19 = i1.ɵunv(_v, 26, 0, _ck(_v, 27, 0, i1.ɵnov(_v, 0), _co.airport, _co.source)); _ck(_v, 26, 0, currVal_19); var currVal_28 = ""; _ck(_v, 33, 0, currVal_28); var currVal_29 = "destination"; var currVal_30 = _co.destination; _ck(_v, 36, 0, currVal_29, currVal_30); var currVal_32 = i1.ɵunv(_v, 45, 0, _ck(_v, 46, 0, i1.ɵnov(_v, 0), _co.airport, _co.destination)); _ck(_v, 45, 0, currVal_32); var currVal_41 = ""; _ck(_v, 52, 0, currVal_41); var currVal_42 = "date"; var currVal_43 = _co.date; _ck(_v, 56, 0, currVal_42, currVal_43); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 10).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 10).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 10).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 10).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 10).ngClassValid; var currVal_5 = i1.ɵnov(_v, 10).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 10).ngClassPending; _ck(_v, 6, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_7 = (i1.ɵnov(_v, 14).required ? "" : null); var currVal_8 = i1.ɵnov(_v, 19).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 19).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 19).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 19).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 19).ngClassValid; var currVal_13 = i1.ɵnov(_v, 19).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 19).ngClassPending; _ck(_v, 12, 0, currVal_7, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = _co.sourceDisplay; _ck(_v, 21, 0, currVal_18); var currVal_20 = (i1.ɵnov(_v, 33).required ? "" : null); var currVal_21 = i1.ɵnov(_v, 38).ngClassUntouched; var currVal_22 = i1.ɵnov(_v, 38).ngClassTouched; var currVal_23 = i1.ɵnov(_v, 38).ngClassPristine; var currVal_24 = i1.ɵnov(_v, 38).ngClassDirty; var currVal_25 = i1.ɵnov(_v, 38).ngClassValid; var currVal_26 = i1.ɵnov(_v, 38).ngClassInvalid; var currVal_27 = i1.ɵnov(_v, 38).ngClassPending; _ck(_v, 31, 0, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24, currVal_25, currVal_26, currVal_27); var currVal_31 = _co.destinationDisplay; _ck(_v, 40, 0, currVal_31); var currVal_33 = (i1.ɵnov(_v, 52).required ? "" : null); var currVal_34 = i1.ɵnov(_v, 58).ngClassUntouched; var currVal_35 = i1.ɵnov(_v, 58).ngClassTouched; var currVal_36 = i1.ɵnov(_v, 58).ngClassPristine; var currVal_37 = i1.ɵnov(_v, 58).ngClassDirty; var currVal_38 = i1.ɵnov(_v, 58).ngClassValid; var currVal_39 = i1.ɵnov(_v, 58).ngClassInvalid; var currVal_40 = i1.ɵnov(_v, 58).ngClassPending; _ck(_v, 50, 0, currVal_33, currVal_34, currVal_35, currVal_36, currVal_37, currVal_38, currVal_39, currVal_40); var currVal_44 = _co.validation; _ck(_v, 68, 0, currVal_44); }); }
+    } return ad; }, null, null)), i1.ɵdid(68, 16384, null, 0, i3.DefaultValueAccessor, [i1.Renderer2, i1.ElementRef, [2, i3.COMPOSITION_BUFFER_MODE]], null, null), i1.ɵdid(69, 16384, null, 0, i3.RequiredValidator, [], { required: [0, "required"] }, null), i1.ɵprd(1024, null, i3.NG_VALIDATORS, function (p0_0) { return [p0_0]; }, [i3.RequiredValidator]), i1.ɵdid(71, 16384, null, 0, i5.DateValueAccessor, [i1.Renderer, i1.ElementRef], null, null), i1.ɵprd(1024, null, i3.NG_VALUE_ACCESSOR, function (p0_0, p1_0) { return [p0_0, p1_0]; }, [i3.DefaultValueAccessor, i5.DateValueAccessor]), i1.ɵdid(73, 671744, null, 0, i3.NgModel, [[2, i3.ControlContainer], [2, i3.NG_VALIDATORS], [8, null], [2, i3.NG_VALUE_ACCESSOR]], { name: [0, "name"], model: [1, "model"] }, { update: "ngModelChange" }), i1.ɵprd(2048, null, i3.NgControl, null, [i3.NgModel]), i1.ɵdid(75, 16384, null, 0, i3.NgControlStatus, [i3.NgControl], null, null), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(78, 0, null, null, 4, "div", [["id", "search"]], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.onSubmit(i1.ɵnov(_v, 8)) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["\n            "])), (_l()(), i1.ɵeld(80, 0, null, null, 1, "i", [["class", "material-icons"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["search"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(85, 0, null, null, 4, "div", [["id", "validation"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(87, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(88, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; var currVal_15 = ""; _ck(_v, 19, 0, currVal_15); var currVal_16 = "source"; var currVal_17 = _co.source; _ck(_v, 22, 0, currVal_16, currVal_17); var currVal_19 = i1.ɵunv(_v, 31, 0, _ck(_v, 32, 0, i1.ɵnov(_v, 0), _co.airport, _co.source)); _ck(_v, 31, 0, currVal_19); var currVal_28 = ""; _ck(_v, 44, 0, currVal_28); var currVal_29 = "destination"; var currVal_30 = _co.destination; _ck(_v, 47, 0, currVal_29, currVal_30); var currVal_32 = i1.ɵunv(_v, 56, 0, _ck(_v, 57, 0, i1.ɵnov(_v, 0), _co.airport, _co.destination)); _ck(_v, 56, 0, currVal_32); var currVal_41 = ""; _ck(_v, 69, 0, currVal_41); var currVal_42 = "date"; var currVal_43 = _co.date; _ck(_v, 73, 0, currVal_42, currVal_43); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = i1.ɵnov(_v, 10).ngClassUntouched; var currVal_1 = i1.ɵnov(_v, 10).ngClassTouched; var currVal_2 = i1.ɵnov(_v, 10).ngClassPristine; var currVal_3 = i1.ɵnov(_v, 10).ngClassDirty; var currVal_4 = i1.ɵnov(_v, 10).ngClassValid; var currVal_5 = i1.ɵnov(_v, 10).ngClassInvalid; var currVal_6 = i1.ɵnov(_v, 10).ngClassPending; _ck(_v, 6, 0, currVal_0, currVal_1, currVal_2, currVal_3, currVal_4, currVal_5, currVal_6); var currVal_7 = (i1.ɵnov(_v, 19).required ? "" : null); var currVal_8 = i1.ɵnov(_v, 24).ngClassUntouched; var currVal_9 = i1.ɵnov(_v, 24).ngClassTouched; var currVal_10 = i1.ɵnov(_v, 24).ngClassPristine; var currVal_11 = i1.ɵnov(_v, 24).ngClassDirty; var currVal_12 = i1.ɵnov(_v, 24).ngClassValid; var currVal_13 = i1.ɵnov(_v, 24).ngClassInvalid; var currVal_14 = i1.ɵnov(_v, 24).ngClassPending; _ck(_v, 17, 0, currVal_7, currVal_8, currVal_9, currVal_10, currVal_11, currVal_12, currVal_13, currVal_14); var currVal_18 = _co.sourceDisplay; _ck(_v, 26, 0, currVal_18); var currVal_20 = (i1.ɵnov(_v, 44).required ? "" : null); var currVal_21 = i1.ɵnov(_v, 49).ngClassUntouched; var currVal_22 = i1.ɵnov(_v, 49).ngClassTouched; var currVal_23 = i1.ɵnov(_v, 49).ngClassPristine; var currVal_24 = i1.ɵnov(_v, 49).ngClassDirty; var currVal_25 = i1.ɵnov(_v, 49).ngClassValid; var currVal_26 = i1.ɵnov(_v, 49).ngClassInvalid; var currVal_27 = i1.ɵnov(_v, 49).ngClassPending; _ck(_v, 42, 0, currVal_20, currVal_21, currVal_22, currVal_23, currVal_24, currVal_25, currVal_26, currVal_27); var currVal_31 = _co.destinationDisplay; _ck(_v, 51, 0, currVal_31); var currVal_33 = (i1.ɵnov(_v, 69).required ? "" : null); var currVal_34 = i1.ɵnov(_v, 75).ngClassUntouched; var currVal_35 = i1.ɵnov(_v, 75).ngClassTouched; var currVal_36 = i1.ɵnov(_v, 75).ngClassPristine; var currVal_37 = i1.ɵnov(_v, 75).ngClassDirty; var currVal_38 = i1.ɵnov(_v, 75).ngClassValid; var currVal_39 = i1.ɵnov(_v, 75).ngClassInvalid; var currVal_40 = i1.ɵnov(_v, 75).ngClassPending; _ck(_v, 67, 0, currVal_33, currVal_34, currVal_35, currVal_36, currVal_37, currVal_38, currVal_39, currVal_40); var currVal_44 = _co.validation; _ck(_v, 88, 0, currVal_44); }); }
 exports.View_SearchBoxComponent_0 = View_SearchBoxComponent_0;
-function View_SearchBoxComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-search-box", [], null, null, null, View_SearchBoxComponent_0, RenderType_SearchBoxComponent)), i1.ɵdid(1, 114688, null, 0, i6.SearchBoxComponent, [i7.HttpClient], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_SearchBoxComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-search-box", [], null, null, null, View_SearchBoxComponent_0, RenderType_SearchBoxComponent)), i1.ɵdid(1, 114688, null, 0, i6.SearchBoxComponent, [i7.HttpClient, i8.Router, i9.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_SearchBoxComponent_Host_0 = View_SearchBoxComponent_Host_0;
 var SearchBoxComponentNgFactory = i1.ɵccf("app-search-box", i6.SearchBoxComponent, View_SearchBoxComponent_Host_0, {}, {}, []);
 exports.SearchBoxComponentNgFactory = SearchBoxComponentNgFactory;
@@ -9076,30 +9098,55 @@ exports.SearchBoxComponentNgFactory = SearchBoxComponentNgFactory;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var ngx_cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
 var SearchBoxComponent = /** @class */ (function () {
-    function SearchBoxComponent(http) {
+    function SearchBoxComponent(http, router, cookie) {
         this.http = http;
+        this.router = router;
+        this.cookie = cookie;
         this.source = '';
         this.destination = '';
-        this.sourceDisplay = '';
-        this.destinationDisplay = '';
+        this.sourceDisplay = 'none';
+        this.destinationDisplay = 'none';
         this.validation = '';
         this.date = new Date();
     }
+    SearchBoxComponent.prototype.toggleSourceDisplay = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.source === '') {
+                _this.sourceDisplay = 'none';
+            }
+            else {
+                _this.sourceDisplay = '';
+            }
+        }, 10);
+    };
+    SearchBoxComponent.prototype.toggleDestinationDisplay = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.destination === '') {
+                _this.destinationDisplay = 'none';
+            }
+            else {
+                _this.destinationDisplay = '';
+            }
+        }, 10);
+    };
     SearchBoxComponent.prototype.onSubmit = function (f) {
         var _this = this;
         if (!f.valid) {
-            this.validation = 'Please Fill in All the Blanks!';
+            this.validation = 'Please fill in all the blanks';
             return;
         }
         this.validation = '';
         this.date.setHours(this.date.getHours() + (this.date.getTimezoneOffset() / 60));
         this.http.post('/search', f.value, { responseType: 'text' }).subscribe(function (res) {
-        }, function (err) {
-            if (err.status === 404) {
-                _this.validation = 'No Result Found!';
-            }
+            _this.source = _this.destination = '';
+            _this.cookie.set('reload', '/search');
+            _this.router.navigate(['/reload']);
         });
     };
     SearchBoxComponent.prototype.ngOnInit = function () {

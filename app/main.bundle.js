@@ -55,8 +55,10 @@ module.exports = webpackAsyncContext;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", { value: true });
+var reload_component_1 = __webpack_require__("./src/app/reload/reload.component.ts");
 var routes = [
     { path: '', redirectTo: 'home', pathMatch: 'full' },
+    { path: 'reload', component: reload_component_1.ReloadComponent },
     { path: 'home', loadChildren: 'app/home/home.module#HomeModule' },
     { path: 'registeration', loadChildren: 'app/registeration/registeration.module#RegisterationModule' },
     { path: 'login', loadChildren: 'app/login/login.module#LoginModule' },
@@ -154,115 +156,117 @@ exports.AppComponent = AppComponent;
  */ 
 Object.defineProperty(exports, "__esModule", { value: true });
 var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-exports.NgLocalization_3 = common_1.NgLocalization;
-exports.NgLocaleLocalization_4 = common_1.NgLocaleLocalization;
-exports.ɵa_6 = common_1.ɵa;
-exports.CommonModule_7 = common_1.CommonModule;
-exports.DOCUMENT_29 = common_1.DOCUMENT;
-exports.Location_63 = common_1.Location;
-exports.LocationStrategy_64 = common_1.LocationStrategy;
-exports.PlatformLocation_87 = common_1.PlatformLocation;
-exports.APP_BASE_HREF_88 = common_1.APP_BASE_HREF;
+exports.NgLocalization_5 = common_1.NgLocalization;
+exports.NgLocaleLocalization_6 = common_1.NgLocaleLocalization;
+exports.ɵa_8 = common_1.ɵa;
+exports.CommonModule_9 = common_1.CommonModule;
+exports.DOCUMENT_31 = common_1.DOCUMENT;
+exports.Location_65 = common_1.Location;
+exports.LocationStrategy_66 = common_1.LocationStrategy;
+exports.PlatformLocation_89 = common_1.PlatformLocation;
+exports.APP_BASE_HREF_90 = common_1.APP_BASE_HREF;
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-exports.LOCALE_ID_5 = core_1.LOCALE_ID;
-exports.ApplicationRef_8 = core_1.ApplicationRef;
-exports.NgZone_9 = core_1.NgZone;
-exports.ɵConsole_10 = core_1.ɵConsole;
-exports.Injector_11 = core_1.Injector;
-exports.ErrorHandler_12 = core_1.ErrorHandler;
-exports.ComponentFactoryResolver_13 = core_1.ComponentFactoryResolver;
-exports.ApplicationInitStatus_14 = core_1.ApplicationInitStatus;
-exports.ApplicationModule_15 = core_1.ApplicationModule;
-exports.APP_INITIALIZER_16 = core_1.APP_INITIALIZER;
-exports.Compiler_17 = core_1.Compiler;
-exports.APP_ID_18 = core_1.APP_ID;
-exports.ɵi_19 = core_1.ɵi;
-exports.IterableDiffers_20 = core_1.IterableDiffers;
-exports.ɵn_21 = core_1.ɵn;
-exports.KeyValueDiffers_22 = core_1.KeyValueDiffers;
-exports.ɵo_23 = core_1.ɵo;
-exports.ɵq_24 = core_1.ɵq;
-exports.Sanitizer_25 = core_1.Sanitizer;
-exports.RendererFactory2_40 = core_1.RendererFactory2;
-exports.Testability_42 = core_1.Testability;
-exports.NgProbeToken_44 = core_1.NgProbeToken;
-exports.PLATFORM_ID_53 = core_1.PLATFORM_ID;
-exports.NgModuleFactoryLoader_71 = core_1.NgModuleFactoryLoader;
-exports.SystemJsNgModuleLoader_78 = core_1.SystemJsNgModuleLoader;
-exports.SystemJsNgModuleLoaderConfig_79 = core_1.SystemJsNgModuleLoaderConfig;
-exports.APP_BOOTSTRAP_LISTENER_94 = core_1.APP_BOOTSTRAP_LISTENER;
+exports.LOCALE_ID_7 = core_1.LOCALE_ID;
+exports.ApplicationRef_10 = core_1.ApplicationRef;
+exports.NgZone_11 = core_1.NgZone;
+exports.ɵConsole_12 = core_1.ɵConsole;
+exports.Injector_13 = core_1.Injector;
+exports.ErrorHandler_14 = core_1.ErrorHandler;
+exports.ComponentFactoryResolver_15 = core_1.ComponentFactoryResolver;
+exports.ApplicationInitStatus_16 = core_1.ApplicationInitStatus;
+exports.ApplicationModule_17 = core_1.ApplicationModule;
+exports.APP_INITIALIZER_18 = core_1.APP_INITIALIZER;
+exports.Compiler_19 = core_1.Compiler;
+exports.APP_ID_20 = core_1.APP_ID;
+exports.ɵi_21 = core_1.ɵi;
+exports.IterableDiffers_22 = core_1.IterableDiffers;
+exports.ɵn_23 = core_1.ɵn;
+exports.KeyValueDiffers_24 = core_1.KeyValueDiffers;
+exports.ɵo_25 = core_1.ɵo;
+exports.ɵq_26 = core_1.ɵq;
+exports.Sanitizer_27 = core_1.Sanitizer;
+exports.RendererFactory2_42 = core_1.RendererFactory2;
+exports.Testability_44 = core_1.Testability;
+exports.NgProbeToken_46 = core_1.NgProbeToken;
+exports.PLATFORM_ID_55 = core_1.PLATFORM_ID;
+exports.NgModuleFactoryLoader_73 = core_1.NgModuleFactoryLoader;
+exports.SystemJsNgModuleLoader_80 = core_1.SystemJsNgModuleLoader;
+exports.SystemJsNgModuleLoaderConfig_81 = core_1.SystemJsNgModuleLoaderConfig;
+exports.APP_BOOTSTRAP_LISTENER_96 = core_1.APP_BOOTSTRAP_LISTENER;
 var platform_browser_1 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-exports.DomSanitizer_26 = platform_browser_1.DomSanitizer;
-exports.BrowserModule_27 = platform_browser_1.BrowserModule;
-exports.ɵe_28 = platform_browser_1.ɵe;
-exports.ɵa_30 = platform_browser_1.ɵa;
-exports.EVENT_MANAGER_PLUGINS_31 = platform_browser_1.EVENT_MANAGER_PLUGINS;
-exports.ɵDomEventsPlugin_32 = platform_browser_1.ɵDomEventsPlugin;
-exports.ɵKeyEventsPlugin_33 = platform_browser_1.ɵKeyEventsPlugin;
-exports.ɵHammerGesturesPlugin_34 = platform_browser_1.ɵHammerGesturesPlugin;
-exports.HAMMER_GESTURE_CONFIG_35 = platform_browser_1.HAMMER_GESTURE_CONFIG;
-exports.HammerGestureConfig_36 = platform_browser_1.HammerGestureConfig;
-exports.ɵDomRendererFactory2_37 = platform_browser_1.ɵDomRendererFactory2;
-exports.EventManager_38 = platform_browser_1.EventManager;
-exports.ɵDomSharedStylesHost_39 = platform_browser_1.ɵDomSharedStylesHost;
-exports.ɵSharedStylesHost_41 = platform_browser_1.ɵSharedStylesHost;
-exports.ɵh_43 = platform_browser_1.ɵh;
-exports.Meta_45 = platform_browser_1.Meta;
-exports.Title_46 = platform_browser_1.Title;
+exports.DomSanitizer_28 = platform_browser_1.DomSanitizer;
+exports.BrowserModule_29 = platform_browser_1.BrowserModule;
+exports.ɵe_30 = platform_browser_1.ɵe;
+exports.ɵa_32 = platform_browser_1.ɵa;
+exports.EVENT_MANAGER_PLUGINS_33 = platform_browser_1.EVENT_MANAGER_PLUGINS;
+exports.ɵDomEventsPlugin_34 = platform_browser_1.ɵDomEventsPlugin;
+exports.ɵKeyEventsPlugin_35 = platform_browser_1.ɵKeyEventsPlugin;
+exports.ɵHammerGesturesPlugin_36 = platform_browser_1.ɵHammerGesturesPlugin;
+exports.HAMMER_GESTURE_CONFIG_37 = platform_browser_1.HAMMER_GESTURE_CONFIG;
+exports.HammerGestureConfig_38 = platform_browser_1.HammerGestureConfig;
+exports.ɵDomRendererFactory2_39 = platform_browser_1.ɵDomRendererFactory2;
+exports.EventManager_40 = platform_browser_1.EventManager;
+exports.ɵDomSharedStylesHost_41 = platform_browser_1.ɵDomSharedStylesHost;
+exports.ɵSharedStylesHost_43 = platform_browser_1.ɵSharedStylesHost;
+exports.ɵh_45 = platform_browser_1.ɵh;
+exports.Meta_47 = platform_browser_1.Meta;
+exports.Title_48 = platform_browser_1.Title;
 var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-exports.ɵi_47 = http_1.ɵi;
-exports.HttpXsrfTokenExtractor_48 = http_1.HttpXsrfTokenExtractor;
-exports.ɵg_49 = http_1.ɵg;
-exports.HttpClientXsrfModule_50 = http_1.HttpClientXsrfModule;
-exports.HTTP_INTERCEPTORS_51 = http_1.HTTP_INTERCEPTORS;
-exports.ɵh_52 = http_1.ɵh;
-exports.ɵf_54 = http_1.ɵf;
-exports.HttpClientModule_55 = http_1.HttpClientModule;
-exports.HttpClient_56 = http_1.HttpClient;
-exports.HttpHandler_57 = http_1.HttpHandler;
-exports.ɵc_58 = http_1.ɵc;
-exports.HttpBackend_59 = http_1.HttpBackend;
-exports.HttpXhrBackend_60 = http_1.HttpXhrBackend;
-exports.XhrFactory_61 = http_1.XhrFactory;
-exports.ɵe_62 = http_1.ɵe;
+exports.ɵi_49 = http_1.ɵi;
+exports.HttpXsrfTokenExtractor_50 = http_1.HttpXsrfTokenExtractor;
+exports.ɵg_51 = http_1.ɵg;
+exports.HttpClientXsrfModule_52 = http_1.HttpClientXsrfModule;
+exports.HTTP_INTERCEPTORS_53 = http_1.HTTP_INTERCEPTORS;
+exports.ɵh_54 = http_1.ɵh;
+exports.ɵf_56 = http_1.ɵf;
+exports.HttpClientModule_57 = http_1.HttpClientModule;
+exports.HttpClient_58 = http_1.HttpClient;
+exports.HttpHandler_59 = http_1.HttpHandler;
+exports.ɵc_60 = http_1.ɵc;
+exports.HttpBackend_61 = http_1.HttpBackend;
+exports.HttpXhrBackend_62 = http_1.HttpXhrBackend;
+exports.XhrFactory_63 = http_1.XhrFactory;
+exports.ɵe_64 = http_1.ɵe;
 var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-exports.UrlSerializer_66 = router_1.UrlSerializer;
-exports.DefaultUrlSerializer_67 = router_1.DefaultUrlSerializer;
-exports.Router_68 = router_1.Router;
-exports.ɵe_69 = router_1.ɵe;
-exports.ChildrenOutletContexts_70 = router_1.ChildrenOutletContexts;
-exports.ROUTES_72 = router_1.ROUTES;
-exports.ROUTER_CONFIGURATION_73 = router_1.ROUTER_CONFIGURATION;
-exports.UrlHandlingStrategy_74 = router_1.UrlHandlingStrategy;
-exports.RouteReuseStrategy_75 = router_1.RouteReuseStrategy;
-exports.ActivatedRoute_76 = router_1.ActivatedRoute;
-exports.ɵf_77 = router_1.ɵf;
-exports.RouterPreloader_80 = router_1.RouterPreloader;
-exports.PreloadingStrategy_81 = router_1.PreloadingStrategy;
-exports.NoPreloading_82 = router_1.NoPreloading;
-exports.PreloadAllModules_83 = router_1.PreloadAllModules;
-exports.ɵa_84 = router_1.ɵa;
-exports.ɵd_85 = router_1.ɵd;
-exports.ɵc_86 = router_1.ɵc;
-exports.ɵb_89 = router_1.ɵb;
-exports.ɵg_90 = router_1.ɵg;
-exports.ɵh_91 = router_1.ɵh;
-exports.ROUTER_INITIALIZER_92 = router_1.ROUTER_INITIALIZER;
-exports.ɵi_93 = router_1.ɵi;
-exports.RouterModule_96 = router_1.RouterModule;
+exports.UrlSerializer_68 = router_1.UrlSerializer;
+exports.DefaultUrlSerializer_69 = router_1.DefaultUrlSerializer;
+exports.Router_70 = router_1.Router;
+exports.ɵe_71 = router_1.ɵe;
+exports.ChildrenOutletContexts_72 = router_1.ChildrenOutletContexts;
+exports.ROUTES_74 = router_1.ROUTES;
+exports.ROUTER_CONFIGURATION_75 = router_1.ROUTER_CONFIGURATION;
+exports.UrlHandlingStrategy_76 = router_1.UrlHandlingStrategy;
+exports.RouteReuseStrategy_77 = router_1.RouteReuseStrategy;
+exports.ActivatedRoute_78 = router_1.ActivatedRoute;
+exports.ɵf_79 = router_1.ɵf;
+exports.RouterPreloader_82 = router_1.RouterPreloader;
+exports.PreloadingStrategy_83 = router_1.PreloadingStrategy;
+exports.NoPreloading_84 = router_1.NoPreloading;
+exports.PreloadAllModules_85 = router_1.PreloadAllModules;
+exports.ɵa_86 = router_1.ɵa;
+exports.ɵd_87 = router_1.ɵd;
+exports.ɵc_88 = router_1.ɵc;
+exports.ɵb_91 = router_1.ɵb;
+exports.ɵg_92 = router_1.ɵg;
+exports.ɵh_93 = router_1.ɵh;
+exports.ROUTER_INITIALIZER_94 = router_1.ROUTER_INITIALIZER;
+exports.ɵi_95 = router_1.ɵi;
+exports.RouterModule_98 = router_1.RouterModule;
 var cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
-exports.CookieService_95 = cookie_service_1.CookieService;
+exports.CookieService_97 = cookie_service_1.CookieService;
 var i0 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var i1 = __webpack_require__("./src/app/app.module.ts");
 var i2 = __webpack_require__("./src/app/app.component.ts");
-var i3 = __webpack_require__("./src/app/app.component.ngfactory.js");
-var i4 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
-var i5 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
-var i6 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
-var i7 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i8 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
-var i9 = __webpack_require__("./src/app/app-routing.module.ts");
-var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i4.NgLocalization, i4.NgLocaleLocalization, [i0.LOCALE_ID, [2, i4.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i5.DomSanitizer, i5.ɵe, [i4.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i5.DomSanitizer]), i0.ɵmpd(4608, i5.HAMMER_GESTURE_CONFIG, i5.HammerGestureConfig, []), i0.ɵmpd(5120, i5.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i5.ɵDomEventsPlugin(p0_0, p0_1), new i5.ɵKeyEventsPlugin(p1_0), new i5.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i4.DOCUMENT, i0.NgZone, i4.DOCUMENT, i4.DOCUMENT, i5.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i5.EventManager, i5.EventManager, [i5.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i5.ɵDomSharedStylesHost, i5.ɵDomSharedStylesHost, [i4.DOCUMENT]), i0.ɵmpd(4608, i5.ɵDomRendererFactory2, i5.ɵDomRendererFactory2, [i5.EventManager, i5.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i5.ɵDomRendererFactory2]), i0.ɵmpd(6144, i5.ɵSharedStylesHost, null, [i5.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i5.Meta, i5.Meta, [i4.DOCUMENT]), i0.ɵmpd(4608, i5.Title, i5.Title, [i4.DOCUMENT]), i0.ɵmpd(4608, i6.HttpXsrfTokenExtractor, i6.ɵh, [i4.DOCUMENT, i0.PLATFORM_ID, i6.ɵf]), i0.ɵmpd(4608, i6.ɵi, i6.ɵi, [i6.HttpXsrfTokenExtractor, i6.ɵg]), i0.ɵmpd(5120, i6.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i6.ɵi]), i0.ɵmpd(4608, i6.ɵe, i6.ɵe, []), i0.ɵmpd(6144, i6.XhrFactory, null, [i6.ɵe]), i0.ɵmpd(4608, i6.HttpXhrBackend, i6.HttpXhrBackend, [i6.XhrFactory]), i0.ɵmpd(6144, i6.HttpBackend, null, [i6.HttpXhrBackend]), i0.ɵmpd(4608, i6.HttpHandler, i6.ɵc, [i6.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i6.HttpClient, i6.HttpClient, [i6.HttpHandler]), i0.ɵmpd(5120, i7.ActivatedRoute, i7.ɵf, [i7.Router]), i0.ɵmpd(4608, i7.NoPreloading, i7.NoPreloading, []), i0.ɵmpd(6144, i7.PreloadingStrategy, null, [i7.NoPreloading]), i0.ɵmpd(135680, i7.RouterPreloader, i7.RouterPreloader, [i7.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i7.PreloadingStrategy]), i0.ɵmpd(4608, i7.PreloadAllModules, i7.PreloadAllModules, []), i0.ɵmpd(5120, i7.ROUTER_INITIALIZER, i7.ɵi, [i7.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i7.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i8.CookieService, i8.CookieService, [i4.DOCUMENT]), i0.ɵmpd(512, i4.CommonModule, i4.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i5.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i7.ɵb()]; }, []), i0.ɵmpd(512, i7.ɵg, i7.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i5.ɵh(p0_0), i7.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i7.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i5.BrowserModule, i5.BrowserModule, [[3, i5.BrowserModule]]), i0.ɵmpd(512, i6.HttpClientXsrfModule, i6.HttpClientXsrfModule, []), i0.ɵmpd(512, i6.HttpClientModule, i6.HttpClientModule, []), i0.ɵmpd(1024, i7.ɵa, i7.ɵd, [[3, i7.Router]]), i0.ɵmpd(512, i7.UrlSerializer, i7.DefaultUrlSerializer, []), i0.ɵmpd(512, i7.ChildrenOutletContexts, i7.ChildrenOutletContexts, []), i0.ɵmpd(256, i7.ROUTER_CONFIGURATION, {}, []), i0.ɵmpd(1024, i4.LocationStrategy, i7.ɵc, [i4.PlatformLocation, [2, i4.APP_BASE_HREF], i7.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i4.Location, i4.Location, [i4.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i7.ROUTES, function () { return [[{ path: "", redirectTo: "home", pathMatch: "full" }, { path: "home", loadChildren: "app/home/home.module#HomeModule" }, { path: "registeration", loadChildren: "app/registeration/registeration.module#RegisterationModule" }, { path: "login", loadChildren: "app/login/login.module#LoginModule" }, { path: "about", loadChildren: "app/about/about.module#AboutModule" }, { path: "logout", loadChildren: "app/logout/logout.module#LogoutModule" }, { path: "search", loadChildren: "app/search/search.module#SearchModule" }]]; }, []), i0.ɵmpd(1024, i7.Router, i7.ɵe, [i0.ApplicationRef, i7.UrlSerializer, i7.ChildrenOutletContexts, i4.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i7.ROUTES, i7.ROUTER_CONFIGURATION, [2, i7.UrlHandlingStrategy], [2, i7.RouteReuseStrategy]]), i0.ɵmpd(512, i7.RouterModule, i7.RouterModule, [[2, i7.ɵa], [2, i7.Router]]), i0.ɵmpd(512, i9.AppRoutingModule, i9.AppRoutingModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i6.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i6.ɵg, "X-XSRF-TOKEN", [])]); });
+var i3 = __webpack_require__("./src/app/reload/reload.component.ngfactory.js");
+var i4 = __webpack_require__("./src/app/app.component.ngfactory.js");
+var i5 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i6 = __webpack_require__("./node_modules/@angular/platform-browser/esm5/platform-browser.js");
+var i7 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var i8 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i9 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i10 = __webpack_require__("./src/app/reload/reload.component.ts");
+var i11 = __webpack_require__("./src/app/app-routing.module.ts");
+var AppModuleNgFactory = i0.ɵcmf(i1.AppModule, [i2.AppComponent], function (_l) { return i0.ɵmod([i0.ɵmpd(512, i0.ComponentFactoryResolver, i0.ɵCodegenComponentFactoryResolver, [[8, [i3.ReloadComponentNgFactory, i4.AppComponentNgFactory]], [3, i0.ComponentFactoryResolver], i0.NgModuleRef]), i0.ɵmpd(5120, i0.LOCALE_ID, i0.ɵq, [[3, i0.LOCALE_ID]]), i0.ɵmpd(4608, i5.NgLocalization, i5.NgLocaleLocalization, [i0.LOCALE_ID, [2, i5.ɵa]]), i0.ɵmpd(5120, i0.APP_ID, i0.ɵi, []), i0.ɵmpd(5120, i0.IterableDiffers, i0.ɵn, []), i0.ɵmpd(5120, i0.KeyValueDiffers, i0.ɵo, []), i0.ɵmpd(4608, i6.DomSanitizer, i6.ɵe, [i5.DOCUMENT]), i0.ɵmpd(6144, i0.Sanitizer, null, [i6.DomSanitizer]), i0.ɵmpd(4608, i6.HAMMER_GESTURE_CONFIG, i6.HammerGestureConfig, []), i0.ɵmpd(5120, i6.EVENT_MANAGER_PLUGINS, function (p0_0, p0_1, p1_0, p2_0, p2_1) { return [new i6.ɵDomEventsPlugin(p0_0, p0_1), new i6.ɵKeyEventsPlugin(p1_0), new i6.ɵHammerGesturesPlugin(p2_0, p2_1)]; }, [i5.DOCUMENT, i0.NgZone, i5.DOCUMENT, i5.DOCUMENT, i6.HAMMER_GESTURE_CONFIG]), i0.ɵmpd(4608, i6.EventManager, i6.EventManager, [i6.EVENT_MANAGER_PLUGINS, i0.NgZone]), i0.ɵmpd(135680, i6.ɵDomSharedStylesHost, i6.ɵDomSharedStylesHost, [i5.DOCUMENT]), i0.ɵmpd(4608, i6.ɵDomRendererFactory2, i6.ɵDomRendererFactory2, [i6.EventManager, i6.ɵDomSharedStylesHost]), i0.ɵmpd(6144, i0.RendererFactory2, null, [i6.ɵDomRendererFactory2]), i0.ɵmpd(6144, i6.ɵSharedStylesHost, null, [i6.ɵDomSharedStylesHost]), i0.ɵmpd(4608, i0.Testability, i0.Testability, [i0.NgZone]), i0.ɵmpd(4608, i6.Meta, i6.Meta, [i5.DOCUMENT]), i0.ɵmpd(4608, i6.Title, i6.Title, [i5.DOCUMENT]), i0.ɵmpd(4608, i7.HttpXsrfTokenExtractor, i7.ɵh, [i5.DOCUMENT, i0.PLATFORM_ID, i7.ɵf]), i0.ɵmpd(4608, i7.ɵi, i7.ɵi, [i7.HttpXsrfTokenExtractor, i7.ɵg]), i0.ɵmpd(5120, i7.HTTP_INTERCEPTORS, function (p0_0) { return [p0_0]; }, [i7.ɵi]), i0.ɵmpd(4608, i7.ɵe, i7.ɵe, []), i0.ɵmpd(6144, i7.XhrFactory, null, [i7.ɵe]), i0.ɵmpd(4608, i7.HttpXhrBackend, i7.HttpXhrBackend, [i7.XhrFactory]), i0.ɵmpd(6144, i7.HttpBackend, null, [i7.HttpXhrBackend]), i0.ɵmpd(4608, i7.HttpHandler, i7.ɵc, [i7.HttpBackend, i0.Injector]), i0.ɵmpd(4608, i7.HttpClient, i7.HttpClient, [i7.HttpHandler]), i0.ɵmpd(5120, i8.ActivatedRoute, i8.ɵf, [i8.Router]), i0.ɵmpd(4608, i8.NoPreloading, i8.NoPreloading, []), i0.ɵmpd(6144, i8.PreloadingStrategy, null, [i8.NoPreloading]), i0.ɵmpd(135680, i8.RouterPreloader, i8.RouterPreloader, [i8.Router, i0.NgModuleFactoryLoader, i0.Compiler, i0.Injector, i8.PreloadingStrategy]), i0.ɵmpd(4608, i8.PreloadAllModules, i8.PreloadAllModules, []), i0.ɵmpd(5120, i8.ROUTER_INITIALIZER, i8.ɵi, [i8.ɵg]), i0.ɵmpd(5120, i0.APP_BOOTSTRAP_LISTENER, function (p0_0) { return [p0_0]; }, [i8.ROUTER_INITIALIZER]), i0.ɵmpd(4608, i9.CookieService, i9.CookieService, [i5.DOCUMENT]), i0.ɵmpd(512, i5.CommonModule, i5.CommonModule, []), i0.ɵmpd(1024, i0.ErrorHandler, i6.ɵa, []), i0.ɵmpd(1024, i0.NgProbeToken, function () { return [i8.ɵb()]; }, []), i0.ɵmpd(512, i8.ɵg, i8.ɵg, [i0.Injector]), i0.ɵmpd(1024, i0.APP_INITIALIZER, function (p0_0, p1_0) { return [i6.ɵh(p0_0), i8.ɵh(p1_0)]; }, [[2, i0.NgProbeToken], i8.ɵg]), i0.ɵmpd(512, i0.ApplicationInitStatus, i0.ApplicationInitStatus, [[2, i0.APP_INITIALIZER]]), i0.ɵmpd(131584, i0.ApplicationRef, i0.ApplicationRef, [i0.NgZone, i0.ɵConsole, i0.Injector, i0.ErrorHandler, i0.ComponentFactoryResolver, i0.ApplicationInitStatus]), i0.ɵmpd(512, i0.ApplicationModule, i0.ApplicationModule, [i0.ApplicationRef]), i0.ɵmpd(512, i6.BrowserModule, i6.BrowserModule, [[3, i6.BrowserModule]]), i0.ɵmpd(512, i7.HttpClientXsrfModule, i7.HttpClientXsrfModule, []), i0.ɵmpd(512, i7.HttpClientModule, i7.HttpClientModule, []), i0.ɵmpd(1024, i8.ɵa, i8.ɵd, [[3, i8.Router]]), i0.ɵmpd(512, i8.UrlSerializer, i8.DefaultUrlSerializer, []), i0.ɵmpd(512, i8.ChildrenOutletContexts, i8.ChildrenOutletContexts, []), i0.ɵmpd(256, i8.ROUTER_CONFIGURATION, {}, []), i0.ɵmpd(1024, i5.LocationStrategy, i8.ɵc, [i5.PlatformLocation, [2, i5.APP_BASE_HREF], i8.ROUTER_CONFIGURATION]), i0.ɵmpd(512, i5.Location, i5.Location, [i5.LocationStrategy]), i0.ɵmpd(512, i0.Compiler, i0.Compiler, []), i0.ɵmpd(512, i0.NgModuleFactoryLoader, i0.SystemJsNgModuleLoader, [i0.Compiler, [2, i0.SystemJsNgModuleLoaderConfig]]), i0.ɵmpd(1024, i8.ROUTES, function () { return [[{ path: "", redirectTo: "home", pathMatch: "full" }, { path: "reload", component: i10.ReloadComponent }, { path: "home", loadChildren: "app/home/home.module#HomeModule" }, { path: "registeration", loadChildren: "app/registeration/registeration.module#RegisterationModule" }, { path: "login", loadChildren: "app/login/login.module#LoginModule" }, { path: "about", loadChildren: "app/about/about.module#AboutModule" }, { path: "logout", loadChildren: "app/logout/logout.module#LogoutModule" }, { path: "search", loadChildren: "app/search/search.module#SearchModule" }]]; }, []), i0.ɵmpd(1024, i8.Router, i8.ɵe, [i0.ApplicationRef, i8.UrlSerializer, i8.ChildrenOutletContexts, i5.Location, i0.Injector, i0.NgModuleFactoryLoader, i0.Compiler, i8.ROUTES, i8.ROUTER_CONFIGURATION, [2, i8.UrlHandlingStrategy], [2, i8.RouteReuseStrategy]]), i0.ɵmpd(512, i8.RouterModule, i8.RouterModule, [[2, i8.ɵa], [2, i8.Router]]), i0.ɵmpd(512, i11.AppRoutingModule, i11.AppRoutingModule, []), i0.ɵmpd(512, i1.AppModule, i1.AppModule, []), i0.ɵmpd(256, i7.ɵf, "XSRF-TOKEN", []), i0.ɵmpd(256, i7.ɵg, "X-XSRF-TOKEN", [])]); });
 exports.AppModuleNgFactory = AppModuleNgFactory;
 
 
@@ -394,17 +398,17 @@ var NaviBarComponent = /** @class */ (function () {
         }
         this.router.events.subscribe(function (path) {
             if (path['url']) {
-                if (path['url'].slice(1, 6) === 'home' || path['url'] === '/') {
+                if (path['url'].includes('home') || path['url'] === '/') {
                     _this.homeActive = 'underline-reveal-active';
                     _this.aboutActive = '';
                     _this.searchActive = '';
                 }
-                else if (path['url'].slice(1, 7) === 'about') {
+                else if (path['url'].includes('about')) {
                     _this.aboutActive = 'underline-reveal-active';
                     _this.homeActive = '';
                     _this.searchActive = '';
                 }
-                else if (path['url'].slice(1, 8) === 'search') {
+                else if (path['url'].includes('search')) {
                     _this.searchActive = 'underline-reveal-active';
                     _this.aboutActive = '';
                     _this.homeActive = '';
@@ -420,6 +424,96 @@ var NaviBarComponent = /** @class */ (function () {
     return NaviBarComponent;
 }());
 exports.NaviBarComponent = NaviBarComponent;
+
+
+/***/ }),
+
+/***/ "./src/app/reload/reload.component.css.shim.ngstyle.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var styles = [""];
+exports.styles = styles;
+
+
+/***/ }),
+
+/***/ "./src/app/reload/reload.component.ngfactory.js":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+/**
+ * @fileoverview This file was generated by the Angular template compiler. Do not edit.
+ *
+ * @suppress {suspiciousCode,uselessCode,missingProperties,missingOverride,checkTypes}
+ * tslint:disable
+ */ 
+Object.defineProperty(exports, "__esModule", { value: true });
+var cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+exports.CookieService_1 = cookie_service_1.CookieService;
+var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+exports.Inject_2 = core_1.Inject;
+exports.ɵa_3 = core_1.ɵa;
+exports.InjectionToken_5 = core_1.InjectionToken;
+exports.Injector_12 = core_1.Injector;
+exports.NgModuleFactoryLoader_13 = core_1.NgModuleFactoryLoader;
+exports.Compiler_14 = core_1.Compiler;
+var common_1 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+exports.DOCUMENT_4 = common_1.DOCUMENT;
+exports.Location_10 = common_1.Location;
+exports.LocationStrategy_11 = common_1.LocationStrategy;
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+exports.Router_6 = router_1.Router;
+exports.UrlSerializer_8 = router_1.UrlSerializer;
+exports.ChildrenOutletContexts_9 = router_1.ChildrenOutletContexts;
+var i0 = __webpack_require__("./src/app/reload/reload.component.css.shim.ngstyle.js");
+var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
+var i2 = __webpack_require__("./src/app/reload/reload.component.ts");
+var i3 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i4 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var styles_ReloadComponent = [i0.styles];
+var RenderType_ReloadComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_ReloadComponent, data: {} });
+exports.RenderType_ReloadComponent = RenderType_ReloadComponent;
+function View_ReloadComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  reload works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+exports.View_ReloadComponent_0 = View_ReloadComponent_0;
+function View_ReloadComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-reload", [], null, null, null, View_ReloadComponent_0, RenderType_ReloadComponent)), i1.ɵdid(1, 114688, null, 0, i2.ReloadComponent, [i3.CookieService, i4.Router], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+exports.View_ReloadComponent_Host_0 = View_ReloadComponent_Host_0;
+var ReloadComponentNgFactory = i1.ɵccf("app-reload", i2.ReloadComponent, View_ReloadComponent_Host_0, {}, {}, []);
+exports.ReloadComponentNgFactory = ReloadComponentNgFactory;
+
+
+/***/ }),
+
+/***/ "./src/app/reload/reload.component.ts":
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+Object.defineProperty(exports, "__esModule", { value: true });
+var ngx_cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/index.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var ReloadComponent = /** @class */ (function () {
+    function ReloadComponent(cookie, router) {
+        this.cookie = cookie;
+        this.router = router;
+    }
+    ReloadComponent.prototype.ngOnInit = function () {
+        var url = this.cookie.get('reload');
+        this.cookie.delete('reload');
+        this.router.navigate([url]);
+    };
+    return ReloadComponent;
+}());
+exports.ReloadComponent = ReloadComponent;
 
 
 /***/ }),
