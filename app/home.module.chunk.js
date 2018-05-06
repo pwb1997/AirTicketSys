@@ -139,17 +139,27 @@ var cookie_service_1 = __webpack_require__("./node_modules/ngx-cookie-service/co
 exports.CookieService_11 = cookie_service_1.CookieService;
 var i0 = __webpack_require__("./src/app/home/home-customer/home-customer.component.css.shim.ngstyle.js");
 var i1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
-var i2 = __webpack_require__("./src/app/home/home-customer/home-customer.component.ts");
-var i3 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
-var i4 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
+var i2 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
+var i3 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i4 = __webpack_require__("./src/app/home/home-customer/home-customer.component.ts");
+var i5 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
 var styles_HomeCustomerComponent = [i0.styles];
 var RenderType_HomeCustomerComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_HomeCustomerComponent, data: {} });
 exports.RenderType_HomeCustomerComponent = RenderType_HomeCustomerComponent;
-function View_HomeCustomerComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  home-customer works!\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], null, null); }
+function View_HomeCustomerComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 13, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 2, "a", [["routerLink", "/flights"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 3).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(3, 671744, null, 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["View all flights"])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(6, 0, null, null, 2, "a", [["routerLink", "/search"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 7).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(7, 671744, null, 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["Search for flights"])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(10, 0, null, null, 2, "a", [["routerLink", "/track"]], [[1, "target", 0], [8, "href", 4]], [[null, "click"]], function (_v, en, $event) { var ad = true; if (("click" === en)) {
+        var pd_0 = (i1.ɵnov(_v, 11).onClick($event.button, $event.ctrlKey, $event.metaKey, $event.shiftKey) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), i1.ɵdid(11, 671744, null, 0, i2.RouterLinkWithHref, [i2.Router, i2.ActivatedRoute, i3.LocationStrategy], { routerLink: [0, "routerLink"] }, null), (_l()(), i1.ɵted(-1, null, ["Track my spending"])), (_l()(), i1.ɵted(-1, null, ["\n"])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var currVal_2 = "/flights"; _ck(_v, 3, 0, currVal_2); var currVal_5 = "/search"; _ck(_v, 7, 0, currVal_5); var currVal_8 = "/track"; _ck(_v, 11, 0, currVal_8); }, function (_ck, _v) { var currVal_0 = i1.ɵnov(_v, 3).target; var currVal_1 = i1.ɵnov(_v, 3).href; _ck(_v, 2, 0, currVal_0, currVal_1); var currVal_3 = i1.ɵnov(_v, 7).target; var currVal_4 = i1.ɵnov(_v, 7).href; _ck(_v, 6, 0, currVal_3, currVal_4); var currVal_6 = i1.ɵnov(_v, 11).target; var currVal_7 = i1.ɵnov(_v, 11).href; _ck(_v, 10, 0, currVal_6, currVal_7); }); }
 exports.View_HomeCustomerComponent_0 = View_HomeCustomerComponent_0;
-function View_HomeCustomerComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-home-customer", [], null, null, null, View_HomeCustomerComponent_0, RenderType_HomeCustomerComponent)), i1.ɵdid(1, 114688, null, 0, i2.HomeCustomerComponent, [i3.Router, i4.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_HomeCustomerComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-home-customer", [], null, null, null, View_HomeCustomerComponent_0, RenderType_HomeCustomerComponent)), i1.ɵdid(1, 114688, null, 0, i4.HomeCustomerComponent, [i2.Router, i5.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_HomeCustomerComponent_Host_0 = View_HomeCustomerComponent_Host_0;
-var HomeCustomerComponentNgFactory = i1.ɵccf("app-home-customer", i2.HomeCustomerComponent, View_HomeCustomerComponent_Host_0, {}, {}, []);
+var HomeCustomerComponentNgFactory = i1.ɵccf("app-home-customer", i4.HomeCustomerComponent, View_HomeCustomerComponent_Host_0, {}, {}, []);
 exports.HomeCustomerComponentNgFactory = HomeCustomerComponentNgFactory;
 
 

@@ -1,0 +1,111 @@
+<div class='main'>
+  {{message}}
+  <div [style.display]='customerDisplay'>
+    <h1>View My Flights</h1>
+    <h2>Upcoming Flights</h2>
+    <table>
+      <tr>
+        <th>Ticket #</th>
+        <th>Airline Name</th>
+        <th>Flight #</th>
+        <th>Departure Airport</th>
+        <th>Departure Time</th>
+        <th>Arrival Airport</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let each of upcoming">
+        <td>{{each.ticket_id}}</td>
+        <td>{{each.airline_name}}</td>
+        <td>{{each.flight_num}}</td>
+        <td>{{each.departure_airport}}</td>
+        <td>{{displayTime(each.departure_time)}}</td>
+        <td>{{each.arrival_airport}}</td>
+        <td>{{displayTime(each.arrival_time)}}</td>
+        <td>{{each.price}}</td>
+        <td>{{each.status}}</td>
+      </tr>
+    </table>
+    <h2>History</h2>
+    <table>
+      <tr>
+        <th>Ticket #</th>
+        <th>Airline Name</th>
+        <th>Flight #</th>
+        <th>Departure Airport</th>
+        <th>Departure Time</th>
+        <th>Arrival Airport</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let each of history">
+        <td>{{each.ticket_id}}</td>
+        <td>{{each.airline_name}}</td>
+        <td>{{each.flight_num}}</td>
+        <td>{{each.departure_airport}}</td>
+        <td>{{displayTime(each.departure_time)}}</td>
+        <td>{{each.arrival_airport}}</td>
+        <td>{{displayTime(each.arrival_time)}}</td>
+        <td>{{each.price}}</td>
+        <td>{{each.status}}</td>
+      </tr>
+    </table>
+  </div>
+  <div [style.display]='agentDisplay'>
+      <h1>View My Flights</h1>
+      <h2>Upcoming Flights</h2>
+      <table>
+        <tr>
+          <th>Ticket #</th>
+          <th>Booked For</th>
+          <th>Airline Name</th>
+          <th>Flight #</th>
+          <th>Departure Airport</th>
+          <th>Departure Time</th>
+          <th>Arrival Airport</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+        <tr *ngFor="let each of upcoming">
+          <td>{{each.ticket_id}}</td>
+          <td>{{each.customer_email}}</td>
+          <td>{{each.airline_name}}</td>
+          <td>{{each.flight_num}}</td>
+          <td>{{each.departure_airport}}</td>
+          <td>{{displayTime(each.departure_time)}}</td>
+          <td>{{each.arrival_airport}}</td>
+          <td>{{displayTime(each.arrival_time)}}</td>
+          <td>{{each.price}}</td>
+          <td>{{each.status}}</td>
+        </tr>
+      </table>
+      <h2>History</h2>
+      <table>
+        <tr>
+          <th>Ticket #</th>
+          <th>Airline Name</th>
+          <th>Flight #</th>
+          <th>Departure Airport</th>
+          <th>Departure Time</th>
+          <th>Arrival Airport</th>
+          <th>Arrival Time</th>
+          <th>Price</th>
+          <th>Status</th>
+        </tr>
+        <tr *ngFor="let each of history">
+          <td>{{each.ticket_id}}</td>
+          <td>{{each.airline_name}}</td>
+          <td>{{each.flight_num}}</td>
+          <td>{{each.departure_airport}}</td>
+          <td>{{displayTime(each.departure_time)}}</td>
+          <td>{{each.arrival_airport}}</td>
+          <td>{{displayTime(each.arrival_time)}}</td>
+          <td>{{each.price}}</td>
+          <td>{{each.status}}</td>
+        </tr>
+      </table>
+    </div>
+</div>

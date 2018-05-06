@@ -1,16 +1,15 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-
-import { PurchaseComponent } from './purchase.component';
+import { FlightsComponent } from './flights.component';
 import { Routes, RouterModule } from '@angular/router';
-import { NgForm, FormsModule } from '@angular/forms';
+import { FormsModule } from '@angular/forms';
 
 const routes: Routes = [
-  { path: '', component: PurchaseComponent }
+  { path: '', component: FlightsComponent }
 ];
 
 @NgModule({
   imports: [CommonModule, RouterModule.forChild(routes), FormsModule],
-  declarations: [PurchaseComponent]
+  declarations: [FlightsComponent]
 })
-export class PurchaseModule { }
+export class FlightsModule { }

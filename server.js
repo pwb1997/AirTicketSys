@@ -43,6 +43,59 @@ app.get('/airport', (req, res) => {
     })
 })
 
+app.get('/getFlights', (req, res) => {
+    const result = {};
+    date = new Date(req.body.date);
+    date = date.getUTCFullYear() + '-' +
+        ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+        ('00' + date.getUTCDate()).slice(-2) + ' ' +
+        ('00' + date.getUTCHours()).slice(-2) + ':' +
+        ('00' + date.getUTCMinutes()).slice(-2) + ':' +
+        ('00' + date.getUTCSeconds()).slice(-2);
+    if (req.session.type !== 'customer' && req.session.type !== 'booking_agent'){
+        res.sendStatus(409);
+        return;
+    }
+    if (req.session.type === 'customer') {
+        con.query("select * from ticket natural join purchases natural join flight where " +
+            "customer_email='" + req.session.pk + "' and departure_time >='" + date + "'", (err, upcoming) => {
+                if (err) {
+                    res.sendStatus(500);
+                    return;
+                }
+                result.upcoming = upcoming;
+                con.query("select * from ticket natural join purchases natural join flight where " +
+                    "customer_email='" + req.session.pk + "' and departure_time <'" + date + "'", (err, history) => {
+                        if (err) {
+                            res.sendStatus(500);
+                            return;
+                        }
+                        result.history = history;
+                        res.send(result);
+                    });
+            });
+    }
+    if (req.session.type === 'booking_agent') {
+        con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+            "email='" + req.session.pk + "' and departure_time >='" + date + "'", (err, upcoming) => {
+                if (err) {
+                    res.sendStatus(500);
+                    return;
+                }
+                result.upcoming = upcoming;
+                con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+                    "email='" + req.session.pk + "' and departure_time <'" + date + "'", (err, history) => {
+                        if (err) {
+                            res.sendStatus(500);
+                            return;
+                        }
+                        result.history = history;
+                        res.send(result);
+                    });
+            });
+    }
+})
+
 app.get('*', (req, res) => {
     res.sendFile(__dirname + '/app/index.html');
 })
@@ -185,6 +238,167 @@ app.post('/search', (req, res) => {
             res.sendStatus(200);
             console.log(getDate(), 'search request handled')
         })
+})
+
+app.post('/ticket', (req, res) => {
+    [airline_name, flight_num] = req.body.buyTicket.split("/");
+    let info;
+    con.query("select * from flight where " +
+        "airline_name='" + airline_name +
+        "' and flight_num='" + flight_num +
+        "'", (err, result) => {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            if (result.length === 0) {
+                res.sendStatus(404);
+                return;
+            }
+            info = result[0];
+            con.query("select * from airplane where " +
+                "airline_name='" + info.airline_name +
+                "' and airplane_id='" + info.airplane_id +
+                "'", (err, result) => {
+                    if (err) {
+                        res.sendStatus(500);
+                        return;
+                    }
+                    if (result.length === 0) {
+                        res.sendStatus(404);
+                        return;
+                    }
+                    info.seats = result[0].seats;
+                    con.query("select count(*) as c from ticket where " +
+                        "airline_name='" + info.airline_name +
+                        "' and flight_num='" + info.flight_num +
+                        "'", (err, result) => {
+                            if (err) {
+                                res.sendStatus(500);
+                                return;
+                            }
+                            info.remain = info.seats - result[0].c;
+                            res.send(info);
+                        })
+                })
+        })
+})
+
+app.post('/buy', (req, res) => {
+    if (req.session.type !== 'customer' && req.session.type !== 'booking_agent') {
+        console.log(getDate(), 'unauthorized purchased request refused');
+        res.sendStatus(402);
+        return
+    } else {
+        console.log(getDate(), 'purchase request received');
+        let info;
+        con.query("select * from flight where " +
+            "airline_name='" + req.body.airline_name +
+            "' and flight_num='" + req.body.flight_num +
+            "'", (err, result) => {
+                if (err) {
+                    console.log(err);
+                    res.sendStatus(500);
+                    return;
+                }
+                if (result.length === 0) {
+                    res.sendStatus(404);
+                    return;
+                }
+                info = result[0];
+                con.query("select * from airplane where " +
+                    "airline_name='" + info.airline_name +
+                    "' and airplane_id='" + info.airplane_id +
+                    "'", (err, result) => {
+                        if (err) {
+                            console.log(err);
+                            res.sendStatus(500);
+                            return;
+                        }
+                        if (result.length === 0) {
+                            res.sendStatus(404);
+                            return;
+                        }
+                        info.seats = result[0].seats;
+                        const purchase = () => {
+                            con.query("select count(*) as c from ticket", (err, result) => {
+                                if (err) {
+                                    console.log(err);
+                                    res.sendStatus(500);
+                                    return;
+                                }
+                                info.ticket_id = result[0].c;
+                                date = new Date();
+                                info.purchase_date = date.getUTCFullYear() + '-' +
+                                    ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+                                    ('00' + date.getUTCDate()).slice(-2) + ' ' +
+                                    ('00' + date.getUTCHours()).slice(-2) + ':' +
+                                    ('00' + date.getUTCMinutes()).slice(-2) + ':' +
+                                    ('00' + date.getUTCSeconds()).slice(-2);
+                                insertValues = "'" + info.ticket_id + "','" + info.airline_name + "','" + info.flight_num + "'";
+                                con.query("insert into ticket values (" + insertValues + ")", (err) => {
+                                    if (err) {
+                                        res.sendStatus(500);
+                                        return;
+                                    }
+                                    if (req.session.type === 'customer') {
+                                        insertValues = "'" + info.ticket_id + "','" + info.customer_email + "',null,'" + info.purchase_date + "'";
+                                    } else {
+                                        insertValues = "'" + info.ticket_id + "','" + info.customer_email + "','" + info.booking_agent_id + "','" + info.purchase_date + "'";
+                                    }
+                                    con.query("insert into purchases values (" + insertValues + ")", (err) => {
+                                        if (err) {
+                                            console.log(err);
+                                            res.sendStatus(500);
+                                            return;
+                                        }
+                                        console.log(getDate(), 'purchase request handled');
+                                        res.sendStatus(200);
+                                    })
+                                })
+                            })
+                        }
+                        con.query("select count(*) as c from ticket where " +
+                            "airline_name='" + info.airline_name +
+                            "' and flight_num='" + info.flight_num +
+                            "'", (err, result) => {
+                                if (err) {
+                                    res.sendStatus(500);
+                                    return;
+                                }
+                                if (result[0].c === info.seats) {
+                                    res.sendStatus(401);
+                                    return;
+                                }
+                                if (req.session.type === 'customer') {
+                                    info.customer_email = req.session.pk;
+                                    info.booking_agent_id = null;
+                                    purchase();
+                                } else {
+                                    con.query("select * from booking_agent where email='" + req.session.pk + "'", (err, result) => {
+                                        if (err) {
+                                            res.sendStatus(500);
+                                            return;
+                                        }
+                                        info.booking_agent_id = result[0].booking_agent_id;
+                                        con.query("select * from customer where email='" + req.body.customer_email + "'", (err, result) => {
+                                            if (err) {
+                                                res.sendStatus(500);
+                                                return;
+                                            }
+                                            if (result.length === 0) {
+                                                res.sendStatus(403);
+                                                return;
+                                            }
+                                            info.customer_email = req.body.customer_email;
+                                            purchase();
+                                        })
+                                    })
+                                }
+                            })
+                    })
+            })
+    }
 })
 
 console.log(getDate(), 'server started at port', PORT);
