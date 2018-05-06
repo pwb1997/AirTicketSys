@@ -54,21 +54,26 @@ var i3 = __webpack_require__("./src/app/search-box/search-box.component.ts");
 var i4 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var i5 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var i6 = __webpack_require__("./node_modules/ngx-cookie-service/cookie-service/cookie.service.js");
-var i7 = __webpack_require__("./src/app/search/search.component.ts");
+var i7 = __webpack_require__("./node_modules/@angular/common/esm5/common.js");
+var i8 = __webpack_require__("./src/app/search/search.component.ts");
 var styles_SearchComponent = [i0.styles];
 var RenderType_SearchComponent = i1.ɵcrt({ encapsulation: 0, styles: styles_SearchComponent, data: {} });
 exports.RenderType_SearchComponent = RenderType_SearchComponent;
-function View_SearchComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 13, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], [[4, "display", null]], [[null, "ngModelChange"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("ngModelChange" === en)) {
+function View_SearchComponent_1(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 28, "tr", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(3, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(5, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(6, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(8, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(9, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(11, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(12, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(14, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(15, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(17, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(18, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(20, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(21, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(23, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(24, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(26, 0, null, null, 1, "th", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+        var pd_0 = (_co.buyTicket(_v.context.$implicit.airline_name, _v.context.$implicit.flight_num) !== false);
+        ad = (pd_0 && ad);
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["Buy Ticket"])), (_l()(), i1.ɵted(-1, null, ["\n      "]))], null, function (_ck, _v) { var _co = _v.component; var currVal_0 = _v.context.$implicit.airline_name; _ck(_v, 3, 0, currVal_0); var currVal_1 = _v.context.$implicit.flight_num; _ck(_v, 6, 0, currVal_1); var currVal_2 = _v.context.$implicit.departure_airport; _ck(_v, 9, 0, currVal_2); var currVal_3 = _co.displayTime(_v.context.$implicit.departure_time); _ck(_v, 12, 0, currVal_3); var currVal_4 = _v.context.$implicit.arrival_airport; _ck(_v, 15, 0, currVal_4); var currVal_5 = _co.displayTime(_v.context.$implicit.arrival_time); _ck(_v, 18, 0, currVal_5); var currVal_6 = _v.context.$implicit.price; _ck(_v, 21, 0, currVal_6); var currVal_7 = _v.context.$implicit.status; _ck(_v, 24, 0, currVal_7); }); }
+function View_SearchComponent_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 47, "div", [["class", "main"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(2, 0, null, null, 1, "app-search-box", [], [[4, "display", null]], [[null, "ngModelChange"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("ngModelChange" === en)) {
         var pd_0 = (_co.ngOnInit() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient, i5.Router, i6.CookieService], null, null), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(5, 0, null, null, 7, "div", [["id", "result"]], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
+    } return ad; }, i2.View_SearchBoxComponent_0, i2.RenderType_SearchBoxComponent)), i1.ɵdid(3, 114688, null, 0, i3.SearchBoxComponent, [i4.HttpClient, i5.Router, i6.CookieService], null, null), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵeld(5, 0, null, null, 41, "div", [["id", "result"]], [[4, "display", null]], null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(7, 0, null, null, 1, "p", [], null, null, null, null, null)), (_l()(), i1.ɵted(8, null, ["", ""])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(10, 0, null, null, 1, "button", [], null, [[null, "click"]], function (_v, en, $event) { var ad = true; var _co = _v.component; if (("click" === en)) {
         var pd_0 = (_co.deleteCookie() !== false);
         ad = (pd_0 && ad);
-    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["Clear"])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { _ck(_v, 3, 0); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.displaySearchBox; _ck(_v, 2, 0, currVal_0); var currVal_1 = _co.message; _ck(_v, 8, 0, currVal_1); }); }
+    } return ad; }, null, null)), (_l()(), i1.ɵted(-1, null, ["Clear"])), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵeld(13, 0, null, null, 32, "table", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n      "])), (_l()(), i1.ɵeld(15, 0, null, null, 30, "tbody", [], null, null, null, null, null)), (_l()(), i1.ɵeld(16, 0, null, null, 25, "tr", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(18, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Airline Name"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(21, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Flight #"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(24, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Departure Airport"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(27, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Departure Time"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(30, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Arrival Airport"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(33, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Arrival Time"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(36, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Price"])), (_l()(), i1.ɵted(-1, null, ["\n        "])), (_l()(), i1.ɵeld(39, 0, null, null, 1, "th", [], null, null, null, null, null)), (_l()(), i1.ɵted(-1, null, ["Status"])), (_l()(), i1.ɵted(-1, null, ["\n      "])), (_l()(), i1.ɵted(-1, null, ["\n      "])), (_l()(), i1.ɵand(16777216, null, null, 1, null, View_SearchComponent_1)), i1.ɵdid(44, 802816, null, 0, i7.NgForOf, [i1.ViewContainerRef, i1.TemplateRef, i1.IterableDiffers], { ngForOf: [0, "ngForOf"] }, null), (_l()(), i1.ɵted(-1, null, ["\n    "])), (_l()(), i1.ɵted(-1, null, ["\n  "])), (_l()(), i1.ɵted(-1, null, ["\n"]))], function (_ck, _v) { var _co = _v.component; _ck(_v, 3, 0); var currVal_3 = _co.result; _ck(_v, 44, 0, currVal_3); }, function (_ck, _v) { var _co = _v.component; var currVal_0 = _co.displaySearchBox; _ck(_v, 2, 0, currVal_0); var currVal_1 = _co.displayResult; _ck(_v, 5, 0, currVal_1); var currVal_2 = _co.message; _ck(_v, 8, 0, currVal_2); }); }
 exports.View_SearchComponent_0 = View_SearchComponent_0;
-function View_SearchComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-search", [], null, null, null, View_SearchComponent_0, RenderType_SearchComponent)), i1.ɵdid(1, 114688, null, 0, i7.SearchComponent, [i5.Router, i6.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
+function View_SearchComponent_Host_0(_l) { return i1.ɵvid(0, [(_l()(), i1.ɵeld(0, 0, null, null, 1, "app-search", [], null, null, null, View_SearchComponent_0, RenderType_SearchComponent)), i1.ɵdid(1, 114688, null, 0, i8.SearchComponent, [i5.Router, i6.CookieService], null, null)], function (_ck, _v) { _ck(_v, 1, 0); }, null); }
 exports.View_SearchComponent_Host_0 = View_SearchComponent_Host_0;
-var SearchComponentNgFactory = i1.ɵccf("app-search", i7.SearchComponent, View_SearchComponent_Host_0, {}, {}, []);
+var SearchComponentNgFactory = i1.ɵccf("app-search", i8.SearchComponent, View_SearchComponent_Host_0, {}, {}, []);
 exports.SearchComponentNgFactory = SearchComponentNgFactory;
 
 
@@ -88,7 +93,20 @@ var SearchComponent = /** @class */ (function () {
         this.cookie = cookie;
         this.message = '';
         this.displaySearchBox = '';
+        this.displayResult = 'none';
     }
+    SearchComponent.prototype.displayTime = function (datetime) {
+        var date = new Date(datetime);
+        return date.getUTCFullYear() + '-' +
+            ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
+            ('00' + date.getUTCDate()).slice(-2) + ' ' +
+            ('00' + date.getUTCHours()).slice(-2) + ':' +
+            ('00' + date.getUTCMinutes()).slice(-2);
+    };
+    SearchComponent.prototype.buyTicket = function (airline_name, flight_num) {
+        this.cookie.set('buyTicket', airline_name + '/' + flight_num);
+        this.router.navigate(['buy']);
+    };
     SearchComponent.prototype.deleteCookie = function () {
         this.cookie.delete('searchResult');
         this.cookie.set('reload', 'search');
@@ -99,6 +117,7 @@ var SearchComponent = /** @class */ (function () {
             this.result = JSON.parse(this.cookie.get('searchResult').slice(2));
             this.message = 'Found ' + this.result.length + ' record(s)';
             this.displaySearchBox = 'none';
+            this.displayResult = '';
         }
     };
     return SearchComponent;

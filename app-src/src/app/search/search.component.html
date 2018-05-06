@@ -1,7 +1,30 @@
 <div class='main'>
   <app-search-box (ngModelChange)='ngOnInit()' [style.display]='displaySearchBox'></app-search-box>
-  <div id='result'>
+  <div id='result' [style.display]='displayResult'>
     <p>{{message}}</p>
     <button (click)="deleteCookie()">Clear</button>
+    <table>
+      <tr>
+        <th>Airline Name</th>
+        <th>Flight #</th>
+        <th>Departure Airport</th>
+        <th>Departure Time</th>
+        <th>Arrival Airport</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let each of result">
+        <th>{{each.airline_name}}</th>
+        <th>{{each.flight_num}}</th>
+        <th>{{each.departure_airport}}</th>
+        <th>{{displayTime(each.departure_time)}}</th>
+        <th>{{each.arrival_airport}}</th>
+        <th>{{displayTime(each.arrival_time)}}</th>
+        <th>{{each.price}}</th>
+        <th>{{each.status}}</th>
+        <th (click)='buyTicket(each.airline_name,each.flight_num)'>Buy Ticket</th>
+      </tr>
+    </table>
   </div>
 </div>
