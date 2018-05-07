@@ -42,11 +42,11 @@ var LogoutComponent = /** @class */ (function () {
         var _this = this;
         this.http.post('/logout', null, { responseType: 'text' }).subscribe(function (res) {
             _this.topMessageBackgroundColor = '#00F6ED';
-            _this.topMessage = 'Logout Successfully! Redirecting You to Homepage ...';
+            _this.topMessage = 'Successfully logged out,  redirecting you to homepage ...';
             window.location.href = '/home';
         }, function (err) {
             _this.topMessageBackgroundColor = 'orange';
-            _this.topMessage = 'Logout Failed! Please Try Again ...';
+            _this.topMessage = 'Failed to log out, please try again ...';
             window.location.href = '/home';
         });
     };

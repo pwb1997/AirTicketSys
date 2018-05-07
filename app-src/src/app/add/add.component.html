@@ -1,54 +1,61 @@
 <div class='main' [style.visibility]='formVisibility'>
   <h1>Add New Flight/Airplane/Airport</h1>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+  <form class='radio'>
     <input type="radio" name='type' value='flight' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Flight
     <input type="radio" name='type' value='airplane' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airplane
     <input type="radio" name='type' value='airport' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airport
+  </form>
+  <form #flight="ngForm" (ngSubmit)="onSubmit(flight)" [style.display]='flightDisplay' class='form'>
+    Flight #
     <br>
-    <div [style.display]='flightDisplay' class='form'>
-      Flight #
-      <br>
-      <input type="text" name='flight_num' ngModel>
-      <br> Airplane ID
-      <br>
-      <input type="text" name='airplane_id' ngModel>
-      <br> Departure Airport
-      <br>
-      <input type="text" name='departure_airport' ngModel>
-      <br> Departure Time
-      <br>
-      <input type="datetime-local" name='departure_time' ngModel>
-      <br> Arrival Airport
-      <br>
-      <input type="text" name='arrival_airport' ngModel>
-      <br> Arrival Time
-      <br>
-      <input type="datetime-local" name='arrival_time' ngModel>
-      <br> Price
-      <br>
-      <input type="text" name='price' ngModel>
-      <br>
-      <button>Submit</button>
-    </div>
-    <div [style.display]='airplaneDisplay' class='form'>
-      Airplane ID
-      <br>
-      <input type="text" name='airplane_id' ngModel>
-      <br> Seats
-      <br>
-      <input type="text" name='seats' ngModel>
-      <br>
-      <button>Submit</button>
-    </div>
-    <div [style.display]='airportDisplay' class='form'>
-      Airport Name
-      <br>
-      <input type="text" name='airport_name' ngModel>
-      <br> Airport City
-      <br>
-      <input type="text" name='airport_city' ngModel>
-      <br>
-      <button>Submit</button>
+    <input type="text" name='flight_num' ngModel required>
+    <br> Airplane ID
+    <br>
+    <input type="text" name='airplane_id' ngModel required>
+    <br> Departure Airport
+    <br>
+    <input type="text" name='departure_airport' ngModel required>
+    <br> Departure Time
+    <br>
+    <input type="datetime-local" name='departure_time' ngModel required>
+    <br> Arrival Airport
+    <br>
+    <input type="text" name='arrival_airport' ngModel required>
+    <br> Arrival Time
+    <br>
+    <input type="datetime-local" name='arrival_time' ngModel required>
+    <br> Price
+    <br>
+    <input type="text" name='price' ngModel required>
+    <br>
+    <div class='button'>
+      <button [disabled]='flight.form.invalid'>Submit</button>
     </div>
   </form>
+  <form #airplane="ngForm" (ngSubmit)="onSubmit(airplane)" [style.display]='airplaneDisplay' class='form'> Airplane ID
+    <br>
+    <input type="text" name='airplane_id' ngModel required>
+    <br> Seats
+    <br>
+    <input type="text" name='seats' ngModel required>
+    <br>
+    <div class='button'>
+      <button [disabled]='airplane.form.invalid'>Submit</button>
+    </div>
+  </form>
+  <form #airport="ngForm" (ngSubmit)="onSubmit(airport)" [style.display]='airportDisplay' class='form'>
+    Airport Name
+    <br>
+    <input type="text" name='airport_name' ngModel required>
+    <br> Airport City
+    <br>
+    <input type="text" name='airport_city' ngModel required>
+    <br>
+    <div class='button'>
+      <button [disabled]='airport.form.invalid'>Submit</button>
+    </div>
+  </form>
+</div>
+<div id='top-message' [style.display]='topMessageDisplay' [style.background-color]="topMessageBackgroundColor" style="z-index: 9999">
+  <p>{{topMessage}}</p>
 </div>

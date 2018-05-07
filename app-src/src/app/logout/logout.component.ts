@@ -15,12 +15,12 @@ export class LogoutComponent implements OnInit {
     this.http.post('/logout', null, { responseType: 'text' }).subscribe(
       res => {
         this.topMessageBackgroundColor = '#00F6ED';
-        this.topMessage = 'Logout Successfully! Redirecting You to Homepage ...';
+        this.topMessage = 'Successfully logged out,  redirecting you to homepage ...';
         window.location.href = '/home';
       },
       err => {
         this.topMessageBackgroundColor = 'orange';
-        this.topMessage = 'Logout Failed! Please Try Again ...';
+        this.topMessage = 'Failed to log out, please try again ...';
         window.location.href = '/home';
       }
     );

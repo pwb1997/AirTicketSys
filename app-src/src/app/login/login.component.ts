@@ -33,7 +33,7 @@ export class LoginComponent implements OnInit {
         if (err.status === 401) {
           this.topMessageDisplay = '';
           this.topMessageBackgroundColor = 'orange';
-          this.topMessage = 'Username or Password Not Correct!';
+          this.topMessage = 'Username or password not correct.';
         }
       });
   }

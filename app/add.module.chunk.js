@@ -3,14 +3,14 @@ webpackJsonp(["add.module"],{
 /***/ "./src/app/add/add.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ".form {\n    top: 150px;\n}"
+module.exports = ".form {\n    top: 150px;\n}\n\nh1 {\n    font-size: 40px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/add/add.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main' [style.visibility]='formVisibility'>\n  <h1>Add New Flight/Airplane/Airport</h1>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n    <input type=\"radio\" name='type' value='flight' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Flight\n    <input type=\"radio\" name='type' value='airplane' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airplane\n    <input type=\"radio\" name='type' value='airport' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airport\n    <br>\n    <div [style.display]='flightDisplay' class='form'>\n      Flight #\n      <br>\n      <input type=\"text\" name='flight_num' ngModel>\n      <br> Airplane ID\n      <br>\n      <input type=\"text\" name='airplane_id' ngModel>\n      <br> Departure Airport\n      <br>\n      <input type=\"text\" name='departure_airport' ngModel>\n      <br> Departure Time\n      <br>\n      <input type=\"datetime-local\" name='departure_time' ngModel>\n      <br> Arrival Airport\n      <br>\n      <input type=\"text\" name='arrival_airport' ngModel>\n      <br> Arrival Time\n      <br>\n      <input type=\"datetime-local\" name='arrival_time' ngModel>\n      <br> Price\n      <br>\n      <input type=\"text\" name='price' ngModel>\n      <br>\n      <button>Submit</button>\n    </div>\n    <div [style.display]='airplaneDisplay' class='form'>\n      Airplane ID\n      <br>\n      <input type=\"text\" name='airplane_id' ngModel>\n      <br> Seats\n      <br>\n      <input type=\"text\" name='seats' ngModel>\n      <br>\n      <button>Submit</button>\n    </div>\n    <div [style.display]='airportDisplay' class='form'>\n      Airport Name\n      <br>\n      <input type=\"text\" name='airport_name' ngModel>\n      <br> Airport City\n      <br>\n      <input type=\"text\" name='airport_city' ngModel>\n      <br>\n      <button>Submit</button>\n    </div>\n  </form>\n</div>"
+module.exports = "<div class='main' [style.visibility]='formVisibility'>\n  <h1>Add New Flight/Airplane/Airport</h1>\n  <form class='radio'>\n    <input type=\"radio\" name='type' value='flight' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Flight\n    <input type=\"radio\" name='type' value='airplane' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airplane\n    <input type=\"radio\" name='type' value='airport' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airport\n  </form>\n  <form #flight=\"ngForm\" (ngSubmit)=\"onSubmit(flight)\" [style.display]='flightDisplay' class='form'>\n    Flight #\n    <br>\n    <input type=\"text\" name='flight_num' ngModel required>\n    <br> Airplane ID\n    <br>\n    <input type=\"text\" name='airplane_id' ngModel required>\n    <br> Departure Airport\n    <br>\n    <input type=\"text\" name='departure_airport' ngModel required>\n    <br> Departure Time\n    <br>\n    <input type=\"datetime-local\" name='departure_time' ngModel required>\n    <br> Arrival Airport\n    <br>\n    <input type=\"text\" name='arrival_airport' ngModel required>\n    <br> Arrival Time\n    <br>\n    <input type=\"datetime-local\" name='arrival_time' ngModel required>\n    <br> Price\n    <br>\n    <input type=\"text\" name='price' ngModel required>\n    <br>\n    <div class='button'>\n      <button [disabled]='flight.form.invalid'>Submit</button>\n    </div>\n  </form>\n  <form #airplane=\"ngForm\" (ngSubmit)=\"onSubmit(airplane)\" [style.display]='airplaneDisplay' class='form'> Airplane ID\n    <br>\n    <input type=\"text\" name='airplane_id' ngModel required>\n    <br> Seats\n    <br>\n    <input type=\"text\" name='seats' ngModel required>\n    <br>\n    <div class='button'>\n      <button [disabled]='airplane.form.invalid'>Submit</button>\n    </div>\n  </form>\n  <form #airport=\"ngForm\" (ngSubmit)=\"onSubmit(airport)\" [style.display]='airportDisplay' class='form'>\n    Airport Name\n    <br>\n    <input type=\"text\" name='airport_name' ngModel required>\n    <br> Airport City\n    <br>\n    <input type=\"text\" name='airport_city' ngModel required>\n    <br>\n    <div class='button'>\n      <button [disabled]='airport.form.invalid'>Submit</button>\n    </div>\n  </form>\n</div>\n<div id='top-message' [style.display]='topMessageDisplay' [style.background-color]=\"topMessageBackgroundColor\" style=\"z-index: 9999\">\n  <p>{{topMessage}}</p>\n</div>"
 
 /***/ }),
 
@@ -31,13 +31,18 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = __webpack_require__("./node_modules/@angular/core/esm5/core.js");
 var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
+var router_1 = __webpack_require__("./node_modules/@angular/router/esm5/router.js");
 var AddComponent = /** @class */ (function () {
-    function AddComponent(http) {
+    function AddComponent(http, router) {
         this.http = http;
+        this.router = router;
         this.type = 'flight';
         this.flightDisplay = '';
         this.airplaneDisplay = 'none';
         this.airportDisplay = 'none';
+        this.topMessageDisplay = 'none';
+        this.topMessage = '';
+        this.topMessageBackgroundColor = '';
     }
     AddComponent.prototype.toggleDisplay = function () {
         this.flightDisplay = 'none';
@@ -56,7 +61,26 @@ var AddComponent = /** @class */ (function () {
         }
     };
     AddComponent.prototype.onSubmit = function (f) {
-        console.log(f.value);
+        var _this = this;
+        if (f.invalid) {
+            return;
+        }
+        this.http.post('/add/' + this.type, f.value, { responseType: 'text' }).subscribe(function (res) {
+            _this.topMessageDisplay = '';
+            _this.topMessageBackgroundColor = '#00F6ED';
+            _this.topMessage = 'Successfully added new ' + _this.type + '.';
+        }, function (err) {
+            _this.topMessageDisplay = '';
+            _this.topMessageBackgroundColor = 'orange';
+            if (err.status === 401) {
+                _this.topMessage = 'Unauthorized operation, redirecting you to homepage ...';
+                setTimeout(function () {
+                    _this.router.navigate(['home']);
+                }, 3000);
+                return;
+            }
+            _this.topMessage = 'Failed to add new ' + _this.type + ', please check your input and try again.';
+        });
     };
     AddComponent.prototype.ngOnInit = function () {
     };
@@ -66,7 +90,7 @@ var AddComponent = /** @class */ (function () {
             template: __webpack_require__("./src/app/add/add.component.html"),
             styles: [__webpack_require__("./src/app/add/add.component.css")]
         }),
-        __metadata("design:paramtypes", [http_1.HttpClient])
+        __metadata("design:paramtypes", [http_1.HttpClient, router_1.Router])
     ], AddComponent);
     return AddComponent;
 }());

@@ -453,5 +453,86 @@ app.post('/getCustomer', (req, res) => {
     })
 })
 
+app.post('/add/airport', (req, res) => {
+    if (req.session.type !== 'airline_staff') {
+        res.sendStatus(401);
+        console.log(getDate(), 'unauthorized add airport request refused');
+        return;
+    }
+    let insertValue = '';
+    insertValue += " ('" + req.body.airport_name + "','" + req.body.airport_city + "')";
+    con.query('insert into airport values' + insertValue, (err) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        console.log(getDate(), 'new airport added');
+        res.sendStatus(200);
+    })
+})
+
+app.post('/add/airplane', (req, res) => {
+    if (req.session.type !== 'airline_staff') {
+        res.sendStatus(401);
+        console.log(getDate(), 'unauthorized add airport request refused');
+        return;
+    }
+    con.query("select * from airline_staff where username='" + req.session.pk + "'", (err, result) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        const airline_name = result[0].airline_name;
+        let insertValue = '';
+        insertValue += " ('" + airline_name + "','" + req.body.airplane_id + "','" + req.body.seats + "')";
+        con.query('insert into airplane values' + insertValue, (err) => {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            console.log(getDate(), 'new airplane added');
+            res.sendStatus(200);
+        })
+    })
+})
+
+app.post('/add/flight', (req, res) => {
+    if (req.session.type !== 'airline_staff') {
+        res.sendStatus(401);
+        console.log(getDate(), 'unauthorized add airport request refused');
+        return;
+    }
+    con.query("select * from airline_staff where username='" + req.session.pk + "'", (err, result) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        const airline_name = result[0].airline_name;
+        let insertValue = '';
+        insertValue += " ('" + airline_name;
+        insertValue += "','" + req.body.flight_num;
+        insertValue += "','" + req.body.departure_airport;
+        insertValue += "','" + req.body.departure_time;
+        insertValue += "','" + req.body.arrival_airport;
+        insertValue += "','" + req.body.arrival_time;
+        insertValue += "','" + req.body.price;
+        insertValue += "','" + 'upcoming';
+        insertValue += "','" + req.body.airplane_id + "')";
+        con.query('insert into flight values' + insertValue, (err) => {
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            console.log(getDate(), 'new flight added');
+            res.sendStatus(200);
+        })
+    })
+})
+
 console.log(getDate(), 'server started at port', PORT);
 app.listen(PORT);

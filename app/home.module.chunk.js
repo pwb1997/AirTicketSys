@@ -164,7 +164,7 @@ module.exports = ""
 /***/ "./src/app/home/home-staff/home-staff.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n    <a routerLink='/flights'>View all flights</a>\n    <a routerLink='/search'>Search for flights</a>\n    <a routerLink='/track'>Dashboard</a>\n  </div>\n  "
+module.exports = "<div class='main'>\n    <a routerLink='/flights'>View all flights</a>\n    <a routerLink='/search'>Search for flights</a>\n    <a routerLink='/add'>Add flights/airplanes/airports</a>\n    <a routerLink='/track'>Dashboard</a>\n  </div>\n  "
 
 /***/ }),
 

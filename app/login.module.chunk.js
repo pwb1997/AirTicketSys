@@ -59,7 +59,7 @@ var LoginComponent = /** @class */ (function () {
             if (err.status === 401) {
                 _this.topMessageDisplay = '';
                 _this.topMessageBackgroundColor = 'orange';
-                _this.topMessage = 'Username or Password Not Correct!';
+                _this.topMessage = 'Username or password not correct.';
             }
         });
     };
