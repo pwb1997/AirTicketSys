@@ -10,7 +10,7 @@ module.exports = "#customerMonthly {\n    height: 200px;\n    width: 400px;\n}"
 /***/ "./src/app/track/track.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  {{message}}\n  <div [style.display]='customerDisplay'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      From\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>\n    </form>\n    <h2>Total Spending</h2>\n    <h3>$ {{spending}}</h3>\n    <h2>Monthly Chart</h2>\n    <div id='customerMonthly' style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChartData\" [labels]=\"barChartLabels\" [options]=\"barChartOptions\" [legend]=\"barChartLegend\"\n        [chartType]=\"barChartType\">\n      </canvas>\n    </div>\n  </div>\n</div>"
+module.exports = "<div class='main'>\n  {{message}}\n  <div [style.display]='customerDisplay'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      From\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>\n    </form>\n    <h2>Total Spending</h2>\n    <h3>$ {{spending}}</h3>\n    <h2>Monthly Chart</h2>\n    <div id='customerMonthly' style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChartData\" [labels]=\"barChartLabels\" [options]=\"barChartOptions\" [legend]=\"barChartLegend\"\n        [chartType]=\"barChartType\">\n      </canvas>\n    </div>\n  </div>\n  <div [style.display]='agentDisplay'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      From\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='startDate1' name='startDate' useValueAsDate> To\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='endDate1' name='endDate' useValueAsDate>\n    </form>\n    <h2>My Commision</h2>\n    <h3>Total Commision</h3>\n    <h4>$ {{commision}}</h4>\n    <h3>Total Ticket Sold</h3>\n    <h4>{{ticketsSold}}</h4>\n    <h3>Average Commision</h3>\n    <h4>{{averageCommision}}</h4>\n    <h2>Top Customers</h2>\n    <h3>6 Month Tickets Sold</h3>\n    <canvas baseChart [datasets]=\"barChart1Data\" [labels]=\"barChart1Labels\" [options]=\"barChart1Options\" [legend]=\"barChart1Legend\"\n      [chartType]=\"barChart1Type\">\n    </canvas>\n    <h3>Past Year Commision</h3>\n    <canvas baseChart [datasets]=\"barChart2Data\" [labels]=\"barChart2Labels\" [options]=\"barChart2Options\" [legend]=\"barChart2Legend\"\n      [chartType]=\"barChart2Type\">\n    </canvas>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -38,17 +38,54 @@ var TrackComponent = /** @class */ (function () {
         this.http = http;
         this.tickets = [];
         this.type = '';
-        this.customerDisplay = 'hidden';
-        this.agentDisplay = '';
+        this.customerDisplay = 'none';
+        this.agentDisplay = 'none';
         this.message = '';
         this.spending = 0;
         this.startMonth = '';
         this.endMonth = '';
-        this.barChartOptions = { scaleShowVerticalLines: false, responsive: true };
+        this.commision = 0;
+        this.ticketsSold = 0;
+        this.averageCommision = 0;
+        this.barChartOptions = {
+            scaleShowVerticalLines: false, responsive: true, scales: {
+                yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+            }
+        };
         this.barChartLabels = [];
         this.barChartType = 'bar';
         this.barChartLegend = false;
         this.barChartData = [{ data: [] }];
+        this.barChart1Options = {
+            scaleShowVerticalLines: false, responsive: true, scales: {
+                yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+            }
+        };
+        this.barChart1Labels = [];
+        this.barChart1Type = 'bar';
+        this.barChart1Legend = false;
+        this.barChart1Data = [{ data: [] }];
+        this.barChart2Options = {
+            scaleShowVerticalLines: false, responsive: true, scales: {
+                yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+            }
+        };
+        this.barChart2Labels = [];
+        this.barChart2Type = 'bar';
+        this.barChart2Legend = false;
+        this.barChart2Data = [{ data: [] }];
     }
     TrackComponent.prototype.update = function () {
         var _this = this;
@@ -66,6 +103,24 @@ var TrackComponent = /** @class */ (function () {
             _this.spending = _this.getSpending(_this.filterMonth(_this.startMonth, _this.endMonth));
         }, 10);
     };
+    TrackComponent.prototype.update1 = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.endDate1.getTime() > new Date().getTime()) {
+                _this.endDate1 = new Date();
+            }
+            if (_this.startDate1.getTime() > _this.endDate1.getTime()) {
+                _this.startDate1 = new Date(_this.endDate1);
+            }
+            var filtered = _this.filterDate(_this.startDate1, _this.endDate1);
+            _this.commision = _this.getSpending(filtered);
+            _this.ticketsSold = filtered.length;
+            _this.averageCommision = _this.commision / _this.ticketsSold;
+            if (_this.ticketsSold === 0) {
+                _this.averageCommision = 0;
+            }
+        }, 10);
+    };
     TrackComponent.prototype.date2Month = function (d) {
         var date = new Date(d);
         return date.getFullYear() + '-' +
@@ -76,6 +131,20 @@ var TrackComponent = /** @class */ (function () {
         var endDate = new Date(end);
         var result = [];
         endDate.setMonth(endDate.getMonth() + 1);
+        for (var _i = 0, _a = this.tickets; _i < _a.length; _i++) {
+            var each = _a[_i];
+            var date = new Date(each.purchase_date);
+            if (date.getTime() <= endDate.getTime() && date.getTime() > startDate.getTime()) {
+                result.push(each);
+            }
+        }
+        return result;
+    };
+    TrackComponent.prototype.filterDate = function (start, end) {
+        var startDate = new Date(start);
+        var endDate = new Date(end);
+        var result = [];
+        endDate.setDate(endDate.getDate() + 1);
         for (var _i = 0, _a = this.tickets; _i < _a.length; _i++) {
             var each = _a[_i];
             var date = new Date(each.purchase_date);
@@ -111,6 +180,64 @@ var TrackComponent = /** @class */ (function () {
     };
     TrackComponent.prototype.getAverageCommision = function (tickets) {
         return this.getCommision(tickets) / tickets.length;
+    };
+    TrackComponent.prototype.topCustomers = function () {
+        var result1 = {};
+        var result2 = {};
+        var start = new Date();
+        var end = new Date();
+        start.setMonth(start.getMonth() - 6);
+        for (var _i = 0, _a = this.filterDate(start, end); _i < _a.length; _i++) {
+            var each = _a[_i];
+            if (result1[each.customer_email]) {
+                result1[each.customer_email] += 1;
+            }
+            else {
+                result1[each.customer_email] = 1;
+            }
+        }
+        start.setMonth(start.getMonth() - 6);
+        for (var _b = 0, _c = this.filterDate(start, end); _b < _c.length; _b++) {
+            var each = _c[_b];
+            if (result2[each.customer_email]) {
+                result2[each.customer_email] += each.price * 0.1;
+            }
+            else {
+                result2[each.customer_email] = each.price * 0.1;
+            }
+        }
+        var sort1 = [];
+        var sort2 = [];
+        for (var _d = 0, _e = Object.keys(result1); _d < _e.length; _d++) {
+            var each = _e[_d];
+            sort1.push([each, result1[each]]);
+        }
+        for (var _f = 0, _g = Object.keys(result2); _f < _g.length; _f++) {
+            var each = _g[_f];
+            sort2.push([each, result2[each]]);
+        }
+        sort1.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        sort2.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        sort1 = sort1.slice(0, 5);
+        sort2 = sort2.slice(0, 5);
+        this.barChart1Labels = [];
+        this.barChart2Labels = [];
+        this.barChart1Data[0].data = [];
+        this.barChart2Data[0].data = [];
+        for (var _h = 0, sort1_1 = sort1; _h < sort1_1.length; _h++) {
+            var each = sort1_1[_h];
+            this.barChart1Labels.push(each[0]);
+            this.barChart1Data[0].data.push(each[1]);
+        }
+        for (var _j = 0, sort2_1 = sort2; _j < sort2_1.length; _j++) {
+            var each = sort2_1[_j];
+            this.barChart2Labels.push(each[0]);
+            this.barChart2Data[0].data.push(each[1]);
+        }
     };
     TrackComponent.prototype.onSubmit = function (f) {
     };
@@ -153,6 +280,19 @@ var TrackComponent = /** @class */ (function () {
                     var each = _c[_b];
                     _this.tickets.push(each);
                 }
+                var start = new Date();
+                var end = new Date();
+                start.setMonth(start.getMonth() - 1);
+                _this.startDate1 = start;
+                _this.endDate1 = end;
+                var filtered = _this.filterDate(start, end);
+                _this.commision = _this.getSpending(filtered);
+                _this.ticketsSold = filtered.length;
+                _this.averageCommision = _this.commision / _this.ticketsSold;
+                if (_this.ticketsSold === 0) {
+                    _this.averageCommision = 0;
+                }
+                _this.topCustomers();
             });
         }
         else {

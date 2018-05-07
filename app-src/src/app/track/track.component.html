@@ -15,4 +15,27 @@
       </canvas>
     </div>
   </div>
+  <div [style.display]='agentDisplay'>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      From
+      <input type="date" (ngModelChange)='update1()' [(ngModel)]='startDate1' name='startDate' useValueAsDate> To
+      <input type="date" (ngModelChange)='update1()' [(ngModel)]='endDate1' name='endDate' useValueAsDate>
+    </form>
+    <h2>My Commision</h2>
+    <h3>Total Commision</h3>
+    <h4>$ {{commision}}</h4>
+    <h3>Total Ticket Sold</h3>
+    <h4>{{ticketsSold}}</h4>
+    <h3>Average Commision</h3>
+    <h4>{{averageCommision}}</h4>
+    <h2>Top Customers</h2>
+    <h3>6 Month Tickets Sold</h3>
+    <canvas baseChart [datasets]="barChart1Data" [labels]="barChart1Labels" [options]="barChart1Options" [legend]="barChart1Legend"
+      [chartType]="barChart1Type">
+    </canvas>
+    <h3>Past Year Commision</h3>
+    <canvas baseChart [datasets]="barChart2Data" [labels]="barChart2Labels" [options]="barChart2Options" [legend]="barChart2Legend"
+      [chartType]="barChart2Type">
+    </canvas>
+  </div>
 </div>
