@@ -1,9 +1,12 @@
-app-search-box {
-    top: 20px;
-}
-
 .main {
     font-family: PoiretOne;
     text-align: center;
     font-size: 20px;
+}
+
+#login {
+    position: fixed;
+    top: 400px;
+    left:0px;
+    right:0px;
 }

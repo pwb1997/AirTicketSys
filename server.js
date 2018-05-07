@@ -45,18 +45,20 @@ app.get('/airport', (req, res) => {
 
 app.get('/getFlights', (req, res) => {
     const result = {};
-    date = new Date(req.body.date);
-    date = date.getUTCFullYear() + '-' +
-        ('00' + (date.getUTCMonth() + 1)).slice(-2) + '-' +
-        ('00' + date.getUTCDate()).slice(-2) + ' ' +
-        ('00' + date.getUTCHours()).slice(-2) + ':' +
-        ('00' + date.getUTCMinutes()).slice(-2) + ':' +
-        ('00' + date.getUTCSeconds()).slice(-2);
-    if (req.session.type !== 'customer' && req.session.type !== 'booking_agent'){
+    date = new Date();
+    date = date.getFullYear() + '-' +
+        ('00' + (date.getMonth() + 1)).slice(-2) + '-' +
+        ('00' + date.getDate()).slice(-2) + ' ' +
+        ('00' + date.getHours()).slice(-2) + ':' +
+        ('00' + date.getMinutes()).slice(-2) + ':' +
+        ('00' + date.getSeconds()).slice(-2);
+    if (req.session.type !== 'customer' && req.session.type !== 'booking_agent' && req.session.type !== 'airline_staff') {
         res.sendStatus(409);
         return;
     }
     if (req.session.type === 'customer') {
+        console.log("select * from ticket natural join purchases natural join flight where " +
+            "customer_email='" + req.session.pk + "' and departure_time >='" + date + "'")
         con.query("select * from ticket natural join purchases natural join flight where " +
             "customer_email='" + req.session.pk + "' and departure_time >='" + date + "'", (err, upcoming) => {
                 if (err) {
@@ -74,6 +76,32 @@ app.get('/getFlights', (req, res) => {
                         res.send(result);
                     });
             });
+    }
+    if (req.session.type === 'airline_staff') {
+        con.query("select * from airline_staff where username='" + req.session.pk + "'", (err, airline_staff) => {
+            if (err) {
+                res.sendStatus(500);
+                return;
+            }
+            const airline_name = airline_staff[0].airline_name;
+            con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+                "airline_name='" + airline_name + "' and departure_time >='" + date + "'", (err, upcoming) => {
+                    if (err) {
+                        res.sendStatus(500);
+                        return;
+                    }
+                    result.upcoming = upcoming;
+                    con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+                        "airline_name='" + airline_name + "' and departure_time <'" + date + "'", (err, history) => {
+                            if (err) {
+                                res.sendStatus(500);
+                                return;
+                            }
+                            result.history = history;
+                            res.send(result);
+                        });
+                });
+        })
     }
     if (req.session.type === 'booking_agent') {
         con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
@@ -399,6 +427,30 @@ app.post('/buy', (req, res) => {
                     })
             })
     }
+})
+
+app.post('/getFlightStatus', (req, res) => {
+    console.log(req.body);
+    con.query("select * from flight where flight_num='" + req.body.flight_num + "'", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        res.cookie('searchResult', result);
+        res.sendStatus(200);
+        console.log(getDate(), 'search request handled')
+    })
+});
+
+app.post('/getCustomer', (req, res) => {
+    con.query("select flight_num from purchases natural join ticket natural join flight where customer_email='" + req.body.email + "'", (err, result) => {
+        if (err) {
+            console.log(err);
+            res.sendStatus(500);
+            return;
+        }
+        res.send(result);
+    })
 })
 
 console.log(getDate(), 'server started at port', PORT);

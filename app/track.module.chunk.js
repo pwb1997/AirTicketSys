@@ -3,14 +3,14 @@ webpackJsonp(["track.module"],{
 /***/ "./src/app/track/track.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "#customerMonthly {\n    height: 200px;\n    width: 400px;\n}"
+module.exports = "ul {\n    list-style-type: none;\n}"
 
 /***/ }),
 
 /***/ "./src/app/track/track.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  {{message}}\n  <div [style.display]='customerDisplay'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      From\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>\n    </form>\n    <h2>Total Spending</h2>\n    <h3>$ {{spending}}</h3>\n    <h2>Monthly Chart</h2>\n    <div id='customerMonthly' style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChartData\" [labels]=\"barChartLabels\" [options]=\"barChartOptions\" [legend]=\"barChartLegend\"\n        [chartType]=\"barChartType\">\n      </canvas>\n    </div>\n  </div>\n  <div [style.display]='agentDisplay'>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      From\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='startDate1' name='startDate' useValueAsDate> To\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='endDate1' name='endDate' useValueAsDate>\n    </form>\n    <h2>My Commision</h2>\n    <h3>Total Commision</h3>\n    <h4>$ {{commision}}</h4>\n    <h3>Total Ticket Sold</h3>\n    <h4>{{ticketsSold}}</h4>\n    <h3>Average Commision</h3>\n    <h4>{{averageCommision}}</h4>\n    <h2>Top Customers</h2>\n    <h3>6 Month Tickets Sold</h3>\n    <canvas baseChart [datasets]=\"barChart1Data\" [labels]=\"barChart1Labels\" [options]=\"barChart1Options\" [legend]=\"barChart1Legend\"\n      [chartType]=\"barChart1Type\">\n    </canvas>\n    <h3>Past Year Commision</h3>\n    <canvas baseChart [datasets]=\"barChart2Data\" [labels]=\"barChart2Labels\" [options]=\"barChart2Options\" [legend]=\"barChart2Legend\"\n      [chartType]=\"barChart2Type\">\n    </canvas>\n  </div>\n</div>"
+module.exports = "<div class='main'>\n  {{message}}\n  <div [style.display]='customerDisplay'>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>\n    </form>\n    <h2>Total Spending</h2>\n    <h3>$ {{spending}}</h3>\n    <h2>Monthly Chart</h2>\n    <div id='customerMonthly' style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChartData\" [labels]=\"barChartLabels\" [options]=\"barChartOptions\" [legend]=\"barChartLegend\"\n        [chartType]=\"barChartType\">\n      </canvas>\n    </div>\n  </div>\n  <div [style.display]='agentDisplay'>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='startDate1' name='startDate' useValueAsDate> To\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='endDate1' name='endDate' useValueAsDate>\n    </form>\n    <h2>My Commision</h2>\n    <h3>Total Commision</h3>\n    <h4>$ {{commision}}</h4>\n    <h3>Total Ticket Sold</h3>\n    <h4>{{ticketsSold}}</h4>\n    <h3>Average Commision</h3>\n    <h4>{{averageCommision}}</h4>\n    <h2>Top Customers</h2>\n    <h3>6 Month Tickets Sold</h3>\n    <canvas baseChart [datasets]=\"barChart1Data\" [labels]=\"barChart1Labels\" [options]=\"barChart1Options\" [legend]=\"barChart1Legend\"\n      [chartType]=\"barChart1Type\">\n    </canvas>\n    <h3>Past Year Commision</h3>\n    <canvas baseChart [datasets]=\"barChart2Data\" [labels]=\"barChart2Labels\" [options]=\"barChart2Options\" [legend]=\"barChart2Legend\"\n      [chartType]=\"barChart2Type\">\n    </canvas>\n  </div>\n  <div [style.display]='staffDisplay'>\n    <h2>Top 5 Booking Agents</h2>\n    <h3>Tickets Sold in 30 days</h3>\n    <ul>\n      <li *ngFor=\"let each of staffTicketsSoldMonthly let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h3>Ticket Sold in One Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffTicketsSoldYearly let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h3>Commision Received in One Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffCommision let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h2>Top 5 Customers</h2>\n    <h3>One Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffCustomer let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n        <button (click)=\"showCustomerDetail(each[0])\">Show Detail</button>\n      </li>\n      <div [style.display]='detailDisplay'>\n        <h4>Flights Taking by {{detailEmail}}</h4>\n        <li *ngFor=\"let each of staffDetail let i = index\" [attr.data-index]=\"i\">{{each.flight_num}}\n        </li>\n        <button (click)=\"detailDisplay='none'\">Hide Detail</button>\n      </div>\n    </ul>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -40,6 +40,9 @@ var TrackComponent = /** @class */ (function () {
         this.type = '';
         this.customerDisplay = 'none';
         this.agentDisplay = 'none';
+        this.staffDisplay = 'none';
+        this.listDetail = 'Show Detail';
+        this.detailDisplay = 'none';
         this.message = '';
         this.spending = 0;
         this.startMonth = '';
@@ -47,6 +50,11 @@ var TrackComponent = /** @class */ (function () {
         this.commision = 0;
         this.ticketsSold = 0;
         this.averageCommision = 0;
+        this.staffTicketsSoldMonthly = [];
+        this.staffTicketsSoldYearly = [];
+        this.staffCommision = [];
+        this.staffCustomer = [];
+        this.detailEmail = '';
         this.barChartOptions = {
             scaleShowVerticalLines: false, responsive: true, scales: {
                 yAxes: [{
@@ -239,6 +247,77 @@ var TrackComponent = /** @class */ (function () {
             this.barChart2Data[0].data.push(each[1]);
         }
     };
+    TrackComponent.prototype.topAgents = function (tickets) {
+        var result1 = {};
+        var result2 = {};
+        for (var _i = 0, tickets_2 = tickets; _i < tickets_2.length; _i++) {
+            var each = tickets_2[_i];
+            if (each.email !== null) {
+                if (result1[each.email]) {
+                    result1[each.email] += 1;
+                }
+                else {
+                    result1[each.email] = 1;
+                }
+                if (result2[each.email]) {
+                    result2[each.email] += each.price * 0.1;
+                    result2[each.email] = Math.round(result2[each.email] * 100) / 100;
+                }
+                else {
+                    result2[each.email] = each.price * 0.1;
+                    result2[each.email] = Math.round(result2[each.email] * 100) / 100;
+                }
+            }
+        }
+        var sort1 = [];
+        var sort2 = [];
+        for (var _a = 0, _b = Object.keys(result1); _a < _b.length; _a++) {
+            var each = _b[_a];
+            sort1.push([each, result1[each]]);
+        }
+        for (var _c = 0, _d = Object.keys(result2); _c < _d.length; _c++) {
+            var each = _d[_c];
+            sort2.push([each, result2[each]]);
+        }
+        sort1.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        sort2.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        return [sort1.slice(0, 5), sort2.slice(0, 5)];
+    };
+    TrackComponent.prototype.frequentCustomers = function (tickets) {
+        var result1 = {};
+        for (var _i = 0, tickets_3 = tickets; _i < tickets_3.length; _i++) {
+            var each = tickets_3[_i];
+            if (each.customer_email !== null) {
+                if (result1[each.customer_email]) {
+                    result1[each.customer_email] += 1;
+                }
+                else {
+                    result1[each.customer_email] = 1;
+                }
+            }
+        }
+        var sort1 = [];
+        for (var _a = 0, _b = Object.keys(result1); _a < _b.length; _a++) {
+            var each = _b[_a];
+            sort1.push([each, result1[each]]);
+        }
+        sort1.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        return sort1.slice(0, 5);
+    };
+    TrackComponent.prototype.showCustomerDetail = function (email) {
+        var _this = this;
+        this.detailDisplay = '';
+        this.detailEmail = email;
+        this.http.post('/getCustomer', { 'email': email }, { responseType: 'json' }).subscribe(function (res) {
+            _this.staffDetail = res;
+        });
+    };
     TrackComponent.prototype.onSubmit = function (f) {
     };
     TrackComponent.prototype.ngOnInit = function () {
@@ -282,17 +361,41 @@ var TrackComponent = /** @class */ (function () {
                 }
                 var start = new Date();
                 var end = new Date();
+                console.log(_this.tickets);
                 start.setMonth(start.getMonth() - 1);
                 _this.startDate1 = start;
                 _this.endDate1 = end;
                 var filtered = _this.filterDate(start, end);
-                _this.commision = _this.getSpending(filtered);
+                _this.commision = _this.getCommision(filtered);
                 _this.ticketsSold = filtered.length;
                 _this.averageCommision = _this.commision / _this.ticketsSold;
                 if (_this.ticketsSold === 0) {
                     _this.averageCommision = 0;
                 }
                 _this.topCustomers();
+            });
+        }
+        else if (this.type === 'airline_staff') {
+            this.staffDisplay = '';
+            this.http.get('/getFlights').subscribe(function (res) {
+                for (var _i = 0, _a = res['history']; _i < _a.length; _i++) {
+                    var each = _a[_i];
+                    _this.tickets.push(each);
+                }
+                for (var _b = 0, _c = res['upcoming']; _b < _c.length; _b++) {
+                    var each = _c[_b];
+                    _this.tickets.push(each);
+                }
+                var start = new Date();
+                var end = new Date();
+                start.setMonth(start.getMonth() - 1);
+                var filtered = _this.filterDate(start, end);
+                _this.staffTicketsSoldMonthly = _this.topAgents(filtered)[0];
+                start.setMonth(start.getMonth() - 11);
+                filtered = _this.filterDate(start, end);
+                _d = _this.topAgents(filtered), _this.staffTicketsSoldYearly = _d[0], _this.staffCommision = _d[1];
+                _this.staffCustomer = _this.frequentCustomers(filtered);
+                var _d;
             });
         }
         else {

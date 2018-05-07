@@ -18,6 +18,8 @@ export class SearchBoxComponent implements OnInit {
   destinationDisplay = 'none';
   validation = '';
   date = new Date();
+  date1 = new Date();
+  date2 = new Date();
 
   toggleSourceDisplay() {
     setTimeout(() => {
@@ -54,9 +56,23 @@ export class SearchBoxComponent implements OnInit {
       });
   }
 
+  onSubmit1(f1: NgForm) {
+    if (!f1.valid) {
+      this.validation = 'Please fill in all the blanks';
+      return;
+    }
+    this.validation = '';
+    this.date.setHours(this.date.getHours() + (this.date.getTimezoneOffset() / 60));
+    this.http.post('/getFlightStatus', f1.value, { responseType: 'text' }).subscribe(
+      res => {
+        this.source = this.destination = '';
+        this.cookie.set('reload', '/search');
+        this.router.navigate(['/reload']);
+      });
+  }
+
   constructor(private http: HttpClient, private router: Router, private cookie: CookieService) { }
   ngOnInit() {
-    this.date.setHours(this.date.getHours() - (this.date.getTimezoneOffset() / 60));
     this.http.get('/airport', { responseType: 'json' }).subscribe(
       res => {
         this.airport = res;

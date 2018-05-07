@@ -10,7 +10,7 @@ module.exports = ""
 /***/ "./src/app/about/about.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  about works!\n</p>\n"
+module.exports = "<div class='main'>\n  Test Accounts\n  <br> Customer: test@test.com, password: test\n  <br> Airline Staff: test, password: test\n  <br> Booking Agent: test@test.com, password: test\n</div>"
 
 /***/ }),
 

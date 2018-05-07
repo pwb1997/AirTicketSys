@@ -24,7 +24,7 @@ export class FlightsComponent implements OnInit {
       ('00' + date.getUTCMinutes()).slice(-2);
   }
 
-  constructor(private http: HttpClient, private cookie:CookieService) { }
+  constructor(private http: HttpClient, private cookie: CookieService) { }
 
   ngOnInit() {
     this.http.get('/getFlights', { responseType: 'json' }).subscribe(

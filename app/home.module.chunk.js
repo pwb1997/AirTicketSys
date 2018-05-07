@@ -164,7 +164,7 @@ module.exports = ""
 /***/ "./src/app/home/home-staff/home-staff.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<p>\n  home-staff works!\n</p>\n"
+module.exports = "<div class='main'>\n    <a routerLink='/flights'>View all flights</a>\n    <a routerLink='/search'>Search for flights</a>\n    <a routerLink='/track'>Dashboard</a>\n  </div>\n  "
 
 /***/ }),
 
@@ -251,14 +251,14 @@ exports.HomeModule = HomeModule;
 /***/ "./src/app/home/home/home.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "app-search-box {\n    top: 20px;\n}\n\n.main {\n    font-family: PoiretOne;\n    text-align: center;\n    font-size: 20px;\n}"
+module.exports = ".main {\n    font-family: PoiretOne;\n    text-align: center;\n    font-size: 20px;\n}\n\n#login {\n    position: fixed;\n    top: 400px;\n    left:0px;\n    right:0px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/home/home/home.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  <app-search-box></app-search-box>\n  <h1>You are not logged in yet<br> Please login or register</h1>\n  <a routerLink='/registeration'>Register</a>\n  <a routerLink='/login'>login</a>\n</div>"
+module.exports = "<div class='main'>\n  <div id='search-box'>\n    <app-search-box></app-search-box>\n  </div>\n  <div id='login'>\n    <h1>You are not logged in yet\n      <br> Please login or register</h1>\n    <a routerLink='/registeration'>Register</a>\n    <a routerLink='/login'>login</a>\n  </div>\n</div>"
 
 /***/ }),
 

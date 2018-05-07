@@ -14,7 +14,11 @@ export class TrackComponent implements OnInit {
   type = '';
   customerDisplay = 'none';
   agentDisplay = 'none';
+  staffDisplay = 'none';
+  listDetail = 'Show Detail';
+  detailDisplay = 'none';
   message = '';
+
   spending = 0;
   startMonth = '';
   endMonth = '';
@@ -26,6 +30,13 @@ export class TrackComponent implements OnInit {
   averageCommision = 0;
   startDate1;
   endDate1;
+
+  staffTicketsSoldMonthly = [];
+  staffTicketsSoldYearly = [];
+  staffCommision = [];
+  staffCustomer = [];
+  staffDetail;
+  detailEmail = '';
 
   barChartOptions = {
     scaleShowVerticalLines: false, responsive: true, scales: {
@@ -218,6 +229,73 @@ export class TrackComponent implements OnInit {
     }
   }
 
+  topAgents(tickets) {
+    const result1 = {};
+    const result2 = {};
+    for (const each of tickets) {
+      if (each.email !== null) {
+        if (result1[each.email]) {
+          result1[each.email] += 1;
+        } else {
+          result1[each.email] = 1;
+        }
+        if (result2[each.email]) {
+          result2[each.email] += each.price * 0.1;
+          result2[each.email] = Math.round(result2[each.email] * 100) / 100;
+        } else {
+          result2[each.email] = each.price * 0.1;
+          result2[each.email] = Math.round(result2[each.email] * 100) / 100;
+        }
+      }
+    }
+    const sort1 = [];
+    const sort2 = [];
+    for (const each of Object.keys(result1)) {
+      sort1.push([each, result1[each]]);
+    }
+    for (const each of Object.keys(result2)) {
+      sort2.push([each, result2[each]]);
+    }
+    sort1.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    sort2.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    return [sort1.slice(0, 5), sort2.slice(0, 5)];
+  }
+
+  frequentCustomers(tickets) {
+    const result1 = {};
+    for (const each of tickets) {
+      if (each.customer_email !== null) {
+        if (result1[each.customer_email]) {
+          result1[each.customer_email] += 1;
+        } else {
+          result1[each.customer_email] = 1;
+        }
+      }
+    }
+    const sort1 = [];
+    for (const each of Object.keys(result1)) {
+      sort1.push([each, result1[each]]);
+    }
+    sort1.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    return sort1.slice(0, 5);
+  }
+
+  showCustomerDetail(email) {
+    this.detailDisplay = '';
+    this.detailEmail = email;
+    this.http.post('/getCustomer', { 'email': email }, { responseType: 'json' }).subscribe(
+      res => {
+        this.staffDetail = res;
+      }
+    );
+  }
+
   onSubmit(f: NgForm) {
 
   }
@@ -262,17 +340,39 @@ export class TrackComponent implements OnInit {
           }
           const start = new Date();
           const end = new Date();
+          console.log(this.tickets);
           start.setMonth(start.getMonth() - 1);
           this.startDate1 = start;
           this.endDate1 = end;
           const filtered = this.filterDate(start, end);
-          this.commision = this.getSpending(filtered);
+          this.commision = this.getCommision(filtered);
           this.ticketsSold = filtered.length;
           this.averageCommision = this.commision / this.ticketsSold;
           if (this.ticketsSold === 0) {
             this.averageCommision = 0;
           }
           this.topCustomers();
+        }
+      );
+    } else if (this.type === 'airline_staff') {
+      this.staffDisplay = '';
+      this.http.get('/getFlights').subscribe(
+        res => {
+          for (const each of res['history']) {
+            this.tickets.push(each);
+          }
+          for (const each of res['upcoming']) {
+            this.tickets.push(each);
+          }
+          const start = new Date();
+          const end = new Date();
+          start.setMonth(start.getMonth() - 1);
+          let filtered = this.filterDate(start, end);
+          this.staffTicketsSoldMonthly = this.topAgents(filtered)[0];
+          start.setMonth(start.getMonth() - 11);
+          filtered = this.filterDate(start, end);
+          [this.staffTicketsSoldYearly, this.staffCommision] = this.topAgents(filtered);
+          this.staffCustomer = this.frequentCustomers(filtered);
         }
       );
     } else {

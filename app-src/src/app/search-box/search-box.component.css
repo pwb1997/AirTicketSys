@@ -3,56 +3,68 @@
 }
 
 #search-box {
-    width: 500px;
-    line-height: 50px;
     text-align: center;
     font-family: PoiretOne;
 }
 
-h1:nth-child(1) {
+#upcoming {
+    position: fixed;
+    width: 500px;
+    height: 260px;
+    top: 100px;
+    right: 50%;
+}
+
+#status {
+    position: fixed;
+    width: 500px;
+    height: 260px;
+    top: 100px;
+    left: 50%;
+}
+
+h1 {
     font-size: 40px;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
 }
 
-h1:nth-child(4) {
-    font-size: 40px;
-    margin: auto;
-    margin-top: 200px;
-    margin-bottom: 20px;
+#flight-num {
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25px;
+    ;
+    top: 90px;
+    line-height: 50px;
+    text-align: left;
 }
 
-#flight-num{
+#arrival {
     position: absolute;
     height: 50px;
     width: 300px;
     font-size: 20px;
     color: #645853;
-    left: 25px;;
-    top: 340px;
+    left: 25px;
+    ;
+    top: 140px;
     line-height: 50px;
     text-align: left;
 }
-#arrival{
+
+#departure {
     position: absolute;
     height: 50px;
     width: 300px;
     font-size: 20px;
     color: #645853;
-    left: 25px;;
-    top: 390px;
-    line-height: 50px;
-    text-align: left;
-}
-#departure{
-    position: absolute;
-    height: 50px;
-    width: 300px;
-    font-size: 20px;
-    color: #645853;
-    left: 25px;;
-    top: 440px;
+    left: 25px;
+    ;
+    top: 190px;
     line-height: 50px;
     text-align: left;
 }
@@ -63,7 +75,7 @@ h1:nth-child(4) {
     width: 300px;
     font-size: 20px;
     color: #645853;
-    left: 25px;;
+    left: 25px;
     top: 90px;
     line-height: 50px;
     text-align: left;
@@ -143,7 +155,7 @@ li {
     cursor: pointer;
     position: absolute;
     left: 350px;
-    top: 370px;
+    top: 120px;
     border: solid 3px #645853;
     height: 80px;
     width: 80px;

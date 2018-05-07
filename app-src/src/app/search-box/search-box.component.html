@@ -1,58 +1,61 @@
 <div id='search-box'>
-    <h1>Search for upcoming flights</h1>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-        <div id='source'>
-            <p>Source</p>
-            <input type='text' (ngModelChange)="toggleSourceDisplay();" name='source' placeholder='airport, city' autocomplete="off"
-                [(ngModel)]='source' required>
-            <div id='source-search' class='filter-airport' [style.display]='sourceDisplay'>
-                <ul>
-                    <li *ngFor="let each of airport|filter:source">
-                        <div (click)="this.source=each.airport;this.sourceDisplay='none'">{{each.airport}}, {{each.city}}</div>
-                    </li>
-                </ul>
+    <div id='upcoming'>
+        <h1>Search for upcoming flights</h1>
+        <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+            <div id='source'>
+                <p>Source</p>
+                <input type='text' (ngModelChange)="toggleSourceDisplay();" name='source' placeholder='airport, city' autocomplete="off"
+                    [(ngModel)]='source' required>
+                <div id='source-search' class='filter-airport' [style.display]='sourceDisplay'>
+                    <ul>
+                        <li *ngFor="let each of airport|filter:source">
+                            <div (click)="this.source=each.airport;this.sourceDisplay='none'">{{each.airport}}, {{each.city}}</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
-        </div>
-        <div id='destination'>
-            <p>Destination</p>
-            <input type='text' (ngModelChange)="toggleDestinationDisplay();" name='destination' placeholder='airport, city' autocomplete="off"
-                [(ngModel)]='destination' required>
-            <div id='destination-search' class='filter-airport' [style.display]='destinationDisplay'>
-                <ul>
-                    <li *ngFor="let each of airport|filter:destination">
-                        <div (click)="this.destination=each.airport;this.destinationDisplay='none'">{{each.airport}}, {{each.city}}</div>
-                    </li>
-                </ul>
+            <div id='destination'>
+                <p>Destination</p>
+                <input type='text' (ngModelChange)="toggleDestinationDisplay();" name='destination' placeholder='airport, city' autocomplete="off"
+                    [(ngModel)]='destination' required>
+                <div id='destination-search' class='filter-airport' [style.display]='destinationDisplay'>
+                    <ul>
+                        <li *ngFor="let each of airport|filter:destination">
+                            <div (click)="this.destination=each.airport;this.destinationDisplay='none'">{{each.airport}}, {{each.city}}</div>
+                        </li>
+                    </ul>
+                </div>
             </div>
+            <div id='date'>
+                <p>Date</p>
+                <input type='date' name='date' [(ngModel)]='date' useValueAsDate required>
+            </div>
+            <div (click)="onSubmit(f)" id='search'>
+                <i class='material-icons'>search</i>
+            </div>
+        </form>
+        <div id='validation'>
+            <p>{{validation}}</p>
         </div>
-        <div id='date'>
-            <p>Date</p>
-            <input type='date' name='date' [(ngModel)]='date' useValueAsDate required>
-        </div>
-        <div (click)="onSubmit(f)" id='search'>
-            <i class='material-icons'>search</i>
-        </div>
-    </form>
-    <div id='validation'>
-        <p>{{validation}}</p>
     </div>
-    <!-- <h1>Search for flight status</h1>
-    <form #f="ngForm" (ngSubmit)="onSubmit1(f)">
+    <div id='status'>
+        <h1>Search for flight status</h1>
+        <form #f1="ngForm" (ngSubmit)="onSubmit1(f1)">
             <div id='flight-num'>
                 <p>Flight #</p>
-                <input type='text' name='flight_num' placeholder='flight #' autocomplete="off"
-                    [(ngModel)]='source' required>
+                <input type='text' name='flight_num' placeholder='flight #' ngModel required>
             </div>
             <div id='arrival'>
                 <p>Arrival</p>
-                <input type='date' name='arrival' [(ngModel)]='date' useValueAsDate required>
+                <input type='date' name='arrival' [(ngModel)]='date1' useValueAsDate required>
             </div>
             <div id='departure'>
-                <p>Arrival</p>
-                <input type='date' name='departure' [(ngModel)]='date' useValueAsDate required>
+                <p>Departure</p>
+                <input type='date' name='departure' [(ngModel)]='date2' useValueAsDate required>
             </div>
-            <div (click)="onSubmit1(f)" id='search1'>
+            <div (click)="onSubmit1(f1)" id='search1'>
                 <i class='material-icons'>search</i>
             </div>
-        </form> -->
+        </form>
+    </div>
 </div>
