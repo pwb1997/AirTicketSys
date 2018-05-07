@@ -1,0 +1,18 @@
+<div class='main'>
+  {{message}}
+  <div [style.display]='customerDisplay'>
+    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+      From
+      <input type="month" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To
+      <input type="month" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>
+    </form>
+    <h2>Total Spending</h2>
+    <h3>$ {{spending}}</h3>
+    <h2>Monthly Chart</h2>
+    <div id='customerMonthly' style="display: block">
+      <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
+        [chartType]="barChartType">
+      </canvas>
+    </div>
+  </div>
+</div>

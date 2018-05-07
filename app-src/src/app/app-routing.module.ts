@@ -13,7 +13,8 @@ const routes: Routes = [
   { path: 'logout', loadChildren: 'app/logout/logout.module#LogoutModule' },
   { path: 'search', loadChildren: 'app/search/search.module#SearchModule' },
   { path: 'buy', loadChildren: 'app/purchase/purchase.module#PurchaseModule' },
-  { path: 'flights', loadChildren: 'app/flights/flights.module#FlightsModule' }
+  { path: 'flights', loadChildren: 'app/flights/flights.module#FlightsModule' },
+  { path: 'track', loadChildren: 'app/track/track.module#TrackModule' }
 ];
 
 @NgModule({

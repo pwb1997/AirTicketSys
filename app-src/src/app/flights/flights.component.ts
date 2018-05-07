@@ -38,7 +38,7 @@ export class FlightsComponent implements OnInit {
         }
       },
       err => {
-        this.message = 'Not authorized, please log in as customer or booking agent';
+        this.message = 'Not authorized';
       }
     );
   }

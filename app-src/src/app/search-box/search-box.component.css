@@ -3,18 +3,58 @@
 }
 
 #search-box {
-    height: 240px;
-    width: 100%;
+    width: 500px;
     line-height: 50px;
     text-align: center;
     font-family: PoiretOne;
 }
 
-#search-box h1 {
+h1:nth-child(1) {
     font-size: 40px;
     margin: auto;
     margin-top: 20px;
     margin-bottom: 20px;
+}
+
+h1:nth-child(4) {
+    font-size: 40px;
+    margin: auto;
+    margin-top: 200px;
+    margin-bottom: 20px;
+}
+
+#flight-num{
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25px;;
+    top: 340px;
+    line-height: 50px;
+    text-align: left;
+}
+#arrival{
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25px;;
+    top: 390px;
+    line-height: 50px;
+    text-align: left;
+}
+#departure{
+    position: absolute;
+    height: 50px;
+    width: 300px;
+    font-size: 20px;
+    color: #645853;
+    left: 25px;;
+    top: 440px;
+    line-height: 50px;
+    text-align: left;
 }
 
 #source {
@@ -23,7 +63,7 @@
     width: 300px;
     font-size: 20px;
     color: #645853;
-    left: 25%;
+    left: 25px;;
     top: 90px;
     line-height: 50px;
     text-align: left;
@@ -70,7 +110,7 @@ li {
     width: 300px;
     font-size: 20px;
     color: #645853;
-    left: 25%;
+    left: 25px;
     top: 140px;
     line-height: 50px;
     text-align: left;
@@ -82,7 +122,7 @@ li {
     width: 300px;
     font-size: 20px;
     color: #645853;
-    left: 25%;
+    left: 25px;
     top: 190px;
     line-height: 50px;
     text-align: left;
@@ -91,8 +131,19 @@ li {
 #search {
     cursor: pointer;
     position: absolute;
-    left: 560px;
+    left: 350px;
     top: 120px;
+    border: solid 3px #645853;
+    height: 80px;
+    width: 80px;
+    border-radius: 100px;
+}
+
+#search1 {
+    cursor: pointer;
+    position: absolute;
+    left: 350px;
+    top: 370px;
     border: solid 3px #645853;
     height: 80px;
     width: 80px;
