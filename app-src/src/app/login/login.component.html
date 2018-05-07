@@ -1,16 +1,23 @@
 <div class='main' [style.visibility]='formVisibility'>
-  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
-    username or email:
+  <h1>Login</h1>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)" class='form'>
+    <div class='radio'>
+      <input type="radio" name='type' value='customer' [ngModel]='type'>Customer
+      <input type="radio" name='type' value='airline_staff' [ngModel]='type'>Airline Staff
+      <input type="radio" name='type' value='booking_agent' [ngModel]='type'>Booking Agent
+      <br>
+    </div>
+    Username or Email
+    <br>
     <input type='text' name='username' ngModel required>
-    <br> password:
+    <br> Password
+    <br>
     <input type='text' name='password' ngModel required>
     <br>
-    <input type="radio" name='type' value='customer' [ngModel]='type'>Customer<br>
-    <input type="radio" name='type' value='airline_staff' [ngModel]='type'>Airline Staff<br>
-    <input type="radio" name='type' value='booking_agent' [ngModel]='type'>Booking Agent<br>
-    <p>{{validation}}</p>
-    <button>Submit</button>
-    <a routerLink='/registeration'>Register</a>
+    <div class='button'>
+      <button [disabled]='f.form.invalid'>Login</button>
+      <button routerLink='/registeration'>Register</button>
+    </div>
   </form>
 </div>
 <div class='main' [style.visibility]='redirectionVisibility'>

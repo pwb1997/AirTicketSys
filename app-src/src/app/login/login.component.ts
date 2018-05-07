@@ -16,19 +16,8 @@ export class LoginComponent implements OnInit {
   redirectionVisibility = 'hidden';
   formVisibility = 'visible';
   onSubmit(f: NgForm) {
-    if (!f.valid) {
-      if (f.value.username === '' && f.value.password === '') {
-        this.validation = 'Please Input Username and Password!';
-        return;
-      }
-      if (f.value.username === '') {
-        this.validation = 'Please Input Username!';
-        return;
-      }
-      if (f.value.password === '') {
-        this.validation = 'Please Input Password!';
-        return;
-      }
+    if (f.invalid) {
+      return;
     }
     this.validation = '';
     f.value.password = md5(f.value.password);

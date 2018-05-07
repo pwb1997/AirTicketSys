@@ -11,6 +11,7 @@ import { CookieService } from 'ngx-cookie-service';
 export class NaviBarComponent implements OnInit {
   loginState = 'visible';
   logoutState = 'hidden';
+  loginMessageDisplay = '';
   homeActive = '';
   aboutActive = '';
   searchActive = '';
@@ -21,6 +22,7 @@ export class NaviBarComponent implements OnInit {
     if (this.cookieService.get('pk') !== '') {
       this.loginState = 'hidden';
       this.logoutState = 'visible';
+      this.loginMessageDisplay = 'none';
     }
     this.router.events.subscribe(path => {
       if (path['url']) {

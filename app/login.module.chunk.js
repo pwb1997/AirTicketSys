@@ -3,14 +3,14 @@ webpackJsonp(["login.module"],{
 /***/ "./src/app/login/login.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = "h1 {\n    font-family: 'PoiretOne';\n    font-size: 60px;\n    margin-top: 0px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main' [style.visibility]='formVisibility'>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n    username or email:\n    <input type='text' name='username' ngModel required>\n    <br> password:\n    <input type='text' name='password' ngModel required>\n    <br>\n    <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer<br>\n    <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff<br>\n    <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent<br>\n    <p>{{validation}}</p>\n    <button>Submit</button>\n    <a routerLink='/registeration'>Register</a>\n  </form>\n</div>\n<div class='main' [style.visibility]='redirectionVisibility'>\n  <p>Login Successfully! Redirecting You to Homepage ...</p>\n</div>"
+module.exports = "<div class='main' [style.visibility]='formVisibility'>\n  <h1>Login</h1>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" class='form'>\n    <div class='radio'>\n      <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer\n      <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff\n      <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent\n      <br>\n    </div>\n    Username or Email\n    <br>\n    <input type='text' name='username' ngModel required>\n    <br> Password\n    <br>\n    <input type='text' name='password' ngModel required>\n    <br>\n    <div class='button'>\n      <button [disabled]='f.form.invalid'>Login</button>\n      <button routerLink='/registeration'>Register</button>\n    </div>\n  </form>\n</div>\n<div class='main' [style.visibility]='redirectionVisibility'>\n  <p>Login Successfully! Redirecting You to Homepage ...</p>\n</div>"
 
 /***/ }),
 
@@ -44,19 +44,8 @@ var LoginComponent = /** @class */ (function () {
     }
     LoginComponent.prototype.onSubmit = function (f) {
         var _this = this;
-        if (!f.valid) {
-            if (f.value.username === '' && f.value.password === '') {
-                this.validation = 'Please Input Username and Password!';
-                return;
-            }
-            if (f.value.username === '') {
-                this.validation = 'Please Input Username!';
-                return;
-            }
-            if (f.value.password === '') {
-                this.validation = 'Please Input Password!';
-                return;
-            }
+        if (f.invalid) {
+            return;
         }
         this.validation = '';
         f.value.password = md5(f.value.password);

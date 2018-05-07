@@ -1,0 +1,54 @@
+<div class='main' [style.visibility]='formVisibility'>
+  <h1>Add New Flight/Airplane/Airport</h1>
+  <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <input type="radio" name='type' value='flight' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Flight
+    <input type="radio" name='type' value='airplane' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airplane
+    <input type="radio" name='type' value='airport' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airport
+    <br>
+    <div [style.display]='flightDisplay' class='form'>
+      Flight #
+      <br>
+      <input type="text" name='flight_num' ngModel>
+      <br> Airplane ID
+      <br>
+      <input type="text" name='airplane_id' ngModel>
+      <br> Departure Airport
+      <br>
+      <input type="text" name='departure_airport' ngModel>
+      <br> Departure Time
+      <br>
+      <input type="datetime-local" name='departure_time' ngModel>
+      <br> Arrival Airport
+      <br>
+      <input type="text" name='arrival_airport' ngModel>
+      <br> Arrival Time
+      <br>
+      <input type="datetime-local" name='arrival_time' ngModel>
+      <br> Price
+      <br>
+      <input type="text" name='price' ngModel>
+      <br>
+      <button>Submit</button>
+    </div>
+    <div [style.display]='airplaneDisplay' class='form'>
+      Airplane ID
+      <br>
+      <input type="text" name='airplane_id' ngModel>
+      <br> Seats
+      <br>
+      <input type="text" name='seats' ngModel>
+      <br>
+      <button>Submit</button>
+    </div>
+    <div [style.display]='airportDisplay' class='form'>
+      Airport Name
+      <br>
+      <input type="text" name='airport_name' ngModel>
+      <br> Airport City
+      <br>
+      <input type="text" name='airport_city' ngModel>
+      <br>
+      <button>Submit</button>
+    </div>
+  </form>
+</div>

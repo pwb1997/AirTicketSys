@@ -277,6 +277,11 @@ var map = {
 		"./src/app/about/about.module.ts",
 		"about.module"
 	],
+	"app/add/add.module": [
+		"./src/app/add/add.module.ts",
+		"common",
+		"add.module"
+	],
 	"app/flights/flights.module": [
 		"./src/app/flights/flights.module.ts",
 		"common",
@@ -359,7 +364,8 @@ var routes = [
     { path: 'search', loadChildren: 'app/search/search.module#SearchModule' },
     { path: 'buy', loadChildren: 'app/purchase/purchase.module#PurchaseModule' },
     { path: 'flights', loadChildren: 'app/flights/flights.module#FlightsModule' },
-    { path: 'track', loadChildren: 'app/track/track.module#TrackModule' }
+    { path: 'track', loadChildren: 'app/track/track.module#TrackModule' },
+    { path: 'add', loadChildren: 'app/add/add.module#AddModule' }
 ];
 var AppRoutingModule = /** @class */ (function () {
     function AppRoutingModule() {
@@ -464,14 +470,14 @@ exports.AppModule = AppModule;
 /***/ "./src/app/navi-bar/navi-bar.component.css":
 /***/ (function(module, exports) {
 
-module.exports = "nav {\r\n  overflow: hidden;\r\n  background-color: #0F1108;\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  top: 0px;\r\n  left: 0px;\r\n  z-index: 999;\r\n  width: 100%;\r\n  height: 70px;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #333;\r\n  font-family: 'Gugi';\r\n  text-decoration: none;\r\n  text-shadow: none;\r\n}\r\n\r\n#title {\r\n  position: absolute;\r\n  top: 0px;\r\n  left: 0px;\r\n  width: 150px;\r\n  height: 70px;\r\n}\r\n\r\n#title div {\r\n  color: #CAD8DE;\r\n  position: absolute;\r\n  font-size: 16px;\r\n}\r\n\r\n#title div:nth-child(1) {\r\n  font-size: 60px;\r\n  left: 12px;\r\n}\r\n\r\n#title div:nth-child(2) {\r\n  top: 10px;\r\n  left: 65px;\r\n}\r\n\r\n#title div:nth-child(3) {\r\n  top: 25px;\r\n  left: 65px;\r\n}\r\n\r\n#title div:nth-child(4) {\r\n  top: 40px;\r\n  left: 65px;\r\n}\r\n\r\nnav div {\r\n  position: absolute;\r\n  text-align: center;\r\n}\r\n\r\n.button {\r\n  text-align: center;\r\n  line-height: 70px;\r\n  font-size: 40px;\r\n  font-family: 'PoiretOne', cursive;\r\n}\r\n\r\n.button p {\r\n  margin: 0px;\r\n}\r\n\r\n#home {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 150px;\r\n}\r\n\r\n#about {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 300px;\r\n}\r\n\r\n#search {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 450px;\r\n}\r\n\r\n#github {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 600px;\r\n}\r\n\r\n.account {\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 0px;\r\n  bottom: 0px;\r\n  margin: auto;\r\n}"
+module.exports = "nav {\r\n  overflow: hidden;\r\n  background-color: #0F1108;\r\n  margin: 0px;\r\n  padding: 0px;\r\n  position: fixed;\r\n  top: 0px;\r\n  left: 0px;\r\n  z-index: 999;\r\n  width: 100%;\r\n  height: 70px;\r\n  -webkit-user-select: none;\r\n     -moz-user-select: none;\r\n      -ms-user-select: none;\r\n          user-select: none;\r\n  color: #333;\r\n  font-family: 'Gugi';\r\n  text-decoration: none;\r\n  text-shadow: none;\r\n}\r\n\r\n#title {\r\n  position: absolute;\r\n  top: 0px;\r\n  left: 0px;\r\n  width: 150px;\r\n  height: 70px;\r\n}\r\n\r\n#title div {\r\n  color: #CAD8DE;\r\n  position: absolute;\r\n  font-size: 16px;\r\n}\r\n\r\n#title div:nth-child(1) {\r\n  font-size: 60px;\r\n  left: 12px;\r\n}\r\n\r\n#title div:nth-child(2) {\r\n  top: 10px;\r\n  left: 65px;\r\n}\r\n\r\n#title div:nth-child(3) {\r\n  top: 25px;\r\n  left: 65px;\r\n}\r\n\r\n#title div:nth-child(4) {\r\n  top: 40px;\r\n  left: 65px;\r\n}\r\n\r\nnav div {\r\n  position: absolute;\r\n  text-align: center;\r\n}\r\n\r\n.button {\r\n  text-align: center;\r\n  line-height: 70px;\r\n  font-size: 40px;\r\n  font-family: 'PoiretOne', cursive;\r\n}\r\n\r\n.button p {\r\n  margin: 0px;\r\n}\r\n\r\n#home {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 150px;\r\n}\r\n\r\n#about {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 300px;\r\n}\r\n\r\n#search {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 450px;\r\n}\r\n\r\n#github {\r\n  height: 70px;\r\n  width: 150px;\r\n  left: 600px;\r\n}\r\n\r\n.account {\r\n  position: absolute;\r\n  right: 10px;\r\n  top: 0px;\r\n  bottom: 0px;\r\n  margin: auto;\r\n}\r\n\r\n#login-message{\r\n  position: fixed;\r\n  width: 100%;\r\n  height: 30px;\r\n  top:70px;\r\n  background-color: orange;\r\n  line-height: 30px;\r\n  text-align: left;\r\n  padding-left: 20px;\r\n}\r\n\r\n#login-message p {\r\n  margin:0px;\r\n}"
 
 /***/ }),
 
 /***/ "./src/app/navi-bar/navi-bar.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<nav>\n  <div id='title'>\n    <div>A</div>\n    <div>iR-T:CKET</div>\n    <div>RESERV</div>\n    <div>SYS\\></div>\n  </div>\n  <div id='home' class='underline-reveal button {{homeActive}}' (click)=\"this.router.navigate(['/home'])\">\n    <p>Home</p>\n  </div>\n  <div id='about' class='underline-reveal button {{aboutActive}}' (click)=\"this.router.navigate(['/about'])\">\n    <p>About</p>\n  </div>\n  <div id='search' class='underline-reveal button {{searchActive}}' (click)=\"this.router.navigate(['/search'])\">\n    <p>Search</p>\n  </div>\n  <div id='github' class='underline-reveal button' (click)=\"redirectGithub()\">\n    <p>GitHub</p>\n  </div>\n  <div [style.visibility]='loginState' (click)=\"this.router.navigate(['/login'])\" class='account circle-button' id='login'>\n    <p>login</p>\n  </div>\n  <div [style.visibility]='logoutState' (click)=\"this.router.navigate(['/logout'])\" class='account circle-button' id='logout'>\n    <p>logout</p>\n  </div>\n</nav>"
+module.exports = "<nav>\n  <div id='title'>\n    <div>A</div>\n    <div>iR-T:CKET</div>\n    <div>RESERV</div>\n    <div>SYS\\></div>\n  </div>\n  <div id='home' class='underline-reveal button {{homeActive}}' (click)=\"this.router.navigate(['/home'])\">\n    <p>Home</p>\n  </div>\n  <div id='about' class='underline-reveal button {{aboutActive}}' (click)=\"this.router.navigate(['/about'])\">\n    <p>About</p>\n  </div>\n  <div id='search' class='underline-reveal button {{searchActive}}' (click)=\"this.router.navigate(['/search'])\">\n    <p>Search</p>\n  </div>\n  <div id='github' class='underline-reveal button' (click)=\"redirectGithub()\">\n    <p>GitHub</p>\n  </div>\n  <div [style.visibility]='loginState' (click)=\"this.router.navigate(['/login'])\" class='account circle-button' id='login'>\n    <p>login</p>\n  </div>\n  <div [style.visibility]='logoutState' (click)=\"this.router.navigate(['/logout'])\" class='account circle-button' id='logout'>\n    <p>logout</p>\n  </div>\n  <div [style.display]='loginMessageDisplay' id='login-message'>\n    <p>You are not logged in yet. Please\n      <a routerLink='/login'>login</a> or\n      <a routerLink='/registeration'>register</a>.</p>\n  </div>\n</nav>"
 
 /***/ }),
 
@@ -499,6 +505,7 @@ var NaviBarComponent = /** @class */ (function () {
         this.cookieService = cookieService;
         this.loginState = 'visible';
         this.logoutState = 'hidden';
+        this.loginMessageDisplay = '';
         this.homeActive = '';
         this.aboutActive = '';
         this.searchActive = '';
@@ -509,6 +516,7 @@ var NaviBarComponent = /** @class */ (function () {
         if (this.cookieService.get('pk') !== '') {
             this.loginState = 'hidden';
             this.logoutState = 'visible';
+            this.loginMessageDisplay = 'none';
         }
         this.router.events.subscribe(function (path) {
             if (path['url']) {
