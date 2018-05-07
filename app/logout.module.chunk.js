@@ -10,7 +10,7 @@ module.exports = ""
 /***/ "./src/app/logout/logout.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  <p>{{message}}</p>\n</div>"
+module.exports = "<div id='top-message' [style.display]='topMessageDisplay' [style.background-color]=\"topMessageBackgroundColor\" style=\"z-index: 9999\">\n    <p>{{topMessage}}</p>\n  </div>"
 
 /***/ }),
 
@@ -34,15 +34,19 @@ var http_1 = __webpack_require__("./node_modules/@angular/common/esm5/http.js");
 var LogoutComponent = /** @class */ (function () {
     function LogoutComponent(http) {
         this.http = http;
-        this.message = '';
+        this.topMessage = '';
+        this.topMessageDisplay = '';
+        this.topMessageBackgroundColor = '';
     }
     LogoutComponent.prototype.ngOnInit = function () {
         var _this = this;
         this.http.post('/logout', null, { responseType: 'text' }).subscribe(function (res) {
-            _this.message = 'Logout Successfully! Redirecting You to Homepage ...';
+            _this.topMessageBackgroundColor = '#00F6ED';
+            _this.topMessage = 'Logout Successfully! Redirecting You to Homepage ...';
             window.location.href = '/home';
         }, function (err) {
-            _this.message = 'Logout Failed! Please Try Again ...';
+            _this.topMessageBackgroundColor = 'orange';
+            _this.topMessage = 'Logout Failed! Please Try Again ...';
             window.location.href = '/home';
         });
     };

@@ -1,4 +1,4 @@
-<div class='main' [style.visibility]='formVisibility'>
+<div class='main'>
   <h1>Login</h1>
   <form #f="ngForm" (ngSubmit)="onSubmit(f)" class='form'>
     <div class='radio'>
@@ -20,6 +20,7 @@
     </div>
   </form>
 </div>
-<div class='main' [style.visibility]='redirectionVisibility'>
-  <p>Login Successfully! Redirecting You to Homepage ...</p>
+<div>
+<div id='top-message' [style.display]='topMessageDisplay' [style.background-color]="topMessageBackgroundColor" style="z-index: 9999">
+  <p>{{topMessage}}</p>
 </div>

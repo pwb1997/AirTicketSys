@@ -2,16 +2,14 @@ import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 import { NgForm, FormsModule } from '@angular/forms';
+import { Routes, RouterModule } from '@angular/router';
 
-import { RegisterationRoutingModule } from './registeration-routing.module';
+import { RegisterationComponent } from './registeration.component';
 
-import { RegisterComponent } from './register/register.component';
-import { RegisterAgentComponent } from './register-agent/register-agent.component';
-import { RegisterCustomerComponent } from './register-customer/register-customer.component';
-import { RegisterStaffComponent } from './register-staff/register-staff.component';
+const routes: Routes = [{ path: '', component: RegisterationComponent }];
 
 @NgModule({
-  imports: [CommonModule, RegisterationRoutingModule, FormsModule],
-  declarations: [RegisterComponent, RegisterAgentComponent, RegisterCustomerComponent, RegisterStaffComponent]
+  imports: [CommonModule, RouterModule.forChild(routes), FormsModule],
+  declarations: [RegisterationComponent]
 })
 export class RegisterationModule { }

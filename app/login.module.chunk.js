@@ -10,7 +10,7 @@ module.exports = "h1 {\n    font-family: 'PoiretOne';\n    font-size: 60px;\n   
 /***/ "./src/app/login/login.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main' [style.visibility]='formVisibility'>\n  <h1>Login</h1>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" class='form'>\n    <div class='radio'>\n      <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer\n      <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff\n      <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent\n      <br>\n    </div>\n    Username or Email\n    <br>\n    <input type='text' name='username' ngModel required>\n    <br> Password\n    <br>\n    <input type='text' name='password' ngModel required>\n    <br>\n    <div class='button'>\n      <button [disabled]='f.form.invalid'>Login</button>\n      <button routerLink='/registeration'>Register</button>\n    </div>\n  </form>\n</div>\n<div class='main' [style.visibility]='redirectionVisibility'>\n  <p>Login Successfully! Redirecting You to Homepage ...</p>\n</div>"
+module.exports = "<div class='main'>\n  <h1>Login</h1>\n  <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\" class='form'>\n    <div class='radio'>\n      <input type=\"radio\" name='type' value='customer' [ngModel]='type'>Customer\n      <input type=\"radio\" name='type' value='airline_staff' [ngModel]='type'>Airline Staff\n      <input type=\"radio\" name='type' value='booking_agent' [ngModel]='type'>Booking Agent\n      <br>\n    </div>\n    Username or Email\n    <br>\n    <input type='text' name='username' ngModel required>\n    <br> Password\n    <br>\n    <input type='text' name='password' ngModel required>\n    <br>\n    <div class='button'>\n      <button [disabled]='f.form.invalid'>Login</button>\n      <button routerLink='/registeration'>Register</button>\n    </div>\n  </form>\n</div>\n<div>\n<div id='top-message' [style.display]='topMessageDisplay' [style.background-color]=\"topMessageBackgroundColor\" style=\"z-index: 9999\">\n  <p>{{topMessage}}</p>\n</div>"
 
 /***/ }),
 
@@ -39,8 +39,9 @@ var LoginComponent = /** @class */ (function () {
         this.router = router;
         this.validation = '';
         this.type = 'customer';
-        this.redirectionVisibility = 'hidden';
-        this.formVisibility = 'visible';
+        this.topMessageDisplay = 'none';
+        this.topMessage = '';
+        this.topMessageBackgroundColor = '';
     }
     LoginComponent.prototype.onSubmit = function (f) {
         var _this = this;
@@ -50,12 +51,15 @@ var LoginComponent = /** @class */ (function () {
         this.validation = '';
         f.value.password = md5(f.value.password);
         this.http.post('/login', f.value, { responseType: 'text' }).subscribe(function (res) {
-            _this.formVisibility = 'hidden';
-            _this.redirectionVisibility = 'visible';
+            _this.topMessageDisplay = '';
+            _this.topMessageBackgroundColor = '#00F6ED';
+            _this.topMessage = 'Successfully logged in, redirecting you to home page ...';
             window.location.href = '/home';
         }, function (err) {
             if (err.status === 401) {
-                _this.validation = 'Username or Password Not Correct!';
+                _this.topMessageDisplay = '';
+                _this.topMessageBackgroundColor = 'orange';
+                _this.topMessage = 'Username or Password Not Correct!';
             }
         });
     };

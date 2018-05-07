@@ -1,0 +1,97 @@
+<div class='main'>
+  <h1>Registeration</h1>
+
+  <form #f="ngForm">
+    <div class='radio'>
+      <input type="radio" name='type' value='customer' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Customer
+      <input type="radio" name='type' value='airline_staff' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Airline Staff
+      <input type="radio" name='type' value='booking_agent' [(ngModel)]='type' (ngModelChange)='toggleDisplay()'>Booking Agent
+    </div>
+  </form>
+
+  <form #customer="ngForm" (ngSubmit)="onSubmitCustomer(customer)" [style.display]='customerDisplay' class='form'>
+    Email
+    <br>
+    <input type='text' name='email' ngModel required>
+    <br> Name
+    <br>
+    <input type='text' name='name' ngModel required>
+    <br> Password
+    <br>
+    <input type='text' name='password' ngModel required>
+    <br> Building number
+    <br>
+    <input type='text' name='building_number' ngModel required>
+    <br> Street
+    <br>
+    <input type='text' name='street' ngModel required>
+    <br> City
+    <br>
+    <input type='text' name='city' ngModel required>
+    <br> State
+    <br>
+    <input type='text' name='state' ngModel required>
+    <br> Phone Number
+    <br>
+    <input type='text' name='phone_number' ngModel required>
+    <br> Passport Number
+    <br>
+    <input type='text' name='passport_number' ngModel required>
+    <br> Passport Expiration
+    <br>
+    <input type='date' name='passport_expiration' ngModel required>
+    <br> Passport Country
+    <br>
+    <input type='text' name='passport_country' ngModel required>
+    <br> Date of Birth
+    <br>
+    <input type='date' name='date_of_birth' ngModel required>
+    <br>
+    <div class='button'>
+      <button [disabled]='customer.form.invalid'>Register</button>
+    </div>
+  </form>
+
+  <form #staff="ngForm" (ngSubmit)="onSubmitStaff(staff)" [style.display]='staffDisplay' class='form'>
+    Username
+    <br>
+    <input type='text' name='username' ngModel required>
+    <br> Password
+    <br>
+    <input type='text' name='password' ngModel required>
+    <br> First Name
+    <br>
+    <input type='text' name='first_name' ngModel required>
+    <br> Last Name
+    <br>
+    <input type='text' name='last_name' ngModel required>
+    <br> Date of Birth
+    <br>
+    <input type='date' name='date_of_birth' ngModel required>
+    <br> Airline Name
+    <br>
+    <input type='text' name='airline_name' ngModel required>
+    <br>
+    <div class='button'>
+      <button [disabled]='staff.form.invalid'>Register</button>
+    </div>
+  </form>
+
+  <form #agent="ngForm" (ngSubmit)="onSubmitAgent(agent)" [style.display]='agentDisplay' class='form'>
+    Email <br>
+    <input type='text' name='email' ngModel required>
+    <br> Password <br>
+    <input type='text' name='password' ngModel required>
+    <br>
+    <div class='button'>
+      <button [disabled]='agent.form.invalid'>Register</button>
+    </div>
+  </form>
+  
+</div>
+
+<div>
+  <div id='top-message' [style.display]='topMessageDisplay' [style.background-color]="topMessageBackgroundColor" style="z-index: 9999">
+    <p>{{topMessage}}</p>
+  </div>
+</div>

@@ -13,8 +13,9 @@ import * as md5 from 'md5';
 export class LoginComponent implements OnInit {
   validation = '';
   type = 'customer';
-  redirectionVisibility = 'hidden';
-  formVisibility = 'visible';
+  topMessageDisplay = 'none';
+  topMessage = '';
+  topMessageBackgroundColor = '';
   onSubmit(f: NgForm) {
     if (f.invalid) {
       return;
@@ -23,13 +24,16 @@ export class LoginComponent implements OnInit {
     f.value.password = md5(f.value.password);
     this.http.post('/login', f.value, { responseType: 'text' }).subscribe(
       res => {
-        this.formVisibility = 'hidden';
-        this.redirectionVisibility = 'visible';
+        this.topMessageDisplay = '';
+        this.topMessageBackgroundColor = '#00F6ED';
+        this.topMessage = 'Successfully logged in, redirecting you to home page ...';
         window.location.href = '/home';
       },
       err => {
         if (err.status === 401) {
-          this.validation = 'Username or Password Not Correct!';
+          this.topMessageDisplay = '';
+          this.topMessageBackgroundColor = 'orange';
+          this.topMessage = 'Username or Password Not Correct!';
         }
       });
   }

@@ -7,16 +7,20 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
   styleUrls: ['./logout.component.css']
 })
 export class LogoutComponent implements OnInit {
-  message = '';
+  topMessage = '';
+  topMessageDisplay = '';
+  topMessageBackgroundColor = '';
   constructor(private http: HttpClient) { }
   ngOnInit() {
     this.http.post('/logout', null, { responseType: 'text' }).subscribe(
       res => {
-        this.message = 'Logout Successfully! Redirecting You to Homepage ...';
+        this.topMessageBackgroundColor = '#00F6ED';
+        this.topMessage = 'Logout Successfully! Redirecting You to Homepage ...';
         window.location.href = '/home';
       },
       err => {
-        this.message = 'Logout Failed! Please Try Again ...';
+        this.topMessageBackgroundColor = 'orange';
+        this.topMessage = 'Logout Failed! Please Try Again ...';
         window.location.href = '/home';
       }
     );
