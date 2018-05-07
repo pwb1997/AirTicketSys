@@ -26,7 +26,9 @@
         <td>{{displayTime(each.arrival_time)}}</td>
         <td>{{each.price}}</td>
         <td>{{each.status}}</td>
-        <td (click)='buyTicket(each.airline_name,each.flight_num)'>Buy Ticket</td>
+        <td>
+          <button (click)='buyTicket(each.airline_name,each.flight_num)'>Buy Ticket</button>
+        </td>
       </tr>
     </table>
   </div>

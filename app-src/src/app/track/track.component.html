@@ -9,7 +9,7 @@
     <h2>Total Spending</h2>
     <h3>$ {{spending}}</h3>
     <h2>Monthly Chart</h2>
-    <div id='customerMonthly' style="display: block">
+    <div class='chart' style="display: block">
       <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions" [legend]="barChartLegend"
         [chartType]="barChartType">
       </canvas>
@@ -30,13 +30,17 @@
     <h4>{{averageCommision}}</h4>
     <h2>Top Customers</h2>
     <h3>6 Month Tickets Sold</h3>
-    <canvas baseChart [datasets]="barChart1Data" [labels]="barChart1Labels" [options]="barChart1Options" [legend]="barChart1Legend"
-      [chartType]="barChart1Type">
-    </canvas>
+    <div class='chart'>
+      <canvas baseChart [datasets]="barChart1Data" [labels]="barChart1Labels" [options]="barChart1Options" [legend]="barChart1Legend"
+        [chartType]="barChart1Type">
+      </canvas>
+    </div>
     <h3>Past Year Commision</h3>
-    <canvas baseChart [datasets]="barChart2Data" [labels]="barChart2Labels" [options]="barChart2Options" [legend]="barChart2Legend"
-      [chartType]="barChart2Type">
-    </canvas>
+    <div class='chart'>
+      <canvas baseChart [datasets]="barChart2Data" [labels]="barChart2Labels" [options]="barChart2Options" [legend]="barChart2Legend"
+        [chartType]="barChart2Type">
+      </canvas>
+    </div>
   </div>
   <div [style.display]='staffDisplay'>
     <h1>Sales Report</h1>
@@ -48,7 +52,7 @@
     <h3>Total Tickets Sold</h3>
     <p>{{staffTicketsSold}}</p>
     <h3>Monthly Chart</h3>
-    <div style="display: block">
+    <div class='chart'>
       <canvas baseChart [datasets]="barChart3Data" [labels]="barChart3Labels" [options]="barChart3Options" [legend]="barChart3Legend"
         [chartType]="barChart3Type">
       </canvas>
@@ -56,12 +60,16 @@
     <h1>Revenue</h1>
     <h3>Last Month</h3>
     <p>{{revenueMonth}}</p>
-    <canvas baseChart [data]="barChart4Data" [labels]="barChart4Labels" [chartType]="barChart4Type" [colors]='doughnutChartColors'>
-    </canvas>
+    <div class='chart'>
+      <canvas baseChart [data]="barChart4Data" [labels]="barChart4Labels" [chartType]="barChart4Type" [colors]='doughnutChartColors'>
+      </canvas>
+    </div>
     <h3>Last Year</h3>
     <p>{{revenueYear}}</p>
-    <canvas baseChart [data]="barChart5Data" [labels]="barChart5Labels" [chartType]="barChart5Type" [colors]='doughnutChartColors'>
-    </canvas>
+    <div class='chart'>
+      <canvas baseChart [data]="barChart5Data" [labels]="barChart5Labels" [chartType]="barChart5Type" [colors]='doughnutChartColors'>
+      </canvas>
+    </div>
     <h1>Top 3 Destinations</h1>
     <h3>3 Months</h3>
     <ul>

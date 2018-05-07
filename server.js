@@ -57,8 +57,6 @@ app.get('/getFlights', (req, res) => {
         return;
     }
     if (req.session.type === 'customer') {
-        console.log("select * from ticket natural join purchases natural join flight where " +
-            "customer_email='" + req.session.pk + "' and departure_time >='" + date + "'")
         con.query("select * from ticket natural join purchases natural join flight where " +
             "customer_email='" + req.session.pk + "' and departure_time >='" + date + "'", (err, upcoming) => {
                 if (err) {
@@ -84,14 +82,14 @@ app.get('/getFlights', (req, res) => {
                 return;
             }
             const airline_name = airline_staff[0].airline_name;
-            con.query("select * from ticket natural join purchases natural join flight left join booking_agent on purchases.booking_agent_id = booking_agent.booking_agent_id join airport on flight.arrival_airport = airport.airport_name where " +
+            con.query("select flight_num,ticket_id,customer_email,purchase_date,email,departure_airport,departure_time,arrival_airport,arrival_time,price,status,airplane_id,airport_name,airport_city from ticket natural join (purchases left join booking_agent on purchases.booking_agent_id = booking_agent.booking_agent_id) natural join (flight join airport on flight.arrival_airport = airport.airport_name) where " +
                 "airline_name='" + airline_name + "' and departure_time >='" + date + "'", (err, upcoming) => {
                     if (err) {
                         res.sendStatus(500);
                         return;
                     }
                     result.upcoming = upcoming;
-                    con.query("select * from ticket natural join purchases natural join flight natural join booking_agent join airport on flight.arrival_airport = airport.airport_name where " +
+                    con.query("select flight_num,ticket_id,customer_email,purchase_date,email,departure_airport,departure_time,arrival_airport,arrival_time,price,status,airplane_id,airport_name,airport_city from ticket natural join (purchases left join booking_agent on purchases.booking_agent_id = booking_agent.booking_agent_id) natural join (flight join airport on flight.arrival_airport = airport.airport_name) where " +
                         "airline_name='" + airline_name + "' and departure_time <'" + date + "'", (err, history) => {
                             if (err) {
                                 res.sendStatus(500);
@@ -104,14 +102,14 @@ app.get('/getFlights', (req, res) => {
         })
     }
     if (req.session.type === 'booking_agent') {
-        con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+        con.query("select airline_name,flight_num,ticket_id,customer_email,purchase_date,departure_airport,departure_time,arrival_airport,arrival_time,price,status,airplane_id,email from ticket natural join purchases natural join flight natural join booking_agent where " +
             "email='" + req.session.pk + "' and departure_time >='" + date + "'", (err, upcoming) => {
                 if (err) {
                     res.sendStatus(500);
                     return;
                 }
                 result.upcoming = upcoming;
-                con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+                con.query("select airline_name,flight_num,ticket_id,customer_email,purchase_date,departure_airport,departure_time,arrival_airport,arrival_time,price,status,airplane_id,email from ticket natural join purchases natural join flight natural join booking_agent where " +
                     "email='" + req.session.pk + "' and departure_time <'" + date + "'", (err, history) => {
                         if (err) {
                             res.sendStatus(500);

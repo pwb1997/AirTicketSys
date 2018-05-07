@@ -347,7 +347,7 @@ export class TrackComponent implements OnInit {
     let direct = 0;
     let indirect = 0;
     for (const each of tickets) {
-      if (each.booking_agent_id !== null) {
+      if (each.email !== null) {
         indirect += each.price;
       } else {
         direct += each.price;

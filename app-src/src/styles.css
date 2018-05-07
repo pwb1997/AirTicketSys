@@ -26,6 +26,13 @@
   src: url('assets/Raleway-Regular.ttf') format('truetype');
 }
 
+@font-face {
+  font-family: 'Raleway';
+  font-style: normal;
+  font-weight: 700;
+  src: url('assets/Raleway-Bold.ttf') format('truetype');
+}
+
 #top-message {
   position: fixed;
   width: 100%;
@@ -128,7 +135,7 @@ h6 {
 }
 
 body {
-  margin: 0
+  margin: 0;
 }
 
 .main {
@@ -137,6 +144,7 @@ body {
   width: 100%;
   font-family: 'Raleway', sans-serif;
   text-align: center;
+  padding-bottom: 100px;
 }
 
 .circle-button {
@@ -211,4 +219,36 @@ body {
 
 .underline-reveal:hover, .underline-reveal:focus, .underline-reveal:active, .underline-reveal-active {
   color: #00F6ED
+}
+
+table {
+  border-collapse: collapse;
+  margin: auto;
+  left: 0;
+  right: 0;
+  width: 80%;
+}
+
+td, th {
+  border: 1px solid #CAD8DE;
+  padding: 8px;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  text-align: left;
+  background-color: #241909;
+  color: #CAD8DE;
+}
+
+.chart {
+  width: 80%;
+  margin: auto;
+  left: 0;
+  right: 0;
 }
