@@ -37,6 +37,13 @@ export class TrackComponent implements OnInit {
   staffCustomer = [];
   staffDetail;
   detailEmail = '';
+  staffTicketsSold = 0;
+  startDate2;
+  endDate2;
+  revenueMonth = 0;
+  revenueYear = 0;
+  destination3 = [];
+  destination1 = [];
 
   barChartOptions = {
     scaleShowVerticalLines: false, responsive: true, scales: {
@@ -80,6 +87,28 @@ export class TrackComponent implements OnInit {
   barChart2Legend = false;
   barChart2Data = [{ data: [] }];
 
+  barChart3Options = {
+    scaleShowVerticalLines: false, responsive: true, scales: {
+      yAxes: [{
+        ticks: {
+          beginAtZero: true
+        }
+      }]
+    }
+  };
+  barChart3Labels = [];
+  barChart3Type = 'bar';
+  barChart3Legend = false;
+  barChart3Data = [{ data: [] }];
+
+  barChart4Labels = ['direct sales', 'indirect sales'];
+  barChart4Type = 'doughnut';
+  barChart4Data = [];
+  barChart5Labels = ['direct sales', 'indirect sales'];
+  barChart5Type = 'doughnut';
+  barChart5Data = [];
+  doughnutChartColors = [{ backgroundColor: ['#b8436d', '#00d9f9', '#a4c73c', '#a4add3'] }];
+
   update() {
     setTimeout(() => {
       if (this.endDate.getTime() > new Date().getTime()) {
@@ -111,6 +140,20 @@ export class TrackComponent implements OnInit {
       if (this.ticketsSold === 0) {
         this.averageCommision = 0;
       }
+    }, 10);
+  }
+
+  update2() {
+    setTimeout(() => {
+      if (this.endDate2.getTime() > new Date().getTime()) {
+        this.endDate2 = new Date();
+        this.endDate2.setDate(2);
+      }
+      if (this.startDate2.getTime() > this.endDate2.getTime()) {
+        this.startDate2 = new Date(this.endDate2);
+      }
+      this.updateStaffChart(this.startDate2, this.endDate2);
+      this.staffTicketsSold = this.filterMonth(this.startDate2, this.endDate2).length;
     }, 10);
   }
 
@@ -158,6 +201,20 @@ export class TrackComponent implements OnInit {
     while (end.getTime() >= start.getTime()) {
       this.barChartLabels.push(this.date2Month(start.getTime()));
       this.barChartData[0].data.push(this.getSpending(this.filterMonth(start.getTime(), start.getTime())));
+      start.setMonth(start.getMonth() + 1);
+    }
+  }
+
+  updateStaffChart(startMonth, endMonth) {
+    const start = new Date(startMonth);
+    const end = new Date(endMonth);
+    start.setDate(2);
+    end.setDate(2);
+    this.barChart3Labels = [];
+    this.barChart3Data[0].data = [];
+    while (end.getTime() >= start.getTime()) {
+      this.barChart3Labels.push(this.date2Month(start.getTime()));
+      this.barChart3Data[0].data.push(this.filterMonth(start.getTime(), start.getTime()).length);
       start.setMonth(start.getMonth() + 1);
     }
   }
@@ -286,6 +343,19 @@ export class TrackComponent implements OnInit {
     return sort1.slice(0, 5);
   }
 
+  getRevenueShare(tickets) {
+    let direct = 0;
+    let indirect = 0;
+    for (const each of tickets) {
+      if (each.booking_agent_id !== null) {
+        indirect += each.price;
+      } else {
+        direct += each.price;
+      }
+    }
+    return [direct, indirect];
+  }
+
   showCustomerDetail(email) {
     this.detailDisplay = '';
     this.detailEmail = email;
@@ -294,6 +364,48 @@ export class TrackComponent implements OnInit {
         this.staffDetail = res;
       }
     );
+  }
+
+  getDestination() {
+    const start = new Date();
+    const end = new Date();
+    start.setMonth(start.getMonth() - 3);
+    const result1 = {};
+    const result2 = {};
+    for (const each of this.filterDate(start, end)) {
+      if (result1[each.airport_city]) {
+        result1[each.airport_city] += 1;
+      } else {
+        result1[each.airport_city] = 1;
+      }
+    }
+    start.setMonth(start.getMonth() - 9);
+    for (const each of this.filterDate(start, end)) {
+      console.log(each.airport);
+      if (result2[each.airport_city]) {
+        result2[each.airport_city] += 1;
+      } else {
+        result2[each.airport_city] = 1;
+      }
+    }
+    let sort1 = [];
+    let sort2 = [];
+    for (const each of Object.keys(result1)) {
+      sort1.push([each, result1[each]]);
+    }
+    for (const each of Object.keys(result2)) {
+      sort2.push([each, result2[each]]);
+    }
+    sort1.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    sort2.sort((a, b) => {
+      return b[1] - a[1];
+    });
+    sort1 = sort1.slice(0, 3);
+    sort2 = sort2.slice(0, 3);
+    this.destination3 = sort1;
+    this.destination1 = sort2;
   }
 
   onSubmit(f: NgForm) {
@@ -364,15 +476,25 @@ export class TrackComponent implements OnInit {
           for (const each of res['upcoming']) {
             this.tickets.push(each);
           }
+          console.log(this.tickets)
           const start = new Date();
           const end = new Date();
           start.setMonth(start.getMonth() - 1);
           let filtered = this.filterDate(start, end);
           this.staffTicketsSoldMonthly = this.topAgents(filtered)[0];
+          this.barChart4Data = this.getRevenueShare(filtered);
+          this.revenueMonth = this.getSpending(filtered);
           start.setMonth(start.getMonth() - 11);
           filtered = this.filterDate(start, end);
+          this.barChart5Data = this.getRevenueShare(filtered);
+          this.revenueYear = this.getSpending(filtered);
           [this.staffTicketsSoldYearly, this.staffCommision] = this.topAgents(filtered);
           this.staffCustomer = this.frequentCustomers(filtered);
+          this.startDate2 = start;
+          this.endDate2 = end;
+          this.staffTicketsSold = filtered.length;
+          this.updateStaffChart(start.getTime(), new Date().getTime());
+          this.getDestination();
         }
       );
     } else {

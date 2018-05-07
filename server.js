@@ -84,14 +84,14 @@ app.get('/getFlights', (req, res) => {
                 return;
             }
             const airline_name = airline_staff[0].airline_name;
-            con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+            con.query("select * from ticket natural join purchases natural join flight left join booking_agent on purchases.booking_agent_id = booking_agent.booking_agent_id join airport on flight.arrival_airport = airport.airport_name where " +
                 "airline_name='" + airline_name + "' and departure_time >='" + date + "'", (err, upcoming) => {
                     if (err) {
                         res.sendStatus(500);
                         return;
                     }
                     result.upcoming = upcoming;
-                    con.query("select * from ticket natural join purchases natural join flight natural join booking_agent where " +
+                    con.query("select * from ticket natural join purchases natural join flight natural join booking_agent join airport on flight.arrival_airport = airport.airport_name where " +
                         "airline_name='" + airline_name + "' and departure_time <'" + date + "'", (err, history) => {
                             if (err) {
                                 res.sendStatus(500);

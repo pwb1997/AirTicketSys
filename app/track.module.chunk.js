@@ -10,7 +10,7 @@ module.exports = "ul {\n    list-style-type: none;\n}"
 /***/ "./src/app/track/track.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  {{message}}\n  <div [style.display]='customerDisplay'>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>\n    </form>\n    <h2>Total Spending</h2>\n    <h3>$ {{spending}}</h3>\n    <h2>Monthly Chart</h2>\n    <div id='customerMonthly' style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChartData\" [labels]=\"barChartLabels\" [options]=\"barChartOptions\" [legend]=\"barChartLegend\"\n        [chartType]=\"barChartType\">\n      </canvas>\n    </div>\n  </div>\n  <div [style.display]='agentDisplay'>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='startDate1' name='startDate' useValueAsDate> To\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='endDate1' name='endDate' useValueAsDate>\n    </form>\n    <h2>My Commision</h2>\n    <h3>Total Commision</h3>\n    <h4>$ {{commision}}</h4>\n    <h3>Total Ticket Sold</h3>\n    <h4>{{ticketsSold}}</h4>\n    <h3>Average Commision</h3>\n    <h4>{{averageCommision}}</h4>\n    <h2>Top Customers</h2>\n    <h3>6 Month Tickets Sold</h3>\n    <canvas baseChart [datasets]=\"barChart1Data\" [labels]=\"barChart1Labels\" [options]=\"barChart1Options\" [legend]=\"barChart1Legend\"\n      [chartType]=\"barChart1Type\">\n    </canvas>\n    <h3>Past Year Commision</h3>\n    <canvas baseChart [datasets]=\"barChart2Data\" [labels]=\"barChart2Labels\" [options]=\"barChart2Options\" [legend]=\"barChart2Legend\"\n      [chartType]=\"barChart2Type\">\n    </canvas>\n  </div>\n  <div [style.display]='staffDisplay'>\n    <h2>Top 5 Booking Agents</h2>\n    <h3>Tickets Sold in 30 days</h3>\n    <ul>\n      <li *ngFor=\"let each of staffTicketsSoldMonthly let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h3>Ticket Sold in One Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffTicketsSoldYearly let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h3>Commision Received in One Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffCommision let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h2>Top 5 Customers</h2>\n    <h3>One Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffCustomer let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n        <button (click)=\"showCustomerDetail(each[0])\">Show Detail</button>\n      </li>\n      <div [style.display]='detailDisplay'>\n        <h4>Flights Taking by {{detailEmail}}</h4>\n        <li *ngFor=\"let each of staffDetail let i = index\" [attr.data-index]=\"i\">{{each.flight_num}}\n        </li>\n        <button (click)=\"detailDisplay='none'\">Hide Detail</button>\n      </div>\n    </ul>\n  </div>\n</div>"
+module.exports = "<div class='main'>\n  {{message}}\n  <div [style.display]='customerDisplay'>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='startDate' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update()' [(ngModel)]='endDate' name='endMonth' useValueAsDate>\n    </form>\n    <h2>Total Spending</h2>\n    <h3>$ {{spending}}</h3>\n    <h2>Monthly Chart</h2>\n    <div id='customerMonthly' style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChartData\" [labels]=\"barChartLabels\" [options]=\"barChartOptions\" [legend]=\"barChartLegend\"\n        [chartType]=\"barChartType\">\n      </canvas>\n    </div>\n  </div>\n  <div [style.display]='agentDisplay'>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='startDate1' name='startDate' useValueAsDate> To\n      <input type=\"date\" (ngModelChange)='update1()' [(ngModel)]='endDate1' name='endDate' useValueAsDate>\n    </form>\n    <h2>My Commision</h2>\n    <h3>Total Commision</h3>\n    <h4>$ {{commision}}</h4>\n    <h3>Total Ticket Sold</h3>\n    <h4>{{ticketsSold}}</h4>\n    <h3>Average Commision</h3>\n    <h4>{{averageCommision}}</h4>\n    <h2>Top Customers</h2>\n    <h3>6 Month Tickets Sold</h3>\n    <canvas baseChart [datasets]=\"barChart1Data\" [labels]=\"barChart1Labels\" [options]=\"barChart1Options\" [legend]=\"barChart1Legend\"\n      [chartType]=\"barChart1Type\">\n    </canvas>\n    <h3>Past Year Commision</h3>\n    <canvas baseChart [datasets]=\"barChart2Data\" [labels]=\"barChart2Labels\" [options]=\"barChart2Options\" [legend]=\"barChart2Legend\"\n      [chartType]=\"barChart2Type\">\n    </canvas>\n  </div>\n  <div [style.display]='staffDisplay'>\n    <h1>Sales Report</h1>\n    <form #f=\"ngForm\">\n      From\n      <input type=\"month\" (ngModelChange)='update2()' [(ngModel)]='startDate2' name='startMonth' useValueAsDate> To\n      <input type=\"month\" (ngModelChange)='update2()' [(ngModel)]='endDate2' name='endMonth' useValueAsDate>\n    </form>\n    <h3>Total Tickets Sold</h3>\n    <p>{{staffTicketsSold}}</p>\n    <h3>Monthly Chart</h3>\n    <div style=\"display: block\">\n      <canvas baseChart [datasets]=\"barChart3Data\" [labels]=\"barChart3Labels\" [options]=\"barChart3Options\" [legend]=\"barChart3Legend\"\n        [chartType]=\"barChart3Type\">\n      </canvas>\n    </div>\n    <h1>Revenue</h1>\n    <h3>Last Month</h3>\n    <p>{{revenueMonth}}</p>\n    <canvas baseChart [data]=\"barChart4Data\" [labels]=\"barChart4Labels\" [chartType]=\"barChart4Type\" [colors]='doughnutChartColors'>\n    </canvas>\n    <h3>Last Year</h3>\n    <p>{{revenueYear}}</p>\n    <canvas baseChart [data]=\"barChart5Data\" [labels]=\"barChart5Labels\" [chartType]=\"barChart5Type\" [colors]='doughnutChartColors'>\n    </canvas>\n    <h1>Top 3 Destinations</h1>\n    <h3>3 Months</h3>\n    <p>{{destination3}}</p>\n    <h3>1 Year</h3>\n    <p>{{destination1}}</p>\n    <h1>Top 5 Booking Agents</h1>\n    <h3>Tickets Sold in 30 days</h3>\n    <ul>\n      <li *ngFor=\"let each of staffTicketsSoldMonthly let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h3>Ticket Sold in 1 Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffTicketsSoldYearly let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h3>Commision Received in 1 Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffCommision let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n      </li>\n    </ul>\n    <h1>Top 5 Customers</h1>\n    <h3>1 Year</h3>\n    <ul>\n      <li *ngFor=\"let each of staffCustomer let i = index\" [attr.data-index]=\"i\">{{i+1}}. {{each[0]}}: {{each[1]}}\n        <button (click)=\"showCustomerDetail(each[0])\">Show Detail</button>\n      </li>\n      <div [style.display]='detailDisplay'>\n        <h4>Flights Taken by {{detailEmail}}</h4>\n        <li *ngFor=\"let each of staffDetail let i = index\" [attr.data-index]=\"i\">{{each.flight_num}}\n        </li>\n        <button (click)=\"detailDisplay='none'\">Hide Detail</button>\n      </div>\n    </ul>\n  </div>\n</div>"
 
 /***/ }),
 
@@ -55,6 +55,11 @@ var TrackComponent = /** @class */ (function () {
         this.staffCommision = [];
         this.staffCustomer = [];
         this.detailEmail = '';
+        this.staffTicketsSold = 0;
+        this.revenueMonth = 0;
+        this.revenueYear = 0;
+        this.destination3 = [];
+        this.destination1 = [];
         this.barChartOptions = {
             scaleShowVerticalLines: false, responsive: true, scales: {
                 yAxes: [{
@@ -94,6 +99,26 @@ var TrackComponent = /** @class */ (function () {
         this.barChart2Type = 'bar';
         this.barChart2Legend = false;
         this.barChart2Data = [{ data: [] }];
+        this.barChart3Options = {
+            scaleShowVerticalLines: false, responsive: true, scales: {
+                yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+            }
+        };
+        this.barChart3Labels = [];
+        this.barChart3Type = 'bar';
+        this.barChart3Legend = false;
+        this.barChart3Data = [{ data: [] }];
+        this.barChart4Labels = ['direct sales', 'indirect sales'];
+        this.barChart4Type = 'doughnut';
+        this.barChart4Data = [];
+        this.barChart5Labels = ['direct sales', 'indirect sales'];
+        this.barChart5Type = 'doughnut';
+        this.barChart5Data = [];
+        this.doughnutChartColors = [{ backgroundColor: ['#b8436d', '#00d9f9', '#a4c73c', '#a4add3'] }];
     }
     TrackComponent.prototype.update = function () {
         var _this = this;
@@ -127,6 +152,20 @@ var TrackComponent = /** @class */ (function () {
             if (_this.ticketsSold === 0) {
                 _this.averageCommision = 0;
             }
+        }, 10);
+    };
+    TrackComponent.prototype.update2 = function () {
+        var _this = this;
+        setTimeout(function () {
+            if (_this.endDate2.getTime() > new Date().getTime()) {
+                _this.endDate2 = new Date();
+                _this.endDate2.setDate(2);
+            }
+            if (_this.startDate2.getTime() > _this.endDate2.getTime()) {
+                _this.startDate2 = new Date(_this.endDate2);
+            }
+            _this.updateStaffChart(_this.startDate2, _this.endDate2);
+            _this.staffTicketsSold = _this.filterMonth(_this.startDate2, _this.endDate2).length;
         }, 10);
     };
     TrackComponent.prototype.date2Month = function (d) {
@@ -172,6 +211,19 @@ var TrackComponent = /** @class */ (function () {
         while (end.getTime() >= start.getTime()) {
             this.barChartLabels.push(this.date2Month(start.getTime()));
             this.barChartData[0].data.push(this.getSpending(this.filterMonth(start.getTime(), start.getTime())));
+            start.setMonth(start.getMonth() + 1);
+        }
+    };
+    TrackComponent.prototype.updateStaffChart = function (startMonth, endMonth) {
+        var start = new Date(startMonth);
+        var end = new Date(endMonth);
+        start.setDate(2);
+        end.setDate(2);
+        this.barChart3Labels = [];
+        this.barChart3Data[0].data = [];
+        while (end.getTime() >= start.getTime()) {
+            this.barChart3Labels.push(this.date2Month(start.getTime()));
+            this.barChart3Data[0].data.push(this.filterMonth(start.getTime(), start.getTime()).length);
             start.setMonth(start.getMonth() + 1);
         }
     };
@@ -310,6 +362,20 @@ var TrackComponent = /** @class */ (function () {
         });
         return sort1.slice(0, 5);
     };
+    TrackComponent.prototype.getRevenueShare = function (tickets) {
+        var direct = 0;
+        var indirect = 0;
+        for (var _i = 0, tickets_4 = tickets; _i < tickets_4.length; _i++) {
+            var each = tickets_4[_i];
+            if (each.booking_agent_id !== null) {
+                indirect += each.price;
+            }
+            else {
+                direct += each.price;
+            }
+        }
+        return [direct, indirect];
+    };
     TrackComponent.prototype.showCustomerDetail = function (email) {
         var _this = this;
         this.detailDisplay = '';
@@ -317,6 +383,53 @@ var TrackComponent = /** @class */ (function () {
         this.http.post('/getCustomer', { 'email': email }, { responseType: 'json' }).subscribe(function (res) {
             _this.staffDetail = res;
         });
+    };
+    TrackComponent.prototype.getDestination = function () {
+        var start = new Date();
+        var end = new Date();
+        start.setMonth(start.getMonth() - 3);
+        var result1 = {};
+        var result2 = {};
+        for (var _i = 0, _a = this.filterDate(start, end); _i < _a.length; _i++) {
+            var each = _a[_i];
+            if (result1[each.airport_city]) {
+                result1[each.airport_city] += 1;
+            }
+            else {
+                result1[each.airport_city] = 1;
+            }
+        }
+        start.setMonth(start.getMonth() - 9);
+        for (var _b = 0, _c = this.filterDate(start, end); _b < _c.length; _b++) {
+            var each = _c[_b];
+            console.log(each.airport);
+            if (result2[each.airport_city]) {
+                result2[each.airport_city] += 1;
+            }
+            else {
+                result2[each.airport_city] = 1;
+            }
+        }
+        var sort1 = [];
+        var sort2 = [];
+        for (var _d = 0, _e = Object.keys(result1); _d < _e.length; _d++) {
+            var each = _e[_d];
+            sort1.push([each, result1[each]]);
+        }
+        for (var _f = 0, _g = Object.keys(result2); _f < _g.length; _f++) {
+            var each = _g[_f];
+            sort2.push([each, result2[each]]);
+        }
+        sort1.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        sort2.sort(function (a, b) {
+            return b[1] - a[1];
+        });
+        sort1 = sort1.slice(0, 3);
+        sort2 = sort2.slice(0, 3);
+        this.destination3 = sort1;
+        this.destination1 = sort2;
     };
     TrackComponent.prototype.onSubmit = function (f) {
     };
@@ -386,15 +499,25 @@ var TrackComponent = /** @class */ (function () {
                     var each = _c[_b];
                     _this.tickets.push(each);
                 }
+                console.log(_this.tickets);
                 var start = new Date();
                 var end = new Date();
                 start.setMonth(start.getMonth() - 1);
                 var filtered = _this.filterDate(start, end);
                 _this.staffTicketsSoldMonthly = _this.topAgents(filtered)[0];
+                _this.barChart4Data = _this.getRevenueShare(filtered);
+                _this.revenueMonth = _this.getSpending(filtered);
                 start.setMonth(start.getMonth() - 11);
                 filtered = _this.filterDate(start, end);
+                _this.barChart5Data = _this.getRevenueShare(filtered);
+                _this.revenueYear = _this.getSpending(filtered);
                 _d = _this.topAgents(filtered), _this.staffTicketsSoldYearly = _d[0], _this.staffCommision = _d[1];
                 _this.staffCustomer = _this.frequentCustomers(filtered);
+                _this.startDate2 = start;
+                _this.endDate2 = end;
+                _this.staffTicketsSold = filtered.length;
+                _this.updateStaffChart(start.getTime(), new Date().getTime());
+                _this.getDestination();
                 var _d;
             });
         }
