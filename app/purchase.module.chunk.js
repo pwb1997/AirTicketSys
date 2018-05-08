@@ -3,14 +3,14 @@ webpackJsonp(["purchase.module"],{
 /***/ "./src/app/purchase/purchase.component.css":
 /***/ (function(module, exports) {
 
-module.exports = ""
+module.exports = ".form {\n    margin-top: 50px;\n}"
 
 /***/ }),
 
 /***/ "./src/app/purchase/purchase.component.html":
 /***/ (function(module, exports) {
 
-module.exports = "<div class='main'>\n  <div class='message'>{{message}}</div>\n  <div [style.display]='purchaseDisplay'>\n    <h1>Ticket Information</h1>\n    <table>\n      <tr>\n        <th>Airline Name</th>\n        <th>Flight #</th>\n        <th>Departure Airport</th>\n        <th>Departure Time</th>\n        <th>Arrival Airport</th>\n        <th>Arrival Time</th>\n        <th>Price</th>\n        <th>Status</th>\n        <th>Seats</th>\n        <th>Remaining Tickets</th>\n      </tr>\n      <tr *ngFor=\"let each of result\">\n        <td>{{each.airline_name}}</td>\n        <td>{{each.flight_num}}</td>\n        <td>{{each.departure_airport}}</td>\n        <td>{{displayTime(each.departure_time)}}</td>\n        <td>{{each.arrival_airport}}</td>\n        <td>{{displayTime(each.arrival_time)}}</td>\n        <td>{{each.price}}</td>\n        <td>{{each.status}}</td>\n        <td>{{each.seats}}</td>\n        <td>{{each.remain}}</td>\n      </tr>\n    </table>\n    <form #f=\"ngForm\" (ngSubmit)=\"onSubmit(f)\">\n      <div [style.display]='customerEmailDisplay'>\n        Customer Email:\n        <input type='text' name='customer_email' placeholder='email' ngModel>\n      </div>\n      <button>Purchase</button>\n    </form>\n    <button>Cancel</button>\n    {{purchaseMessage}}\n  </div>\n</div>"
+module.exports = "<div class='main'>\n  <div class='message'>{{message}}</div>\n  <div [style.display]='purchaseDisplay'>\n    <h1>Ticket Information</h1>\n    <table>\n      <tr>\n        <th>Airline Name</th>\n        <th>Flight #</th>\n        <th>Departure Airport</th>\n        <th>Departure Time</th>\n        <th>Arrival Airport</th>\n        <th>Arrival Time</th>\n        <th>Price</th>\n        <th>Status</th>\n        <th>Seats</th>\n        <th>Remaining Tickets</th>\n      </tr>\n      <tr *ngFor=\"let each of result\">\n        <td>{{each.airline_name}}</td>\n        <td>{{each.flight_num}}</td>\n        <td>{{each.departure_airport}}</td>\n        <td>{{displayTime(each.departure_time)}}</td>\n        <td>{{each.arrival_airport}}</td>\n        <td>{{displayTime(each.arrival_time)}}</td>\n        <td>{{each.price}}</td>\n        <td>{{each.status}}</td>\n        <td>{{each.seats}}</td>\n        <td>{{each.remain}}</td>\n      </tr>\n    </table>\n    <form #f=\"ngForm\" class='form'>\n      <div [style.display]='customerEmailDisplay'>\n        <input type='text' name='customer_email' placeholder='Customer Email' ngModel required>\n      </div>\n      <div class='button'>\n        <button (click)=\"onSubmit(f)\" [disabled]=\"f.form.invalid  && type==='booking_agent'\">Purchase</button>\n        <button [routerLink]=\"['/search']\">Cancel</button>\n      </div>\n    </form>\n    {{purchaseMessage}}\n  </div>\n</div>"
 
 /***/ }),
 
@@ -38,6 +38,7 @@ var PurchaseComponent = /** @class */ (function () {
         this.cookie = cookie;
         this.router = router;
         this.http = http;
+        this.type = '';
         this.message = '';
         this.purchaseMessage = '';
         this.purchaseDisplay = 'none';
@@ -93,23 +94,23 @@ var PurchaseComponent = /** @class */ (function () {
     };
     PurchaseComponent.prototype.ngOnInit = function () {
         var _this = this;
-        var type = this.cookie.get('type');
+        this.type = this.cookie.get('type');
         if (this.cookie.get('buyTicket') === '') {
             this.message = 'No flight selected, redirecting you to the search page ...';
             setTimeout(function () {
                 _this.router.navigate(['search']);
             }, 3000);
         }
-        else if (type === 'customer') {
+        else if (this.type === 'customer') {
             this.purchaseDisplay = '';
             this.getTicketInfo();
         }
-        else if (type === 'booking_agent') {
+        else if (this.type === 'booking_agent') {
             this.purchaseDisplay = '';
             this.getTicketInfo();
             this.customerEmailDisplay = '';
         }
-        else if (type === 'airline_staff') {
+        else if (this.type === 'airline_staff') {
             this.message = 'You cannot buy tickets as an airline staff, redirecting you to the home page ...';
             setTimeout(function () {
                 _this.router.navigate(['home']);

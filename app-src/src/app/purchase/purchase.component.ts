@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 })
 export class PurchaseComponent implements OnInit {
 
+  type = '';
   message = '';
   purchaseMessage = '';
   purchaseDisplay = 'none';
@@ -69,20 +70,20 @@ export class PurchaseComponent implements OnInit {
   constructor(private cookie: CookieService, private router: Router, private http: HttpClient) { }
 
   ngOnInit() {
-    const type = this.cookie.get('type');
+    this.type = this.cookie.get('type');
     if (this.cookie.get('buyTicket') === '') {
       this.message = 'No flight selected, redirecting you to the search page ...';
       setTimeout(() => {
         this.router.navigate(['search']);
       }, 3000);
-    } else if (type === 'customer') {
+    } else if (this.type === 'customer') {
       this.purchaseDisplay = '';
       this.getTicketInfo();
-    } else if (type === 'booking_agent') {
+    } else if (this.type === 'booking_agent') {
       this.purchaseDisplay = '';
       this.getTicketInfo();
       this.customerEmailDisplay = '';
-    } else if (type === 'airline_staff') {
+    } else if (this.type === 'airline_staff') {
       this.message = 'You cannot buy tickets as an airline staff, redirecting you to the home page ...';
       setTimeout(() => {
         this.router.navigate(['home']);

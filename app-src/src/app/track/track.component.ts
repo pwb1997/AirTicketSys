@@ -470,13 +470,7 @@ export class TrackComponent implements OnInit {
       this.staffDisplay = '';
       this.http.get('/getFlights').subscribe(
         res => {
-          for (const each of res['history']) {
-            this.tickets.push(each);
-          }
-          for (const each of res['upcoming']) {
-            this.tickets.push(each);
-          }
-          console.log(this.tickets)
+          this.tickets = res['tickets'];
           const start = new Date();
           const end = new Date();
           start.setMonth(start.getMonth() - 1);

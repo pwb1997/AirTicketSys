@@ -54,58 +54,115 @@
     </table>
   </div>
   <div [style.display]='agentDisplay'>
-      <h1>View My Flights</h1>
-      <h2>Upcoming Flights</h2>
+    <h1>View My Flights</h1>
+    <h2>Upcoming Flights</h2>
+    <table>
+      <tr>
+        <th>Ticket #</th>
+        <th>Booked For</th>
+        <th>Airline Name</th>
+        <th>Flight #</th>
+        <th>Departure Airport</th>
+        <th>Departure Time</th>
+        <th>Arrival Airport</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let each of upcoming">
+        <td>{{each.ticket_id}}</td>
+        <td>{{each.customer_email}}</td>
+        <td>{{each.airline_name}}</td>
+        <td>{{each.flight_num}}</td>
+        <td>{{each.departure_airport}}</td>
+        <td>{{displayTime(each.departure_time)}}</td>
+        <td>{{each.arrival_airport}}</td>
+        <td>{{displayTime(each.arrival_time)}}</td>
+        <td>{{each.price}}</td>
+        <td>{{each.status}}</td>
+      </tr>
+    </table>
+    <h2>History</h2>
+    <table>
+      <tr>
+        <th>Ticket #</th>
+        <th>Booked For</th>
+        <th>Airline Name</th>
+        <th>Flight #</th>
+        <th>Departure Airport</th>
+        <th>Departure Time</th>
+        <th>Arrival Airport</th>
+        <th>Arrival Time</th>
+        <th>Price</th>
+        <th>Status</th>
+      </tr>
+      <tr *ngFor="let each of history">
+        <td>{{each.ticket_id}}</td>
+        <td>{{each.customer_email}}</td>
+        <td>{{each.airline_name}}</td>
+        <td>{{each.flight_num}}</td>
+        <td>{{each.departure_airport}}</td>
+        <td>{{displayTime(each.departure_time)}}</td>
+        <td>{{each.arrival_airport}}</td>
+        <td>{{displayTime(each.arrival_time)}}</td>
+        <td>{{each.price}}</td>
+        <td>{{each.status}}</td>
+      </tr>
+    </table>
+  </div>
+  <div [style.display]='staffDisplay'>
+    <div [style.display]='flightDisplay'>
+      <h1>View Flights</h1>
+      <form #f="ngForm">
+        From
+        <input type="date" (ngModelChange)='update()' [(ngModel)]='startDate' name='startDate' useValueAsDate> To
+        <input type="date" (ngModelChange)='update()' [(ngModel)]='endDate' name='endDate' useValueAsDate>
+      </form>
       <table>
         <tr>
-          <th>Ticket #</th>
-          <th>Booked For</th>
-          <th>Airline Name</th>
           <th>Flight #</th>
+          <th>Airplane ID</th>
           <th>Departure Airport</th>
           <th>Departure Time</th>
           <th>Arrival Airport</th>
           <th>Arrival Time</th>
           <th>Price</th>
           <th>Status</th>
+          <th>Show Detail</th>
         </tr>
-        <tr *ngFor="let each of upcoming">
-          <td>{{each.ticket_id}}</td>
-          <td>{{each.customer_email}}</td>
-          <td>{{each.airline_name}}</td>
+        <tr *ngFor="let each of filtered">
           <td>{{each.flight_num}}</td>
+          <td>{{each.airplane_id}}</td>
           <td>{{each.departure_airport}}</td>
           <td>{{displayTime(each.departure_time)}}</td>
           <td>{{each.arrival_airport}}</td>
           <td>{{displayTime(each.arrival_time)}}</td>
           <td>{{each.price}}</td>
           <td>{{each.status}}</td>
-        </tr>
-      </table>
-      <h2>History</h2>
-      <table>
-        <tr>
-          <th>Ticket #</th>
-          <th>Airline Name</th>
-          <th>Flight #</th>
-          <th>Departure Airport</th>
-          <th>Departure Time</th>
-          <th>Arrival Airport</th>
-          <th>Arrival Time</th>
-          <th>Price</th>
-          <th>Status</th>
-        </tr>
-        <tr *ngFor="let each of history">
-          <td>{{each.ticket_id}}</td>
-          <td>{{each.airline_name}}</td>
-          <td>{{each.flight_num}}</td>
-          <td>{{each.departure_airport}}</td>
-          <td>{{displayTime(each.departure_time)}}</td>
-          <td>{{each.arrival_airport}}</td>
-          <td>{{displayTime(each.arrival_time)}}</td>
-          <td>{{each.price}}</td>
-          <td>{{each.status}}</td>
+          <td>
+            <button (click)='detail(each)'>Show Detail</button>
+          </td>
         </tr>
       </table>
     </div>
+    <div [style.display]='detailDisplay'>
+      <h1>Flight #{{detailNum}}</h1>
+      <h3>Customers</h3>
+      <p>{{customers}}</p>
+      <h3>Update Status</h3>
+      <form #f="ngForm" class='form'>
+        <select [(ngModel)]="status" name='status'>
+          <option value="upcoming">Upcoming</option>
+          <option value="on time">On Time</option>
+          <option value="delayed">Delayed</option>
+          <option value="cancelled">Cancelled</option>
+        </select>
+        <div class='button'>
+          <button (click)='onSubmit(f)'>Update</button>
+          <button (click)="this.detailDisplay='none';this.flightDisplay=''">Close Detail</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
 </div>

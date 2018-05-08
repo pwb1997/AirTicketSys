@@ -491,15 +491,7 @@ var TrackComponent = /** @class */ (function () {
         else if (this.type === 'airline_staff') {
             this.staffDisplay = '';
             this.http.get('/getFlights').subscribe(function (res) {
-                for (var _i = 0, _a = res['history']; _i < _a.length; _i++) {
-                    var each = _a[_i];
-                    _this.tickets.push(each);
-                }
-                for (var _b = 0, _c = res['upcoming']; _b < _c.length; _b++) {
-                    var each = _c[_b];
-                    _this.tickets.push(each);
-                }
-                console.log(_this.tickets);
+                _this.tickets = res['tickets'];
                 var start = new Date();
                 var end = new Date();
                 start.setMonth(start.getMonth() - 1);
@@ -511,14 +503,14 @@ var TrackComponent = /** @class */ (function () {
                 filtered = _this.filterDate(start, end);
                 _this.barChart5Data = _this.getRevenueShare(filtered);
                 _this.revenueYear = _this.getSpending(filtered);
-                _d = _this.topAgents(filtered), _this.staffTicketsSoldYearly = _d[0], _this.staffCommision = _d[1];
+                _a = _this.topAgents(filtered), _this.staffTicketsSoldYearly = _a[0], _this.staffCommision = _a[1];
                 _this.staffCustomer = _this.frequentCustomers(filtered);
                 _this.startDate2 = start;
                 _this.endDate2 = end;
                 _this.staffTicketsSold = filtered.length;
                 _this.updateStaffChart(start.getTime(), new Date().getTime());
                 _this.getDestination();
-                var _d;
+                var _a;
             });
         }
         else {

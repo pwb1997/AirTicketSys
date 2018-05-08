@@ -83,21 +83,20 @@ app.get('/getFlights', (req, res) => {
             }
             const airline_name = airline_staff[0].airline_name;
             con.query("select flight_num,ticket_id,customer_email,purchase_date,email,departure_airport,departure_time,arrival_airport,arrival_time,price,status,airplane_id,airport_name,airport_city from ticket natural join (purchases left join booking_agent on purchases.booking_agent_id = booking_agent.booking_agent_id) natural join (flight join airport on flight.arrival_airport = airport.airport_name) where " +
-                "airline_name='" + airline_name + "' and departure_time >='" + date + "'", (err, upcoming) => {
+                "airline_name='" + airline_name + "'", (err, tickets) => {
                     if (err) {
                         res.sendStatus(500);
                         return;
                     }
-                    result.upcoming = upcoming;
-                    con.query("select flight_num,ticket_id,customer_email,purchase_date,email,departure_airport,departure_time,arrival_airport,arrival_time,price,status,airplane_id,airport_name,airport_city from ticket natural join (purchases left join booking_agent on purchases.booking_agent_id = booking_agent.booking_agent_id) natural join (flight join airport on flight.arrival_airport = airport.airport_name) where " +
-                        "airline_name='" + airline_name + "' and departure_time <'" + date + "'", (err, history) => {
-                            if (err) {
-                                res.sendStatus(500);
-                                return;
-                            }
-                            result.history = history;
-                            res.send(result);
-                        });
+                    result.tickets = tickets;
+                    con.query("select * from flight where airline_name='" + airline_name + "'", (err, flights) => {
+                        if (err) {
+                            res.sendStatus(500);
+                            return;
+                        }
+                        result.flights = flights;
+                        res.send(result);
+                    })
                 });
         })
     }
@@ -528,6 +527,30 @@ app.post('/add/flight', (req, res) => {
             }
             console.log(getDate(), 'new flight added');
             res.sendStatus(200);
+        })
+    })
+})
+
+app.post('/changeStatus', (req, res) => {
+    if (req.session.type !== 'airline_staff') {
+        res.sendStatus(401);
+        console.log(getDate(), 'unauthorized operation refused');
+        return;
+    }
+    con.query("select * from airline_staff where username='" + req.session.pk + "'", (err, result) => {
+        if (err) {
+            res.sendStatus(500);
+            return;
+        }
+        const airline_name = result[0].airline_name;
+        con.query("update flight set status='" + req.body.status + "' where airline_name='" + airline_name + "' and flight_num='" + req.body.flight_num + "'", (err,result) => {
+            console.log(err,result);
+            if (err) {
+                console.log(err);
+                res.sendStatus(500);
+                return;
+            }
+            res.send(null);
         })
     })
 })

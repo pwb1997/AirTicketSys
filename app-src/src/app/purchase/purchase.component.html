@@ -28,14 +28,15 @@
         <td>{{each.remain}}</td>
       </tr>
     </table>
-    <form #f="ngForm" (ngSubmit)="onSubmit(f)">
+    <form #f="ngForm" class='form'>
       <div [style.display]='customerEmailDisplay'>
-        Customer Email:
-        <input type='text' name='customer_email' placeholder='email' ngModel>
+        <input type='text' name='customer_email' placeholder='Customer Email' ngModel required>
       </div>
-      <button>Purchase</button>
+      <div class='button'>
+        <button (click)="onSubmit(f)" [disabled]="f.form.invalid  && type==='booking_agent'">Purchase</button>
+        <button [routerLink]="['/search']">Cancel</button>
+      </div>
     </form>
-    <button>Cancel</button>
     {{purchaseMessage}}
   </div>
 </div>
