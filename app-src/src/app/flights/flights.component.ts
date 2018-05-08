@@ -67,6 +67,7 @@ export class FlightsComponent implements OnInit {
 
   update() {
     setTimeout(() => {
+      this.filtered = [];
       const result = {};
       const startTime = this.startDate.getTime();
       const end = new Date(this.endDate);
@@ -94,6 +95,8 @@ export class FlightsComponent implements OnInit {
           this.agentDisplay = '';
         } else {
           this.staffDisplay = '';
+          this.tickets = [];
+          this.flights = [];
           this.tickets = res['tickets'];
           this.flights = res['flights'];
           this.startDate = new Date();

@@ -86,6 +86,7 @@ var FlightsComponent = /** @class */ (function () {
     FlightsComponent.prototype.update = function () {
         var _this = this;
         setTimeout(function () {
+            _this.filtered = [];
             var result = {};
             var startTime = _this.startDate.getTime();
             var end = new Date(_this.endDate);
@@ -113,6 +114,8 @@ var FlightsComponent = /** @class */ (function () {
             }
             else {
                 _this.staffDisplay = '';
+                _this.tickets = [];
+                _this.flights = [];
                 _this.tickets = res['tickets'];
                 _this.flights = res['flights'];
                 _this.startDate = new Date();
