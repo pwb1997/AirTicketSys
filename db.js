@@ -2,7 +2,7 @@ const mysql = require('mysql');
 const host = 'localhost'
 const user = 'root';
 const PORT = 3306;
-const database = 'db-final';
+const database = 'airticketsys';
 const con = mysql.createConnection({
     host: host,
     user: user,
